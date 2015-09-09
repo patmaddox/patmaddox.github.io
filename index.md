@@ -2,17 +2,17 @@
 layout: default
 ---
 
-<h1>21st century collaborative software development and education - <a href="mailto:pat@patmaddox.com">Email me</a></h1>
+<h1><b>Software is supposed to help businesses work smarter, faster, and cheaper... right? So why do software budgets get blown even faster than deadlines?</b></h1>
 
-<p>Software is supposed to help businesses work smarter, faster, and cheaper right? So why do software budgets get blown even faster than deadlines?</p>
+<p>What if your software organization could deliver <b>information, asset protection, and revenue</b> - <i>quickly</i>?</p>
 
-<p>What if your software organization could deliver information, asset protection, and revenue - <i>quickly</i>?</p>
+<p>I've spent over a decade helping <b>great people make great teams</b>, so they can <b>make great software</b>.</p>
 
-<p>Great software organizations are made up of great people, with excellent practices. You can't have one without the other.</p>
-
-<p>I've spent a decade helping great people make great teams, so they can make great software. <a href="mailto:pat@patmaddox.com">It would be my honor to help you do the same</a>.</p>
+<p><b>I can help you too. <a href="mailto:pat@patmaddox.com">Email me</a>.</b></p>
 
 <p><i>Are you an individual looking to become an expert Ruby on Rails developer? <a href="http://www.rubysteps.com">I've got just the thing</a>...</i></p>
+
+<p><img src="/images/bj_and_pat.jpeg"/></p><p><i>That's me on the right, working through a Ruby on Rails programming problem with one of my friends, BJ Clark</i></p>
 
 <a name="testimonials"></a>
 
