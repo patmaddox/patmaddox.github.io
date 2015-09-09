@@ -12,7 +12,9 @@ layout: default
 
 <p><i>Are you an individual looking to become an expert Ruby on Rails developer? <a href="http://www.rubysteps.com">I've got just the thing</a>...</i></p>
 
-<p><img src="/images/bj_and_pat.jpeg"/></p><p><i>That's me on the right, working through a Ruby on Rails programming problem with one of my friends, BJ Clark</i></p>
+<p><img src="/images/bj_and_pat.jpeg"/></p>
+
+<p><i>That's me on the right, working through a Ruby on Rails programming problem with one of my friends, BJ Clark.</p>
 
 <a name="testimonials"></a>
 
