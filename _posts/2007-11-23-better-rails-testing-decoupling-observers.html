@@ -1,0 +1,58 @@
+---
+layout: post
+title: Better Rails Testing - Decoupling Observers
+date: 2007-11-23 02:29:15.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443698190'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"220";s:5:"score";s:18:"18.401502011465613";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:17:"17.31766958984874";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:18:"12.631762650132973";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"12.101736104689323";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"218";s:5:"score";s:18:"11.958818176862962";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"76";s:5:"score";s:17:"9.280523011571136";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"184";s:5:"score";s:17:"8.739942351994763";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:16:"8.51947069181483";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I&#8217;m beginning my crusade to make Rails more testable.  I&#8217;ll start off with a very small, but very useful plugin that makes testing ActiveRecord classes that use Observers painless.</p>
+<h1>If you just want the plugin</h1>
+<pre>http://github.com/patmaddox/no-peeping-toms/tree/master</pre>
+<p>MIT license, copyright me, yadda yadda</p>
+<h1>My design lesson for the day</h1>
+<p>Consider the following Account class:</p>
+<p><script src="http://gist.github.com/482509.js?file=gistfile1.rb"></script>
+<p>This bank lets account holders make overdraft withdrawals.  They don&#8217;t just want to give money away though - at the very least they want to send notices to the account holder.  We can stick that logic in the #debit method:</p>
+<p><script src="http://gist.github.com/482510.js?file=gistfile1.rb"></script>
+<p>There are a couple problems with that.  First of all, it violates the <a href="http://www.objectmentor.com/resources/articles/srp.pdf">Single Responsibility Principle</a>.  The #debit method is not only responsible for changing the account balance, but also for sending overdraft notices.  This is just a bad idea in general, and it&#8217;s immediately apparent when we try to test it:</p>
+<p><script src="http://gist.github.com/482511.js?file=gistfile1.rb"></script>
+<p>The spec fails because #debit calls owner.email, and owner is nil.  We can solve this by stubbing the owner:</p>
+<p><script src="http://gist.github.com/482512.js?file=gistfile1.rb"></script>
+<p>That&#8217;s quite ugly&#8230;we&#8217;re setting up infrastructure, and we don&#8217;t even know why!  The example suggests that it&#8217;s a basic debit method.  So why on earth do we need to stub an owner object?</p>
+<p>We can make things a little better by moving the delivery notice out of #debit and into a callback:</p>
+<p><script src="http://gist.github.com/482513.js?file=gistfile1.rb"></script>
+<p>That&#8217;s better.  At least the spec passes without any stubbing.</p>
+<p>What happens when we want to add some more behavior?  Let&#8217;s try generating an account ID based on the owner&#8217;s name and SSN:</p>
+<p><script src="http://gist.github.com/482514.js?file=gistfile1.rb"></script>
+<p>This spec fails because the #check_account_overdraft callback checks to see if the balance is less than 0.</p>
+<p>Clearly there is something wrong.  We can&#8217;t even test simple account creation because it&#8217;s too coupled to the overdraft notification.  If you think carefully, you&#8217;ll see that overdraft notification shouldn&#8217;t be an Account&#8217;s responsibility.  It may be something the business needs, but it isn&#8217;t fundamental to the way an Account behaves.  We need to move that behavior elsewhere.</p>
+<p>One way is to introduce a <a href="http://martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>.  A Service Layer allows you to sensibly split up business logic.  In our debit example, there are two pieces of business logic.  First there&#8217;s actually debiting the account, which is domain logic and should be handled by the Account class.  Then we have overdraft notification, which is another important business process, but is fundamentally separate from the Account.</p>
+<p>We can write an AccountService which wraps it all up:</p>
+<p><script src="http://gist.github.com/482515.js?file=gistfile1.rb"></script>
+<p>That works well, and is easy enough to test.  It certainly helps us out a great deal by decoupling the Account class from overdraft notification.</p>
+<p>There&#8217;s something about it I just don&#8217;t like though.  My main concern is that it introduces another layer, which isn&#8217;t necessary for such simple behavior.  Ruby is nice and clean so it&#8217;s probably not <em>that</em> big of a deal, but at the very least I&#8217;ll have to think about whether some behavior should go in the Account or in the AccountService.  If it goes in AccountService, can I just edit AccountService directly, or should I decorate it with yet another service?  I&#8217;d like to get rid of that conceptual overhead.</p>
+<p>Observers are great when you want loosely coupled behavior driven by state changes.  We can move the overdraft notification to an AccountObserver:</p>
+<p><script src="http://gist.github.com/482516.js?file=gistfile1.rb"></script>
+<p>That works out nicely.  Now the Account is responsible only for domain logic, and we have another object responsible for notifications.</p>
+<p>There&#8217;s one problem though.  The account ID generation spec blows up again.  This is because Rails hooks the observers up as soon as it runs, so now every time an Account gets saved, the AccountObserver kicks off.</p>
+<p>The whole point of using an Observer is to decouple the Account&#8217;s domain logic from related, but still separate, business logic.  But Rails makes you think about Observers when you write tests for the Account.</p>
+<p><img src="assets/bummer.gif" alt="Bummer!" /></p>
+<p>Enter the No Peeping Toms plugin.  It turns off Observers in your test environment, allowing you to write specs without worrying about the Observers - as it should be.  Not only that, it also lets you turn on certain Observers for a block of code, letting you write specs for the Observers themselves.</p>
+<p>Get it from http://github.com/patmaddox/no-peeping-toms/tree/master</p>
+<p>Here&#8217;s a spec that shows the account ID generation, basic debit behavior, and hooking up an Observer:</p>
+<p><script src="http://gist.github.com/482517.js?file=gistfile1.rb"></script></p>

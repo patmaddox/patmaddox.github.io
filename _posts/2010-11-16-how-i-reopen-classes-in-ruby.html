@@ -1,0 +1,56 @@
+---
+layout: post
+title: How I Reopen Classes in Ruby
+date: 2010-11-16 18:10:06.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443726751'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:17:"16.19588727555622";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:17:"12.04954341814827";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:18:"11.027892170691759";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:18:"10.663249057028379";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"8.138765632317234";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:17:"8.138765632317234";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"224";s:5:"score";s:17:"7.563401487489144";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"800";s:5:"score";s:17:"6.554289465984353";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:17:"6.554289465984353";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1041";s:5:"score";s:17:"6.306184168455716";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1020";s:5:"score";s:17:"6.306184168455716";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"895";s:5:"score";s:17:"6.306184168455716";}}
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"218";s:5:"score";s:18:"18.146823166836548";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:17:"15.60227160135727";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"14.820538983845314";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:18:"12.953174034769816";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"176";s:5:"score";s:17:"12.46037320797838";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"117";s:5:"score";s:18:"12.142243818553489";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"42";s:5:"score";s:18:"11.537682074945554";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:18:"11.537682074945554";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>If you look at any code I&#8217;ve written that takes advantage of open classes, you&#8217;ll see the following pattern:</p>
+<pre><code>Some::Class::Name.class_eval do
+  def my_added_method
+    # something here
+  end
+
+  def existing_method_with_my_extension
+    # something here
+    existing_method_without_my_extension
+  end
+  alias_method_chain :existing_method, :my_extension
+end
+</code></pre>
+<p>I use class_eval because doing so ensures that my code actually does what I think it does.  For this code to work, Some::Class::Name must already be defined, otherwise I&#8217;ll get an unknown constant error.  That helps me avoid two time-wasting pitfalls: a bad load path, and typos.</p>
+<h3>Get your path right</h3>
+<p>When you extend a gem, you need to have the gem installed in the system and in your load path, and then require it.  If you&#8217;re using Rails, it will automatically require it for you when you reference the constant name.  By using class_eval, I know immediately when my environment isn&#8217;t set up properly, because I get an error.</p>
+<h3>Busting ghost classes</h3>
+<p>Another problem I run into is stupid typos when writing out the class definition, or getting the module heirarchy wrong.  Something like this:</p>
+<pre><code>module Sum
+  module Klass
+    class Naem
+      def my_added_method
+        # something here
+      end
+    end
+  end
+end
+</code></pre>
+<p>In this case, Ruby is all too happy to create a second class for me called Sum::Klass::Naem even though I&#8217;m trying to extend Some::Class::Name.  I call these &#8220;ghost classes.&#8221;  I can&#8217;t figure them out just by looking at them, and they cause lots of mischief.</p>
+<h3>Order of extension</h3>
+<p>As a final note, when you extend a class, order often matters.  It&#8217;s possible to load your &#8220;extension&#8221; before the actual implementation and have it work (assuming you fully-qualified the class name properly, including its superclass, otherwise you get that funky superclass type mismatch error).  Order matters when you want to redefine a method, because Ruby will use the last method definition it comes across.  That means if you and the gem both define #foo, and you load your extension before loading the gem, Ruby will use the gem&#8217;s version.  In order to get the behavior you want, you need to load the gem first.  This also applies to alias_method_chain, which would blow up on you because the method you want to alias doesn&#8217;t exist yet.</p>
+<p>This is just one way to reopen classes in Ruby, it&#8217;s not &#8220;the&#8221; way.  I&#8217;ve found it to be helpful in avoiding stupid mistakes, or catching environment issues, so I use it.  It has the added benefit of being more explicit, I think, about the fact that I&#8217;m opening an existing class.  I hope you find it useful, and if you&#8217;ve got other tricks for opening classes, please share in the comments!</p>

@@ -1,0 +1,163 @@
+---
+layout: post
+title: OO Minifesto
+date: 2009-01-22 15:10:40.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441455126'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"55";s:5:"score";s:18:"17.480902544244994";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"242";s:5:"score";s:18:"13.242525949304303";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"93";s:5:"score";s:18:"11.802745616993281";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"234";s:5:"score";s:18:"10.396427985293172";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:18:"10.288293542794001";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"86";s:5:"score";s:18:"10.185706953991314";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"82";s:5:"score";s:18:"10.185706953991314";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"78";s:5:"score";s:18:"10.185706953991314";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+</p>
+<p>I&#8217;m listening to <a href="http://www.hanselminutes.com/default.aspx?showID=163">Uncle Bob talk about his SOLID</a></p>
+<p>principles.  I</p>
+<p>was amused when he said the naming was a bit playful to mimic</p>
+<p>three-word principles in physics, and fascinated when he likened it to</p>
+<p>the Heisenberg Uncertainty Principle, which wikipedia describes it as</p>
+<p><a href="http://en.wikipedia.org/wiki/Uncertainty_principle">&#8220;not a statement about the limitations of a researcher&#8217;s ability to</a></p>
+<p>measure particular quantities of a system, but rather about the nature</p>
+<p>of the system</p>
+<p>itself.&#8221;.</p></p>
+<p>In the same way,</p>
+<p><a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">SOLID</a></p>
+<p>principles are not prescriptive.  Rather, they are Robert&#8217;s</p>
+<p>observations that you may ignore at your peril.</p></p>
+<p>Now I&#8217;m not going to suggest that we all take Uncle Bob&#8217;s words as</p>
+<p>gospel&#8230;far from it.  But I will say that it&#8217;s probably worthwhile,</p>
+<p>and surely interesting, to at least examine the ideas of someone with</p>
+<p>such an endearing nickname and catchy phrases in his writing.  So why</p>
+<p>don&#8217;t we take that look and see where we end up, viewing the</p>
+<p>difference through pragmatic lenses?</p></p>
+<p>I&#8217;m going to use an example that every book/article seems to use,</p>
+<p>despite the fact that nobody I know has written payroll software (hey,</p>
+<p>I build web apps): payroll reporting!!</p></p>
+<p>You&#8217;ve read some OO books.  Possibly</p>
+<p><a href="http://my.safaribooksonline.com/0131857258">Bob&#8217;s</a>.  It&#8217;s a shame it</p>
+<p>has C# in the name.  You know to keep objects small and have them do</p>
+<p>one thing well.  Encapsulation is about keeping data in the same place</p>
+<p>as the operations that use that data.  So you code up something like:</p>
+<p><script src="http://gist.github.com/495598.js?file=gistfile1.rb"></script></p>
+<p>It&#8217;s safe to say these classes each do one thing, right?  Employee</p>
+<p>definitely does - it&#8217;s just a data structure with something flimsily</p>
+<p>described as behavior, calculating the payroll amount.  The</p>
+<p>PayrollReport report does too.  It iterates over the employees, prints</p>
+<p>their info to separate lines, and then joins the lines to form the</p>
+<p>report.</p>
+<p>Wait, what?</p>
+<p>There are a few possible responsibilities there:</p>
+<ul>
+<li>extracting info from employee</li>
+<li>formatting each line of the report</li>
+<li>formatting the over all report by combining lines</li>
+</ul>
+<p>You might notice a faint odor from the employee method calls that look</p>
+<p>like properties rather than having behavior.  At this point in the</p>
+<p>conversation, that smell is something of a tautology.  Let&#8217;s carry</p>
+<p>on and see if we can understand why it may be a valid smell.</p></p>
+<p>Even this very simple object is going against the <a href="http://www.objectmentor.com/resources/articles/srp.pdf">single</a></p>
+<p>responsibility principle.  If the SRP is true, are your objects in</p>
+<p>good shape?</p></p>
+<p>Now let&#8217;s examine it through the <a href="http://www.objectmentor.com/resources/articles/ocp.pdf">Open-Closed Principle</a>.  I think an</p>
+<p>antiquated interpretation of this is &#8220;you should be able to change an</p>
+<p>object&#8217;s behavior without modifying its source file.&#8221;  So then we end</p>
+<p>up with stuff like dependency injection frameworks, which advertise</p>
+<p>easy changes to your systems behavior just by wiring up different</p>
+<p>objects.  Sometimes that&#8217;s useful and worth the effort, sometimes it&#8217;s</p>
+<p>not.  Those times it&#8217;s not are because the OCP is less about changing</p>
+<p>the source code and more about modifying code that defines existing</p>
+<p>behavior.</p></p>
+<p>What if instead of wanting to print a newline between employee sets,</p>
+<p>we want to print a horizontal bar?  We can just pass a different</p>
+<p>separator as an argument:</p>
+<p><script src="http://gist.github.com/495599.js?file=gistfile1.rb"></script></p>
+<p>By passing in a separator we were able to get new behavior from this</p>
+<p>object, and existing clients don&#8217;t have to change.  That&#8217;s pretty</p>
+<p>sweet.</p></p>
+<p>But do existing clients deserve this preferential treatment?  Can you</p>
+<p>really not be bothered to spend the 20 minutes (at tops) it would take</p>
+<p>to update existing clients to use the new signature?  Maintaining an</p>
+<p>API is valuable when there are lots of people relying on your code</p>
+<p>just to work, and it&#8217;s not in their interest to ever have to change</p>
+<p>the way they use it.</p></p>
+<p>The reality is that there&#8217;s nothing special about the code that used</p>
+<p>this reporter before the new requirement to support arbitray</p>
+<p>separators.  Failing to appreciate that leads to a coupling between</p>
+<p>the old code and the new code, and this coupling based on time of code</p>
+<p>inception is in the fifth circle of anti-pattern hell.</p></p>
+<p>In order to modify this object&#8217;s behavior, we had to modify the source</p>
+<p>code of existing behavior, and for this we fail at OCP.</p></p>
+<p>Now you might ask, if I&#8217;m not supposed to modify the source code for</p>
+<p>existing behavior, how can I get myself out of bad spots like this?</p>
+<p>Bum bum bum&#8230;REFACTOR.  You probably know refactoring as &#8220;improving</p>
+<p>the design of code without changing its behavior.&#8221;  The OCP is the</p>
+<p>inverse - &#8220;improve the behavior of code without changing its design.&#8221;</p></p>
+<p>I&#8217;m going to gloss over the Liskov Substitution principle.  It&#8217;s not</p>
+<p>that interesting in this tiny example.</p></p>
+<p>The Interface Segregation principle is on the face less relevant in</p>
+<p>dynamic languages, where an object implicitly serves many fluid</p>
+<p>protocols.  I do think it leads to interesting implications in unit</p>
+<p>testing&#8230;that will be another blog post.</p></p>
+<p>Now for the weird one, the <a href="http://www.objectmentor.com/resources/articles/dip.pdf">dependency inversion</a></p>
+<p>principle.  I</p>
+<p>think this one best illustrates why the above micro-design is not OO,</p>
+<p>despite everything being an object.  The code has dependencies, but</p>
+<p>those dependencies are data structures instead of peers or</p>
+<p>collaborators, objects with behavior.</p>
+<h2>&#8220;You can&#8217;t even write 15 lines of decent OO code, Pat, FAIL&#8221;</h2></p>
+<p>You might be right.  I have no clue if I write good OO code, or even</p>
+<p>good code.  I&#8217;ve managed to duck out of code reviews early, and</p>
+<p>avoided the inheritors of code from my old jobs.</p>
+<p>Maybe I can&#8217;t write good code, but I can try to write SOLID code.</p>
+<p><script src="http://gist.github.com/495603.js?file=gistfile1.rb"></script></p>
+<p>Employee has one responsibility - handling payroll.  The first</p>
+<p>implementation doesn&#8217;t have a responsibility beyond providing access</p>
+<p>to data.</p></p>
+<p>The LogBook class only has one responsibility as well - to format the</p>
+<p>payroll records for reporting.  It gets OCP points as well.  If you</p>
+<p>want to use a different separator for the entries, or paginate them,</p>
+<p>you would not have to modify existing method definitions (or even the</p>
+<p>class itself, in this case).</p></p>
+<p>The Employee class also adheres to the dependency inversion principle</p>
+<p>by using a log book abstraction.  The LogBook class doesn&#8217;t depend on</p>
+<p>the structure of Employee objects, but rather works with simpler data</p>
+<p>types.  Using simpler data types is ideal because it makes reporting</p>
+<p>mechanisms more generally useful than using structured data types,</p>
+<p>while remaining simpler conceptually and implementation-wise.</p>
+<h2>Whew.  So which is better?</h2></p>
+<p>It could be a matter of taste.  I&#8217;ll tell you why I think version #2</p>
+<p>is better.</p></p>
+<p>Changing the report format is simpler.  If I want to change the format</p>
+<p>of each line, I do it in the LogBook.  If I want to change the</p>
+<p>combined format, I do it in the client of log book.  The log book</p>
+<p>isn&#8217;t coupled to a collection of employees&#8230;it can be used when</p>
+<p>iterating through a collection or just once-off for a single employee.</p></p>
+<p>We could change the first version to take a single employee, and not</p>
+<p>do the line joining itself:</p>
+<p><script src="http://gist.github.com/495608.js?file=gistfile1.rb"></script></p>
+<p>I think the second version wins out though because of what I explained</p>
+<p>earlier - it&#8217;s more generally useful and simpler, a tough but very</p>
+<p>desirable combination.  It could be used for recording sent invoices,</p>
+<p>received payments, or product inventories.  It&#8217;s potentially useful</p>
+<p>any time you want to record the value of some item at a particular</p>
+<p>time.  Simple values means you don&#8217;t need to worry about changes to</p>
+<p>the internal structure of employee, such as if you were to introduce a</p>
+<p>Payroll object.</p></p>
+<p>The employee class can use any number of log_book objects that format</p>
+<p>it differently, or perhaps initiate bank transactions.  There are many</p>
+<p>more options because it depends on an abstraction, and the Employee</p>
+<p>doesn&#8217;t have to know or care about any of them.</p></p>
+<p>I won&#8217;t say that Bob&#8217;s SOLID principles are necessarily as fundamental</p>
+<p>as the uncertainty principle, but I don&#8217;t think that matters - they&#8217;re</p>
+<p>damn useful.</p>

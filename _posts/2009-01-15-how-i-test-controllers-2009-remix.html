@@ -1,0 +1,112 @@
+---
+layout: post
+title: How I Test Controllers, 2009 Remix
+date: 2009-01-15 15:08:49.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443763668'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"101";s:5:"score";s:18:"19.216065289520945";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"16.800860144864465";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"15.854271536826385";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"59";s:5:"score";s:17:"13.24844603243712";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:18:"11.928966876415817";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:17:"11.00627574338299";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:17:"11.00627574338299";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"123";s:5:"score";s:18:"10.815655383650203";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+</p>
+<p>A while back I wrote about <a href="/blog/2007/9/15/easy-controller-tests-and-expressing-intent-through-expectat.html">how I test</a></p>
+<p>controllers.</p>
+<p>I&#8217;d like to share my current approach to controller specs, which is</p>
+<p>significantly different.  I&#8217;ve adapted my practice to align with</p>
+<p>something I&#8217;ve found to be generally true:</p>
+<p>Controller specs don&#8217;t matter, because controllers don&#8217;t matter</p></p>
+<p>The tail end of that statement is the important point.  It&#8217;s not that</p>
+<p>controllers don&#8217;t matter, because of course we need them.  What I mean</p>
+<p>though is that you should have little to no interesting logic in the</p>
+<p>controller.  Any logic should be</p>
+<p>(a) in the model (skinny controller, fat model)</p>
+<p>or</p>
+<p>(b) in a (mini-)framework  </p></p>
+<p>When all the logic is in the model or in framework code, the</p>
+<p>controllers become uninteresting bits of glue.  Which then makes them</p>
+<p>incredibly easy to test - you just poke it and make sure nothing blows</p>
+<p>up.</p>
+<h2>Testing gluey bits</h2></p>
+<p>If you&#8217;re going to poke something gluey like a controller, you get max</p>
+<p>value by hooking up all the attachable parts.  This means in a Rails</p>
+<p>app, you&#8217;re going to want to go through routing, filters, the real</p>
+<p>model including associations, the db, and all the way back up to the</p>
+<p>rendered view.  Welcome to Integration Testing 101.</p>
+<h2>Using Cucumber to test my controllers</h2></p>
+<p>If I&#8217;m using cucumber on a project, I use it to test my controllers.</p>
+<p>I write acceptance tests and then implement them using webrat to fill</p>
+<p>out forms, follow links, etc.  Cucumber&#8217;s really nice because it</p>
+<p>covers every piece I mentioned above.  It tests every part of the app</p>
+<p>stack except for Javascript, really.</p>
+<p>I would have a Cucumber feature that includes:</p>
+<p><script src="http://gist.github.com/495549.js?file=gistfile1.feature"></script>
+<p>with the steps implemented as:</p>
+<p><script src="http://gist.github.com/495551.js?file=gistfile1.rb"></script>
+<p>That one test lets me know that</p>
+<ul>
+<li>GET /posts/new renders without errors</li>
+<li>POST /posts creates a new post and redirects to the index</li>
+<li>GET /posts renders without errors</li>
+</ul>
+<p>Which is enough to make me happy about the coverage, given that my</p>
+<p>controllers are brain-dead simple.  It&#8217;s also less work&#8230;I don&#8217;t have</p>
+<p>to test that the post count increased, or the right template was</p>
+<p>rendered, or that it redirected to the right place.</p>
+<p>or as DHH might say, &#8220;Look at all the things I&#8217;m *not* testing!&#8221;</p></p>
+<p>One thing I must point out is that I don&#8217;t write controller specs if</p>
+<p>my controllers are tested through cucumber!  I might wrote a couple if</p>
+<p>there are edge cases or important alternate paths, but I keep those to</p>
+<p>a minimum.  I absolutely do not write the typical controller specs,</p>
+<p>testing the same stuff over again - that&#8217;s a waste of time, both when</p>
+<p>you first write it and when you have to maintain the test in two</p>
+<p>places later on.</p>
+<h2>sans-Cucumber alternative: &#8220;ping&#8221; specs</h2></p>
+<p>Maybe you haven&#8217;t been bitten by the <a href="http://en.wikipedia.org/wiki/Cucumber_beetle">Cucumber</a></p>
+<p>bug yet.  Sometimes I</p>
+<p>do projects without Cucumber, because I don&#8217;t have an end customer</p>
+<p>that I need to communicate with.  I use &#8220;ping&#8221; specs to test my</p>
+<p>controllers, so-named because I just ping the controller and see if it</p>
+<p>responds (mostly).</p></p>
+<p>Controller specs are more verbose than cucumber features because we&#8217;re</p>
+<p>working at a slightly lower level thus we must specify different</p>
+<p>things.</p>
+<p>Here&#8217;s a typical controller spec:</p>
+<p><script src="http://gist.github.com/495553.js?file=gistfile1.rb"></script></p>
+<p>I do test a couple other things, such as failure paths (with</p>
+<p>create/update, and sometimes destroy) and flash.  The example above</p>
+<p>shows the essence of my strategy.  I want to get a lot of mileage from</p>
+<p>my test by hitting it at a high level and using the whole stack.  The</p>
+<p>only piece missing from here is the routing.</p>
+<h2>Simple code is awesome, frameworks are awesome</h2></p>
+<p>For this to be effective, you have to have wicked tight controller</p>
+<p>code and thoroughly tested models.  Tight controllers mean that you</p>
+<p>can be confident with minimum testing because there&#8217;s not much stuff</p>
+<p>in the controller that can break.  The easiest way to get to that</p>
+<p>point is by using a framework such as resource_controller, or rolling</p>
+<p>your own simple one.  Then be sure your models are well tested,</p>
+<p>because that&#8217;s where most of the logic and potential for error sits.</p></p>
+<p>This can also be a useful strategy when dealing with absurdly messy</p>
+<p>controller code.  The goal again is to cast a big net with your test,</p>
+<p>but now the reason is so that you&#8217;ll be alerted quickly if you break</p>
+<p>anything.  It might be tough to decipher the problem because you don&#8217;t</p>
+<p>have good isolation, but at least you have some safety net.  The trick</p>
+<p>though is to know what code isn&#8217;t being tested, or isn&#8217;t being tested</p>
+<p>enough, so that you can make careful changes.  You can find techniques</p>
+<p>for analyzing code, identifying and creating seams, and working with</p>
+<p>shit code in general in the awesome book <a href="http://my.safaribooksonline.com/0131177052">Working Effectively with</a></p>
+<p>Legacy Code.  I&#8217;m also</p>
+<p>going to be talking about this, especially as it applies to Rails</p>
+<p>projects, at <a href="http://www.scotlandonrails.com/">Scotland on Rails</a> in</p>
+<p>March.</p>

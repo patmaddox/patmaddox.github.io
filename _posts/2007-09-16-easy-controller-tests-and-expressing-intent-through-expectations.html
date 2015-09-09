@@ -1,0 +1,132 @@
+---
+layout: post
+title: Easy Controller Tests and Expressing Intent Through Expectations
+date: 2007-09-16 01:23:10.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443651659'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"20.932937167514286";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:18:"19.216065289520945";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"16.518957223053754";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1121";s:5:"score";s:18:"16.184849053699836";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"220";s:5:"score";s:18:"15.744725284104852";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:18:"12.222846115966668";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"70";s:5:"score";s:18:"12.074630171783362";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1110";s:5:"score";s:18:"11.858203002323586";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Mike Clark posed the question, <a href="http://www.clarkware.com/cgi/blosxom/2007/09/08#TestingControllers">&#8220;How do you test controllers?&#8221;</a>  I found it really interesting that he said that testing controllers feels more challenging than testing models.  Experience has shown it to be the complete opposite for me - testing controllers is generally child&#8217;s play, and the model is where I run into the most trouble.</p>
+<p>I wanted to spend a couple days reflecting on this rather than immediately post a reaction.  After all, if my experience is completely different from that of others, there&#8217;s probably something illuminating somewhere in the middle.</p>
+<p>If you&#8217;re already a seasoned TDD/BDD/RSpec&#8217;er and don&#8217;t care about the steps, jump to the <a href="#complete-specs">complete specs</a> and my commentary.  If you want to see a controller BDD&#8217;d from start to finish, continue on.</p>
+<p>To start with, I&#8217;ll show you an example of how I would BDD a controller.  To keep things simple, it&#8217;ll be the exact same controller that Mike used as an example.  I&#8217;m not going to show it here, even for convenience, because it can&#8217;t yet exist if we&#8217;re doing BDD ;)  In fact, I&#8217;ve got autotest running, waiting for me to get to work.</p>
+<p>So the first thing I do is run &#8220;./script/generate rspec<em>controller menu</em>items&#8221; to create my controller along with some RSpec stuff setup.  autotest informs me that two specs are already green.  Nice.  They&#8217;re worthless though, so I clear out menu<em>items</em>controller_spec.rb.</p>
+<p>I don&#8217;t know much about this spec at first.  I&#8217;m not quite sure what should happen, and I don&#8217;t know what the givens are.  I do know what the action is though, which is to post to my controller.  So I&#8217;ll write that skeleton.</p>
+<p><script src="http://gist.github.com/482442.js?file=gistfile1.rb"></script>
+<p>Now that we&#8217;ve figured out what action will take place, we need to specify what actually happens.  In BDD we like to <a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html">start with the simplest thing that could possibly work</a>.  I&#8217;ve found that in testing controllers, it&#8217;s almost always the HTTP response.  With an empty action method, the response should be simply 200.  If that messes up, you know something&#8217;s wrong!</p>
+<p>In our case we&#8217;re expecting a redirect.  So we&#8217;ll set up an expectation that the response is a redirect.</p>
+<p><script src="http://gist.github.com/482443.js?file=gistfile1.rb"></script>
+<p>autotest comes up red now, telling me &#8220;No action responded to create.&#8221;  The compiler would have told us about that if we were using Java, but since Ruby is interpreted we don&#8217;t know until runtime.  Nifty little trick: RSpec helps you figure out the difference between &#8220;compile errors&#8221; and unmet expectations by coloring them differently.  The &#8220;No action responded to create&#8221; appears in pink, and when I add the code:</p>
+<p><script src="http://gist.github.com/482444.js?file=gistfile1.rb"></script>
+<p>I get the failure message &#8220;expected redirect? to return true, got false&#8221; in red.  If you&#8217;ve written an expectation and can&#8217;t quite figure out how to make it pass, use RSpec&#8217;s coloring to help guide the way.</p>
+<p>So like I said, the redirect expectation failed.  Again it&#8217;s an easy fix.</p>
+<p><script src="http://gist.github.com/482446.js?file=gistfile1.rb"></script>
+<p>It may seem silly to redirect to &#8220;foo&#8221; here, but in reality we&#8217;ve learned a lot.  Our controller is up and running, and responds to requests to the create action.  Now we can start to implement the logic.  Can you imagine how frustrating it would be to spend hours (okay, more than 5 minutes :) implementing this action only to find out that it&#8217;s not even hooked up properly?</p>
+<p>Redirecting to &#8220;foo&#8221; isn&#8217;t very useful.  Instead we&#8217;ll want to redirect to the index.  We could expect a redirect to &#8220;:controller =&gt; :menu_items, :action =&gt; :index&#8221; but I want my application to be RESTful so we&#8217;ll use the REST URL helper.</p>
+<p><script src="http://gist.github.com/482447.js?file=gistfile1.rb"></script>
+<p>RSpec complains that the menu_items_url method doesn&#8217;t exist.  Looks like we have to define the menu_items resources in our routes.rb file.</p>
+<p><script src="http://gist.github.com/482449.js?file=gistfile1.rb"></script>
+<p>Now our spec passes with the failure message &#8220;expected redirect to &#8216;http://test.host/menu_items&#8217;, got redirect to &#8216;http://test.hostfoo&#8217;.&#8221;  Quick change of the redirect call and we&#8217;re good.</p>
+<p><script src="http://gist.github.com/482450.js?file=gistfile1.rb"></script>
+<p>It probably seems like we&#8217;re moving quite slowly.  In reality this would take ~30 seconds to get to this point.  I&#8217;m just a windbag.</p>
+<p>Our entire spec now looks like this:</p>
+<p><script src="http://gist.github.com/482451.js?file=gistfile1.rb"></script>
+<p>The first example is redundant, because if the response redirects to a certain URL then it has to be a redirect.  So we&#8217;ll take out the first, more general example since it is now nothing but noise.</p>
+<p>Now we want to specify that a flash message is shown.</p>
+<p><script src="http://gist.github.com/482452.js?file=gistfile1.rb"></script><script src="http://gist.github.com/482452.js?file=gistfile2.rb"></script>
+<p>Oh baby we&#8217;re rolling.  Now it&#8217;s time for the hard part.  Creating the model.  We&#8217;ll set up an expectation that says an object should be saved.  That seems easy enough.</p>
+<p><script src="http://gist.github.com/482453.js?file=gistfile1.rb"></script>
+<p>RSpec complains that @menu<em>item doesn&#8217;t exist.  Actually it says that NilClass expected save but didn&#8217;t receive it.  It&#8217;s in pink though, which I know means that my code doesn&#8217;t run at all, not that the logic is run.  I need to define @menu</em>item somewhere, which brings us to RSpec&#8217;s before block.  This will run before each example, and is where we set up the fixtures.</p>
+<p>Our full spec is now</p>
+<p><script src="http://gist.github.com/482454.js?file=gistfile1.rb"></script>
+<p>autotest tells me the expectation isn&#8217;t met.  &#8220;Mock &#8216;menu item&#8217; expected :save with (any args) once, but received it 0 times.&#8221;</p>
+<p>Our controller needs to create an object and save it.  MenuItem is a reasonable class name, so we&#8217;ll just use that.</p>
+<p><script src="http://gist.github.com/482455.js?file=gistfile1.rb"></script>
+<p>That looks like it should work, but we&#8217;re informed that MenuItem doesn&#8217;t exist.  I&#8217;ll cheat and stick a dummy definition in the spec file.</p>
+<p><script src="http://gist.github.com/482456.js?file=gistfile1.rb"></script>
+<p>Now it says that our new menuitem doesn&#8217;t have a save method.  We could add save to the dummy class, but we&#8217;re going to toss that class very soon.  Plus we can do better with mocks.  As we saw when we started this example, we can create a mock that lets us know when the save message was called.  So we&#8217;ll stub MenuItem to return our mock.</p>
+<p><script src="http://gist.github.com/482458.js?file=gistfile1.rb"></script>
+<p>And now we see that our mock received an unexpected message in two examples.  Mocks will complain if they receive any message that they aren&#8217;t expecting.  This can make specs a bit more brittle, but otoh you don&#8217;t really want your objects responding to messages nilly-willy.  If someone changes your code so it calls a method it shouldn&#8217;t, at least you have some early indication that maybe it shouldn&#8217;t do that, and you can talk it over.</p>
+<p>Anyway we&#8217;ll tell our mock menu item to stub out calls to save.</p>
+<p><script src="http://gist.github.com/482459.js?file=gistfile1.rb"></script>
+<p>Whew, our specs finally pass.</p>
+<p>Again this may seem like it took a while to get here, but I&#8217;m really just trying to show all the steps.  In reality that goes by very quickly.</p>
+<p>Almost there.  The last thing we want to know is that the object was created with the proper arguments.  We can do this by setting an expectation on MenuItem.new.</p>
+<p><script src="http://gist.github.com/482461.js?file=gistfile1.rb"></script>
+<p>The hash comes from the parameters since this is an HTTP request.  We didn&#8217;t set them up in the do_post method because we didn&#8217;t need them up to this point.  So first we&#8217;ll change that to pass in some parameters:</p>
+<p><script src="http://gist.github.com/482462.js?file=gistfile1.rb"></script>
+<p>and update the action:</p>
+<p><script src="http://gist.github.com/482463.js?file=gistfile1.rb"></script>
+<p>We run the specs and see that one of them fails.  RSpec says that we tried to call save on a nil object.  Oops, I forgot to return our mock in the MenuItem.new expectation.</p>
+<p><script src="http://gist.github.com/482464.js?file=gistfile1.rb"></script>
+<p>Now all of our examples run.</p>
+<p>That covers the happy path.  What about when the menu item doesn&#8217;t save?  We&#8217;ll write a new spec for that.</p>
+<p>We can borrow the setup from the first spec since it&#8217;s exactly the same.  This violates DRY but I&#8217;ve got a couple views on this</p>
+<ol>
+<li>Production code needs to be DRY, spec code can be moist</li>
+<li>The code is so simple there&#8217;s no real risk of screwing up</li>
+<li>We know from experience that the code won&#8217;t stay exactly the same.  No point in removing duplication if we&#8217;re just going to split them back up in two minutes.</li>
+</ol>
+<p>We start off with the basic skeleton:</p>
+<p><script src="http://gist.github.com/482465.js?file=gistfile1.rb"></script>
+<p>Instead of expecting a redirect, we want to display the form again when the item doesn&#8217;t save.</p>
+<p><script src="http://gist.github.com/482466.js?file=gistfile1.rb"></script>
+<p>That fails, which we know is because it&#8217;s getting a redirect.  We could have actually taken a smaller step and expected the response to be a success, but I&#8217;m feeling bold on this one.</p>
+<p><script src="http://gist.github.com/482467.js?file=gistfile1.rb"></script>
+<p>Hrm.  Our new spec passes but two of our old ones fail.  It should be pretty obvious though.  None of our mocks return anything when save is called.  Since we introduced a conditional, the first spec treats the object as though the save failed.  We&#8217;ll change its stub and expectation to return true.</p>
+<p><script src="http://gist.github.com/482468.js?file=gistfile1.rb"></script>
+<p>For clarity I&#8217;ll change the second spec to explicitly return false.</p>
+<p><script src="http://gist.github.com/482469.js?file=gistfile1.rb"></script>
+<p><a name="complete-specs">Here&#8217;s our entire spec, start to finish.</a></p>
+<p><script src="http://gist.github.com/482470.js?file=gistfile1.rb"></script><br />
+<h2>Expressing Intent through Expectations</h2>
+<p>You&#8217;ll notice that the second spec only has one expectation.  We had already tested most of the code so there&#8217;s no reason to do that again.  At this point we only need to specify what changes, which in this case is whether saving the record succeeded or failed.</p>
+<p>These specs are pretty good, but there&#8217;s a minor changes that I would make so they express intent more clearly.  Specifically, they should clearly express what changes between the specs.  Our most useful tool in this case is mock expectations.  I would change the second spec to read:</p>
+<p><script src="http://gist.github.com/482471.js?file=gistfile1.rb"></script>
+<p>It&#8217;s really easy for anyone reading my specs to figure out what&#8217;s important.  In the very first spec (save succeeds), the reader knows that a new object should be created, saved, and then we flash a message and redirect.  In the second spec we don&#8217;t really care about creating the object since that&#8217;s already tested.  The only thing that differs is that saving fails.</p>
+<p>In one glance, the reader knows immediately how the behavior of collaborating objects affects the behavior of the unit under test.  Contrast that with using fixtures that require you to know why the collaborating objects behave the way they do.  My way is not only good programming style - application logic doesn&#8217;t need to change because the underlying business logic does - but it makes your life easier because there&#8217;s less stuff to keep in your head at once!</p>
+<p>There&#8217;s a guideline in TDD that says to <a href="http://blog.floehopper.org/articles/2006/12/23/stub-queries-and-expect-commands">stub queries and expect commands</a>.  It&#8217;s a very useful guideline, but I think the exception is when stubbing queries expresses your intent.  <a href="http://blog.jayfields.com/2007/09/rails-testing-controllers.html">Jay Fields is concerned</a> that mocks create &#8220;so much noise in the test that it&#8217;s hard to determine what the intent of the test is.&#8221;  This is certainly true at times.  However you can decrease the noise by deliberate use of expectations to differentiate between what is important to understand the test and what is merely scaffolding to make it run.</p>
+<h2>Why controllers are easy for me and hard for you</h2>
+<p>I hope my example showed just how easy it is to spec controllers using RSpec.  Once you&#8217;ve done it a couple times you just sort of write the whole thing at once without the seemingly silly baby steps.  Most of the code we write though is a lot more complicated and suddenly those baby steps feel like a comfort blanket.</p>
+<p>So let&#8217;s look at why controllers are so easy to specify when we use RSpec.  If you&#8217;re a Test::Unit head, you&#8217;ll be happy to know that it has basically nothing to do with RSpec and everything to do with our use of mocks.</p>
+<p>Using mock objects in this situation allows us to completely decouple application logic from business logic.  <a href="http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model">Controllers shouldn&#8217;t be smart</a>, instead simply coordinating the actions of truly smart objects.  As I pointed out earlier, I don&#8217;t need to know what a menu item requires in order to be saved.  I simply need to know that it can save itself and let me know whether it succeeded or failed.</p>
+<p>That&#8217;s it in a nutshell.  I can write application code that doesn&#8217;t depend on the business logic.  To illustrate this, look at how we implemented MenuItem:</p>
+<p><script src="http://gist.github.com/482472.js?file=gistfile1.rb"></script>
+<p>There&#8217;s no need to create a MenuItem table, whose fields we don&#8217;t even know at this point.  In fact we don&#8217;t need a database at all yet.</p>
+<p>We also learned quite a bit about the interface:</p>
+<ol>
+<li>We need a real class MenuItem</li>
+<li>It needs a constructor which can take a hash</li>
+<li>It has a method named #save which returns true on success and false on failure</li>
+</ol>
+<p>Hey, ActiveRecord gives us the last two, so we can just inherit from it and we&#8217;re good to go.  Or we could use ActiveResource.  Or anything else really.  Our controller code doesn&#8217;t care how persistence is implemented, and it certainly doesn&#8217;t care what it means for domain objects to be valid.</p>
+<h2>Why models are easy for you and hard for me</h2>
+<p>Rails&#8217; ActiveRecord is a fantastic implementation of the Active Record pattern found in Martin Fowler&#8217;s <a href="http://safari.oreilly.com/0321127420">Patterns of Enterprise Architecture</a>.</p>
+<p>Fowler writes:</p></p>
+<div class="quote"><q>Active Record is a good choice for domain logic that isn&#8217;t too complex, such as creates, reads, updates, and deletes. Derivations and validations based on a single record work well in this structure.<br />
+</q>
+<p>&#8230;</p>
+<p>It&#8217;s easy to build Active Records, and they are easy to understand. Their primary problem is that they work well only if the Active Record objects correspond directly to the database tables: an isomorphic schema. If your business logic is complex, you&#8217;ll soon want to use your object&#8217;s direct relationships, collections, inheritance, and so forth. These don&#8217;t map easily onto Active Record, and adding them piecemeal gets very messy.</p>
+</div>
+<p>It&#8217;s clear why AR is a great pattern for web apps.  Our persisted objects have a generally flat inheritance heirarchy and don&#8217;t have particularly complex relationships or logic.</p>
+<p>Testing at the beginning of an app is pretty easy.  You can just write your specs using real AR objects and you&#8217;re good to go.  However as you write more specs and evolve a deeper domain model, it becomes a lot harder.  Tests start to slow down because of dependence on the database.  You start having brittle tests because domain logic gets mixed with db logic (AR callbacks have been my biggest foe here, which I&#8217;ll discuss in a forthcoming post).</p>
+<p><a href="http://rubyforge.org/pipermail/rspec-users/2007-September/002965.html">David Chelimsky said it best</a>:</p>
+<div class="quote"><q>The problem we face is that AR promises huge productivity gains for the non TDD-er, and challenges the thinking of the die-hard TDD-er.</q></div>
+<p>In our app at work we&#8217;ve got 46 AR classes that have quite a bit of behavior.  I couldn&#8217;t tell you how that compares to other Rails apps, though I&#8217;m positive it&#8217;s not trivial and am even more positive it&#8217;s not enterprise (despite what my boss tells customers ;)  The domain logic gets complex in places, and AR&#8217;s muddling of responsibilities means I have to be even more careful about coding myself into a corner (which despite how careful I am, happens a lot.  But this is Ruby so it doesn&#8217;t take long to fix anyway).</p>
+<p>I&#8217;m at a point where I&#8217;m considering leaving AR for at least a part of our model code.  The domain logic and persistence logic is getting complex enough that ideally I could test them independently.  Just like the application logic used mocks for the domain logic, our domain objects can mock out the persistence logic, leaving us with a nice <a href="http://safari.oreilly.com/0321125215">layered architecture</a>.  Then we can let the domain objects interact with real implementations of other domain objects because they&#8217;re lightweight and easy to work with since we&#8217;re not mixing concerns.</p>
+<p>There&#8217;s a lot of debate on whether you should design code for testability.  I&#8217;m of the camp that says you should, because I&#8217;m also of the camp that says that untested code is worthless at best, harmful at worst.</p>
+<p>My controllers are easy to spec because they <em>should</em> be easy to spec.  They just take some objects and tell them to do stuff.  It&#8217;s what those objects do that is complex.  You can use mock objects to isolate that complexity.  If you don&#8217;t use mock objects, then you end up with leaky abstractions that make your tests harder to understand and maintain.</p>

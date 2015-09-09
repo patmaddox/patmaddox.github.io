@@ -1,0 +1,32 @@
+---
+layout: post
+title: RSpec Impressions From RubyConf
+date: 2007-11-07 02:23:21.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1442036472'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:18:"14.580156108801685";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"176";s:5:"score";s:18:"14.482575780421442";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"109";s:5:"score";s:18:"13.915470422574316";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"61";s:5:"score";s:17:"9.231858809948626";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1121";s:5:"score";s:17:"8.420928593718505";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"86";s:5:"score";s:17:"8.420928593718505";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"80";s:5:"score";s:17:"8.420928593718505";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"50";s:5:"score";s:17:"8.420928593718505";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Over the past four days I&#8217;ve had the pleasure of discussing RSpec with several RubyConf attendees.  I found a wide range of opinions.  Several people are already on the RSpec bandwagon and use it daily.  Others think it looks nice, but their team uses Test::Unit and they don&#8217;t have a strong motivation to switch.  I didn&#8217;t ask Ryan Davis about it, fearing that he would ninja-kick me to South Carolina.</p>
+<p>Things are looking good for RSpec in the near future.  Eric Hodel, giving his productivity talk, asked the room who uses Test::Unit and who uses RSpec.  I was amazed to see that it was split right down the middle.  I don&#8217;t know what the numbers were like a year ago, but I have a feeling the majority of attendees didn&#8217;t even know what RSpec was.</p>
+<p>David Chelimsky and Dave Astels presented RSpec in one of the Sunday morning talks.  Anyone who talked with me during the conference can tell you how much I anticipated the unveiling of RSpec&#8217;s shiniest new feature, Story Runner.  I must have said, &#8220;Story Runner kicks ass so much.(insert vague description here) - the Daves will show it off during their talk&#8221; a dozen times.  When David demoed the plain-text story, the crowd applauded.  They got it.</p>
+<p>A lot of people already use and love RSpec.  Many more have become interested in Story Runner&#8217;s potential.  Still, there are a couple obstacles to ubiquitous adoption.</p>
+<p>Stability is the first problem.  I can&#8217;t count how many people told me, &#8220;RSpec looks great, but it just changes too often.&#8221;  Ashley Moran, a well-known user on the RSpec mailing list, has described keeping up with edge RSpec as riding a roller coaster.</p>
+<p>This isn&#8217;t a valid concern anymore, because RSpec&#8217;s core is stable.  It took a while to get there, but we finally discovered the ideal syntax and structure and rolled it in to the 1.0 release.</p>
+<p>I think the biggest problem surrounding RSpec is simply one of marketing.  Many people&#8217;s concerns no longer hold true.  Another example I found is that RSpec didn&#8217;t have nested contexts, one influence that led <a href="http://tammersaleh.com/">Tammer Saleh</a> to write <a href="http://thoughtbot.com/projects/shoulda">Shoulda</a>.  I remember there being plenty of list discussion on nested contexts.  Ultimately David arrived on a far more elegant solution that fit RSpec&#8217;s approach - shared behaviors.  It seems that people have concerns about RSpec that no longer hold true because they simply don&#8217;t know that things have changed for the better.  I suspect that David and Aslak&#8217;s upcoming book will let people know that RSpec is ready for prime time.</p>
+<p>The issue of stability surfaces again with the Story Runner&#8217;s introduction to the framework.  It&#8217;s an exciting, powerful feature but is changing at a blinding pace.  David posted to the list, announcing the first version of Story Runner, and a mere five days later he announced the plain-text story format.  I know that many people are excited to check it out, but at this point it&#8217;s just impossible to keep up.  Hopefully things will settle down in the next month and we&#8217;ll get to see some of the possibilities.</p>
+<p>Another key obstacle is that several programmers or teams are heavily invested in Test::Unit.  Ryan Davis brought up a related concern, saying that he &#8220;found comfort in def.&#8221;  David said that he&#8217;s looking into writing a sort of compatibility layer that might ease the transition for Test::Uniters.  I understand what Ryan means, but I don&#8217;t think RSpec needs to solve his problem.  There&#8217;s an RSpec way, and if Ryan doesn&#8217;t like it then he doesn&#8217;t need to use it (and I&#8217;m sure he&#8217;ll happily agree with that).  I&#8217;m interested to learn more about what David meant.  I&#8217;m all for easing the transition from Test::Unit to RSpec.  However I think that means writing tools that help you convert a Test::Unit suite into a RSpec suite.  I don&#8217;t want Frankenspecs.</p>
+<p>All in all, I&#8217;m excited about where RSpec is going.  A lot of people are getting behind it, and I&#8217;m sure as we dispel myths then we&#8217;ll get even more support.  We also need to put Story Runner through its paces and get it production-ready.  Before Story Runner, I didn&#8217;t really want to sell people on RSpec, either it fit their thinking or it didn&#8217;t.  Now though I believe that Story Runner provides a huge win and gives me a compelling argument to convert people to RSpec.</p>

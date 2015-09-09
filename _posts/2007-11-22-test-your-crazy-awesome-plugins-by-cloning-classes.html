@@ -1,0 +1,51 @@
+---
+layout: post
+title: Test Your Crazy Awesome Plugins by Cloning Classes
+date: 2007-11-22 02:27:24.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441884439'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"123";s:5:"score";s:18:"17.691623575546853";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1110";s:5:"score";s:18:"15.283677966853602";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"61";s:5:"score";s:17:"12.28535120308522";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:18:"12.142243818553489";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"59";s:5:"score";s:18:"12.018288417863761";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:18:"11.572001315235344";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"115";s:5:"score";s:18:"11.170659924200695";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"220";s:5:"score";s:18:"10.717113285512498";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Most of the plugins I write (or rather start writing but never finish) involve lots of fun metafoo.  One problem I&#8217;ve consistently run into is that it&#8217;s tough to get classes in a pristine state for testing.</p>
+<p>Let&#8217;s say we&#8217;re working on a plugin that provides validations for drinking and smoking ages.  You might start off with this spec:</p>
+<p><script src="http://gist.github.com/482500.js?file=gistfile1.rb"></script>
+<p>The plugin adds this validation method to ActiveRecord:</p>
+<p><script src="http://gist.github.com/482501.js?file=gistfile1.rb"></script>
+<p>Running that spec works fine.  Now we can move on to the smoking age validation.  Add another spec:</p>
+<p><script src="http://gist.github.com/482502.js?file=gistfile1.rb"></script>
+<p>and the validation method:</p>
+<p><script src="http://gist.github.com/482503.js?file=gistfile1.rb"></script>
+<p>When you run it though, you&#8217;ll find that the spec fails.  It turns out that our Person definitions aren&#8217;t local to the example groups - it&#8217;s all the same Person class.  The smoking age spec is also validating against the drinking age, causing it to fail.  We&#8217;d like to completely isolate those behaviors.</p>
+<p>This has frustrated me quite a bit in the past.  I tried all kinds of weird shit&#8230;undef&#8217;ing constants, removing all the methods.  It was all really dirty.  As it turns out though, you can <a href="http://www.oobaloo.co.uk/articles/2007/11/15/copying-classes">clone classes</a> in Ruby, making this absolutely painless:</p>
+<p><script src="http://gist.github.com/482504.js?file=gistfile1.rb"></script>
+<p>As I understand it, calling clone gives us an object that looks and behaves like the original, frozen at that point in time.  They&#8217;re unrelated after the clone though, so making any changes to the Smoker and Drinker class won&#8217;t affect each other or the original Person class.  Try taking out the .clone calls (so you just make Smoker/Drinker an alias for Person) and you&#8217;ll see that they blow up.</p>
+<p>I stuck the whole spec in a module of its own so that I wouldn&#8217;t pollute the namespace, and so that there aren&#8217;t any clashes in case the root app also defines a Person class.</p>
+<p>To demonstrate that, I created a Person class in the app itself, along with a validation:</p>
+<p><script src="http://gist.github.com/482505.js?file=gistfile1.rb"></script>
+<p>And here&#8217;s the spec docs:</p>
+<pre><code>Person
+- should require a name
+
+BadBehaviorSpec::Person when told to validate drinking age
+- should be valid for someone aged 21
+- should not be valid for someone aged 20
+
+BadBehaviorSpec::Person when told to validate smoking age
+- should be valid for someone aged 18
+- should not be valid for someone aged 17</code></pre>
+<p>Pretty nifty stuff.</p>
+<p>You can <a href="http://www.patmaddox.com/cloned_class_src.tar.gz">download the source code</a> of my test project.</p>

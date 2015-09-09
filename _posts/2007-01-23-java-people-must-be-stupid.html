@@ -1,0 +1,36 @@
+---
+layout: post
+title: Java People Must Be Stupid
+date: 2007-01-23 00:01:00.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441567526'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"42";s:5:"score";s:18:"20.469498312254718";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:18:"16.885979373674473";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:18:"14.126191453876174";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:17:"13.20350032071921";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:18:"12.713255404763583";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"88";s:5:"score";s:17:"12.24965217667652";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:18:"11.537682074945552";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:18:"11.537682074945552";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>How do I make Ruby safer?</em>  It&#8217;s a topic that people bring up on the mailing list every once in a while.  <em>People shouldn&#8217;t be able to open my classes.  They need compile time type checking so the app doesn&#8217;t blow up.  Extending system libraries is bad.</em></p>
+<p>Concerns like these all seem to boil down to one major theme: <em>The people I work with are stupid.</em></p>
+<p>Seriously, browse through ruby-lang for threads where the starter needs Ruby to be more &#8220;safe.&#8221;  A ruby hacker will cheekily ask, &#8220;Why do you need static type checking?  Are you going to try to regexp match an Animal?&#8221;  &#8220;Well, no, not ME of course, but somebody else might.&#8221;  I don&#8217;t even know who &#8220;somebody else&#8221; is most of the time.  Is it someone on your team?  Is it someone from another department?  Is it some random guy who downloaded your library?</p>
+<p>I simply do not care about random people.  I&#8217;ve shared plenty of code before, and will continue to do so.  I&#8217;m not about to waste any energy protecting people from their own stupidity.  Hell, I&#8217;m coding Ruby on a daily basis, clearly I have no interest in appealing to the common denominator.</p>
+<p>That may sound like I don&#8217;t respect the average person, but in fact the opposite is true.  I have faith that you&#8217;re smart enough to understand things on your own, to learn things on your own, to ask questions when you need help.  I don&#8217;t assume that you&#8217;re a bumbling idiot who should use a compiler only under strict supervision, or at the very least wearing a helmet.</p>
+<p>The more serious issue is when &#8220;someone else&#8221; refers to someone whose welfare you actually are interested in, or, god forbid, responsible for.  If you need to protect someone on your team from code, there are two scenarios in play:</p>
+<ul>
+<li>The person is stupid</li>
+<li>The person is naive</li>
+</ul>
+<p>Neither issue is really that difficult to handle.  The first one has a very simple solution â fire them.  You heard me.  If you&#8217;ve determined that this person truly has no chance of learning how to judiciously use some piece of code, there&#8217;s zero chance they&#8217;ll had value to your project.  Programming is a vigorous intellectual exercise, and I&#8217;ve never seen incompetence actually benefit such endeavors.</p>
+<p>Fortunately for us, and for those less enlightened/experienced, very few people are truly hopeless.  I&#8217;ve met a lot of programmers who were misguided, many of whom were also hardheaded (I&#8217;m certainly in that category), but not many who couldn&#8217;t learn a better way.  In this case, the solution is pretty simple as well.  You take the time to educate them.  Clearly you know the right way to do something, otherwise you wouldn&#8217;t feel a need to protect them from themselves.  Instead of spending all your energy limiting what people can do, direct your energy towards helping them empower themselves.</p>
+<p>Ruby doesn&#8217;t need to be more safe.  It certainly doesn&#8217;t need static type checking.  What we need is to kick the idiots out, and educate those with less understanding.  Doing so improves those individuals, ourselves, and our craft as a whole.  It doesn&#8217;t take much more effort than trying to keep people from shooting themselves in the foot and performing damage control when they find workarounds.  The benefits are obviously way better.  So what&#8217;s stopping you?</p>
+<p><em>note: Anyone reading this blog probably agrees with me on some level.  So it may be pointless to write this.  Maybe you can link to it on theserverside.com.  I&#8217;ll take the heat.</em></p>

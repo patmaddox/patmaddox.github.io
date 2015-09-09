@@ -1,0 +1,28 @@
+---
+layout: post
+title: Use_long_method_names_that_say_what_they_do
+date: 2010-02-22 15:38:42.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441843348'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"127";s:5:"score";s:18:"16.822718285597812";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"139";s:5:"score";s:18:"16.412737572549993";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"131";s:5:"score";s:18:"16.203396327367045";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"146";s:5:"score";s:17:"13.50354289335867";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"72";s:5:"score";s:18:"13.460924532903253";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"13.057255790730249";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"246";s:5:"score";s:18:"12.692612677087169";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"160";s:5:"score";s:18:"12.692612677087169";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>There are many reasons you should use long, descriptive method names.  I won&#8217;t go into them all here, just use google, or read <a href="http://www.amazon.com/gp/product/0132350882?ie=UTF8&amp;tag=patmad-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0132350882">Clean Code</a>, or something.  But here&#8217;s a reason that you probably haven&#8217;t heard:</p>
+<p><strong>Long method names are better for mocking</strong></p>
+<p>It&#8217;s pretty simple.  Given the following code and test:</p>
+<p><script src="http://gist.github.com/495790.js?file=gistfile1.rb"></script>
+<p>Let&#8217;s say you decide to perform a <a href="http://www.amazon.com/gp/product/0201485672?ie=UTF8&amp;tag=patmad-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0201485672">rename method refactoring</a> and change &#8216;apply&#8217; to &#8216;compute.&#8217;  Now you get to pull up the terminal and type <strong>ack apply</strong> - not fun.  Of course you could search for discount.apply, but there&#8217;s a good chance you&#8217;re going to miss something.  Compare this with naming the method &#8216;apply_discount&#8217; and the benefit is obvious.</p>
+<p><em>Using long method names gives you the confidence to ack for those names, which in turn gives you confidence to refactor a mock-heavy test suite, which in turn gives you more confidence using mocks in the first place, which in turn lets you gain the benefit of mocks when appropriate instead of being scared away by the pitfalls</em></p>

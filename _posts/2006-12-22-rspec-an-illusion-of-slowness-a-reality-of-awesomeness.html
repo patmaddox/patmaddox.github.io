@@ -1,0 +1,50 @@
+---
+layout: post
+title: RSpec - an Illusion of Slowness, a Reality of Awesomeness
+date: 2006-12-22 14:39:48.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441342994'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:17:"18.03753118889308";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1121";s:5:"score";s:17:"17.82681015756363";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"16.22211721266548";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"220";s:5:"score";s:18:"15.812528387497593";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"206";s:5:"score";s:18:"15.301764783694207";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:18:"13.213962419126728";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:17:"12.33029691452727";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"12.222846115966668";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Last night around 2am I decided to get working on a tiny, tiny project.  I read a TON of books, and whenever I see a new book I want I just buy it to read later.  This means I&#8217;ve usually got 15-20 books stacked up in my room waiting to be read.  In addition to just being expensive, it can be a bit tough to figure out which book to read when.</p>
+<p>I wrote a very simple program that lets me enter the titles of books I want to read.  It only shows me a single book at a time - &#8220;Currently reading Refactoring.&#8221;  When I&#8217;m done reading the book, I mark it as read and the program randomly pulls up a new one for me to read.  This lets me keep a list of all the books I want to read, so I don&#8217;t forget any, but I only think about one at a time.</p>
+<p>I decided to turn it into a Rails app, and started it late last night.  Rewrote the whole thing from scratch using RSpec just because I wanted to use RSpec for it.  About four hours later I had a system that functioned exactly how I want.  At first I was a bit put off by that&#8230;it&#8217;s a really simple app, should it take me that long?  However, I took a higher-level view of the app and saw three huge benefits:</p>
+<ol>
+<li>It&#8217;s completely RESTful</li>
+<li>I get specs like</li>
+<pre>
+After adding a Book, a User
+- should have 1 book
+
+A User with one book
+- should treat it as the current book
+- should update the current book as reading
+
+A User with two books
+- should find the book the user is currently reading
+
+When a User marks the current book as read, the User
+- should update the current book as read and no longer reading
+- should have a new current book
+
+A User whose list of books are all read
+- should not have a current book
+</pre>
+<li>The unique production code - models and controllers - totals 84 lines.</li>
+</ol>
+<p>Of course this is a very simple system, but the fact is that it&#8217;s conceptually VERY easy to understand.  Less than 100 lines of code and detailed specs means anyone can seriously figure it out in about five minutes.  On top of that, it&#8217;s built web-friendly.</p>
+<p>While I was writing it, I felt like it was taking me a bit too long.  Looking back though, I&#8217;m very pleased with the result.</p>

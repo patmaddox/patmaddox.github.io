@@ -1,0 +1,44 @@
+---
+layout: post
+title: 'My Rails "Gotcha" - Custom #to_xml in a Hash or Array'
+date: 2007-02-23 00:03:31.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443625292'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"59";s:5:"score";s:18:"18.966927711190827";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"218";s:5:"score";s:18:"16.461401774172504";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:18:"11.856231588184414";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1007";s:5:"score";s:18:"10.399754587469568";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"57";s:5:"score";s:18:"10.399754587469568";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"195";s:5:"score";s:17:"9.588824371198067";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"262";s:5:"score";s:17:"9.350705651166091";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"246";s:5:"score";s:17:"9.350705651166091";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Rails is so sexy.  The other day my boss told me over the phone that we needed to &#8220;design and implement an API&#8221; so that customers could get info about the videos in our system.  I copied and pasted some respond_to stuff into AIM, and he just laughed.  Then he said he wanted to include some children - #to_xml(:include =&gt; :foos).  Finally we needed to hide some attributes and include some other stuff.  In a five minute phone chat we built the API that our customers will surely love us for.</p>
+<p>(That&#8217;s not all of the API of course, but you get the idea)</p>
+<p>So what happens when Rails doesn&#8217;t give you tons of stuff for free?  Like, I dunno, when you&#8217;ve got an object that doesn&#8217;t inherit from AR::Base.</p>
+<p><script src="http://gist.github.com/482373.js?file=gistfile1.rb"></script>
+<p>Let&#8217;s give Chickens a name so we actually have something to display.  And let&#8217;s use <a href="http://onestepback.org/index.cgi/Tech/Ruby/BuilderObjects.rdoc">Jim Weirich&#8217;s Builder</a> to actually build out the XML.</p>
+<p><script src="http://gist.github.com/482374.js?file=gistfile1.rb"></script>
+<p>Sweet, that was fun.  Now we know what a chicken dressed in XML looks like.</p>
+<p>But now let&#8217;s say we&#8217;re modeling the great James Feathermore Coop book, <i>The Fast, Ain&#8217;t No Mo&#8217; Chickens</i>.  And of course we want to expose an XML API.</p>
+<p><script src="http://gist.github.com/482375.js?file=gistfile1.rb"></script>
+<p>Yowzer.  Turns out Array#to_xml is passing some options to our #to_xml.  Let&#8217;s be lazy and make it compile.</p>
+<p><script src="http://gist.github.com/482376.js?file=gistfile1.rb"></script>
+<p>Now our Array of a single chicken can render itself!</p>
+<p><script src="http://gist.github.com/482377.js?file=gistfile1.rb"></script>
+<p>wtf?!  The Chicken doesn&#8217;t render itself!!</p>
+<p>I bet you&#8217;re guessing this is where the &#8220;gotcha&#8221; comes in.  I call it a &#8220;gotcha&#8221; because I couldn&#8217;t find it via google AT ALL (except <a href="http://api.rubyonrails.org/classes/ActiveRecord/XmlSerialization.html#M000910">right in the documentation</a> itself, but who pays attention to that?).</p>
+<p>Remember when we added the blank options hash to #to_xml?  I hope so, cause it&#8217;s like 10 lines above this.  We had to add it because somewhere in our call to Array#to_xml, it&#8217;s calling our to_xml but passing it along a bunch of options.  That&#8217;s the key in understanding how XML gets built in Rails.</p>
+<p>We can use Builder to create some XML markup as we saw.  What we can&#8217;t do is know the semantics of our object as it builds the markup.  Is our chicken used in isolation, proudly crowing her name for the world to hear?  Perhaps she is one of hundreds in a coop, dutifully working so that I can have a high-protein breakfast.  She could be an allegorical serf, playing nothing more than a supporting role in the admonition of Stalinism.</p>
+<p>Oh, what potential for our humble Chicken!</p>
+<p>The Chicken, being a simple beast, knows not its purpose in the world.  She certainly doesn&#8217;t know her purpose in an XML representation!  That is for the Builder to determine.</p>
+<p>Aye the Builder, the one that is passed along behind the scenes by Array#to_xml.  We can use the Builder if it exists.</p>
+<p><script src="http://gist.github.com/482378.js?file=gistfile1.rb"></script>
+<p>Now our Chicken can stand alone, or be part of something greater</p>

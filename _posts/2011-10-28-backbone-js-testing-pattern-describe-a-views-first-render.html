@@ -1,0 +1,202 @@
+---
+layout: post
+title: Backbone.js Testing Pattern - Describe a View's First Render
+date: 2011-10-28 18:46:29.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1443729403'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"19.328244222616135";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"919";s:5:"score";s:18:"13.769225892571562";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:18:"11.928966876415817";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"117";s:5:"score";s:18:"11.572001315235344";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"146";s:5:"score";s:18:"10.761071098894877";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"133";s:5:"score";s:17:"9.585497769076845";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"123";s:5:"score";s:17:"9.585497769076845";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:17:"9.585497769076845";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>While testing my backbone.js views, I’ve come up with a few conventions to keep my tests neatly organized. The first is to have a single describe block to specify what the view looks like when it first renders. This tests the view’s rendering logic and establishes the foundation for the rest of my examples. Here’s a brief example. I have a view which renders a person’s name and adds a CSS class if the person is a minor. Pretty simple. There are three things I’m interested in when testing the first render:</p>
+<ul>
+<li>show the name</li>
+<li>no CSS class if person is over 18</li>
+<li>special CSS class if person is under 18</li>
+</ul>
+<p>Here’s the view spec:</p>
+<figure class="code">
+<figcaption><span></span></figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class="coffeescript"><span class="line"><span class="nx">describe</span> <span class="nx">PersonView</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">  <span class="nx">describe</span> <span class="s2">&quot;first render&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="nx">beforeEach</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="vi">@model = </span><span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="nv">name: </span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="vi">@view = </span><span class="k">new</span> <span class="nx">PersonView</span><span class="p">(</span><span class="nv">model: </span><span class="nx">@model</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">it</span> <span class="s2">&quot;shows the name in an h2&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">it</span> <span class="s2">&quot;does not add the &#39;minor&#39; class to the h2 if person is not a minor&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="nx">@model</span><span class="p">.</span><span class="nx">set</span> <span class="nv">age: </span><span class="mi">18</span>
+</span><span class="line">      <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">it</span> <span class="s2">&quot;adds the &#39;minor&#39; class to the h2 if person is a minor&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="nx">@model</span><span class="p">.</span><span class="nx">set</span> <span class="nv">age: </span><span class="mi">17</span>
+</span><span class="line">      <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+<p>And now the view that makes this work:</p>
+<figure class="code">
+<figcaption><span></span></figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class="coffeescript"><span class="line"><span class="k">class</span> <span class="nb">window</span><span class="p">.</span><span class="nx">PersonView</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
+</span><span class="line">  <span class="nv">initialize: </span><span class="o">-&gt;</span>
+</span><span class="line">    <span class="vi">@template = </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;person-view-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">())</span>
+</span><span class="line">
+</span><span class="line">  <span class="nv">render: </span><span class="o">-&gt;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="nx">@el</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">@template</span><span class="p">(</span><span class="nv">model: </span><span class="nx">@model</span><span class="p">))</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="nx">@el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nx">@model</span><span class="p">.</span><span class="nx">isMinor</span><span class="p">()</span>
+</span><span class="line">    <span class="k">this</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+<p>It uses this super simple template:</p>
+<figure class="code">
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/template&quot;</span> <span class="na">id=</span><span class="s">&quot;person-template&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="o">&gt;</span>
+</span><span class="line">    <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span> <span class="p">{{</span> <span class="nx">model</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="p">}}</span> <span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class="line">  <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+<p>If the view logic is complex I may separate the conditions into separate describe blocks, like this:</p>
+<figure class="code">
+<figcaption><span></span></figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class="coffeescript"><span class="line"><span class="nx">describe</span> <span class="nx">PersonView</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">  <span class="nx">describe</span> <span class="s2">&quot;first render&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="nx">beforeEach</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="vi">@model = </span><span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="nv">name: </span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="vi">@view = </span><span class="k">new</span> <span class="nx">PersonView</span><span class="p">(</span><span class="nv">model: </span><span class="nx">@model</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">describe</span> <span class="s2">&quot;person is not a minor&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="nx">beforeEach</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">@model</span><span class="p">.</span><span class="nx">set</span> <span class="nv">age: </span><span class="mi">18</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">it</span> <span class="s2">&quot;shows the name in an h2&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">it</span> <span class="s2">&quot;does not add the &#39;minor&#39; class to the h2&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">describe</span> <span class="s2">&quot;person is a minor&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">      <span class="nx">beforeEach</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">@model</span><span class="p">.</span><span class="nx">set</span> <span class="nv">age: </span><span class="mi">17</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">it</span> <span class="s2">&quot;shows the name in an h2&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">it</span> <span class="s2">&quot;adds the &#39;minor&#39; class to the h2&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+</span><span class="line">        <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+<p>With these tests in place, I can start testing the events. Details on that will be in a future post.</p>
+<p><a href="https://plus.google.com/112228256605539819719/posts/hyfjhquWfjS">Join the discussion on Google+</a></p>

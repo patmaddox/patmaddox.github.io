@@ -1,0 +1,33 @@
+---
+layout: post
+title: Instance Validations Plugin
+date: 2007-01-21 23:59:26.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441751176'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"129";s:5:"score";s:17:"23.86067912037282";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"117";s:5:"score";s:17:"12.28535120308522";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"174";s:5:"score";s:17:"9.231858809948626";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"113";s:5:"score";s:17:"9.231858809948626";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"65";s:5:"score";s:17:"8.567173123721258";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:17:"6.726332872930304";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"76";s:5:"score";s:17:"6.726332872930304";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:17:"6.223704016382285";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>This is the little announcement page for my new instance validations plugin.  It&#8217;s an incredibly ugly monkey patch that allows you to specify validations on individual AR objects.  It&#8217;s basically just an enabler plugin for my <a href="http://www.patmaddox.com/blog/2007/1/12/declarative-workflow-in-rails">workflow engine</a>.  Maybe someone else will find it useful.</p></p>
+<p>I almost called it acts_as_individually_validatable, but <a href="http://gilesbowkett.blogspot.com/2007/01/stop-highlighting-referrer-search-terms.html">that&#8217;s just stupid</a> (scroll to the middle or cmd+f &#8216;stupid&#8217;)</p>
+<h2>README</h2>
+<p>ActiveRecord lets you define validations at the class level.  This plugin lets you define validations for ActiveRecord instances.  Take the following ActiveRecord class:</p>
+<p><script src="http://gist.github.com/482366.js?file=gistfile1.rb"></script>
+<p>All instances of Chicken will require a name in order to be valid.  If you don&#8217;t define any instance validations, you&#8217;ll get the expected behavior:</p>
+<p><script src="http://gist.github.com/482368.js?file=gistfile1.rb"></script>
+<p>If you do specify instance validations, the class validations are ignored and only instance validations are used:</p>
+<p><script src="http://gist.github.com/482369.js?file=gistfile1.rb"></script><br />
+<h2>Download It</h2>
+<p><a href="http://github.com/patmaddox/instance_validations/tree/master">http://github.com/patmaddox/instance_validations/tree/master</a></p>

@@ -1,0 +1,46 @@
+---
+layout: post
+title: To Be an Object, or Not to Be, That Is the Question
+date: 2009-08-29 15:30:01.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443651723'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:18:"14.231197597485313";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:18:"13.255791185496795";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:17:"11.36686796753439";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"427";s:5:"score";s:18:"11.058566607669347";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:17:"9.980573606414499";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"423";s:5:"score";s:17:"9.005167194425981";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"928";s:5:"score";s:17:"6.864284370321399";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1041";s:5:"score";s:18:"5.8888779583328805";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"5.842633122789418";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1020";s:5:"score";s:17:"5.477990009201509";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"862";s:5:"score";s:17:"5.477990009201509";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"230";s:5:"score";s:17:"5.477990009201509";}}
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:18:"15.235249450612413";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:18:"14.570563764385044";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"14.562304977342402";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:17:"14.48257578042144";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"427";s:5:"score";s:18:"12.485518120130223";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:18:"11.709987058140282";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:17:"11.70998705814028";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"178";s:5:"score";s:18:"11.170659924200695";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Be is the most boring word in the English language.  It so weakens communication that there&#8217;s even a <a href="http://en.wikipedia.org/wiki/E-Prime">funky sublanguage called E&#8217; (&#8220;e-prime&#8221;)</a> that removes all or almost all of its usage.  Supposedly it makes for more efficient communication, but also supposedly sometimes it&#8217;s awkward, though I have heard of people fudging when it sounded better to do so.</p>
+<p>Anyway we&#8217;re not here to talk about that.  We&#8217;re here to talk about Be as applied to object-oriented programming.  Specifically, that the notion of objects being a combination of state and operation results in object designs that are brittle, overcomplicated, and altogether uninteresting.</p>
+<p>Let me tell you about a little clinic I worked on at Agile 2009 a few weeks back.  We were given a set of use cases for a veterinarian&#8217;s accounts receivable.  The first use case was really simple, it looked something like:</p>
+<p><em>David brings Fluffy to the vet&#8217;s office for a routine visit.  While there, Fluffy receives a rabies vaccination.  David pays in cash, and receives a receipt listing the cost of the office visit, the rabies vaccination, and total amount.</em></p>
+<p>By the way, this is the perfect kind of use case from which you can begin to write BDD examples.  I had a fascinating conversation with <a href="http://lunivore.com/">Liz Keogh</a> and <a href="http://jbrains.ca/">JB Rainsberger</a> at our BDD clinic at Agile 2009.  I&#8217;d read about <a href="http://www.infoq.com/articles/pulling-power">feature injection</a> from Liz before, but here she pointed me to Chris Matts who has written a <a href="http://www.limitedwipsociety.org/2009/05/27/feature-injection/">killer comic book</a> to get his ideas out there.</p>
+<p>So back to the point.  I watched someone approach this with a typical OO style, writing classes for each of the <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">domain objects</a> that appeared in the use case.  In Ruby, it looked roughly like this:</p>
+<p><script src="http://gist.github.com/495771.js?file=gistfile1.rb"></script>
+<p>There was also something else which actually printed the receipt, but it was using a templating/parsing engine that I was not familiar with.  It was in Java and to tell you the truth I had no idea wtf was going on.</p>
+<p>As best I can recall, the tests looked like</p>
+<p><script src="http://gist.github.com/495775.js?file=gistfile1.rb"></script><br />
+<h3>Entity-based domain objects</h3>
+<p>So what&#8217;s wrong with this?  The domain language is reflected in code.  Each class is doing one thing only.  There&#8217;s no duplication.  We&#8217;re good, right?</p>
+<p>Wrong.  It&#8217;s true that you can read the code and build up a mental image of the domain, but can you tell me what the domain <strong>does?</strong> Can you tell me what the app does?</p>
+<p>I want to reexamine the justification that this is a good design.</p>
+<h4>Domain language is reflected in the code</h4>
+<p>Yes&#8230;sort of.  At best it&#8217;s a naive encoding and at worst it&#8217;s lazy bordering on negligent.  Without getting too much into feature injection (subject for another post), the domain language we&#8217;ve used here doesn&#8217;t express the value we get from the use case or how to achieve that value.  At the very least you would expect to see a Receipt class, right?  It may have been a poor choice to go with a templating engine, or it may have been a technical constraint with working in Java.  Either way, the words are right for the domain, but we need to ask ourselves if whether they&#8217;re the right words for the system that we&#8217;re trying to build.</p>
+<h4>Each class is doing one thing only</h4>
+<p>Here&#8217;s where things get a little bit murky.  Each class represents a separate domain concept, with no overlap between them.  My question is, what are these classes doing?  Doesn&#8217;t look like much to me.  OfficeVisit probably calculates the total amount of the visit, or maybe that responsibility is misplaced in the receipt printer.  At any rate, a class&#8217;s name should give you a good idea of what the class does, and &#8220;be a procedure&#8221; does not yield much info.  I submit that in developing software, &#8220;Be&#8221; is interesting only when followed by &#8220;havior&#8221;.  In part 2 we&#8217;ll look at alternatives to this entity-based naming (hint: look for Liz&#8217;s writing on anthropomorphic role-based interfaces.  Corey Haines pointed out to me that it&#8217;s hard to violate the SRP when your class is named PrintsReceipt.</p>
+<h4>There&#8217;s no duplication (the code is DRY)</h4>
+<p>On the surface this appears to be true, because again there&#8217;s no overlap between what the different classes do.  As it turns out, there&#8217;s duplication all over the stinkin place.  This duplication occurs in a form called connascence.  Jim Weirich has discussed this as part of his Grand Unified Theory of Software Design, which you should watch immediately, or at least <a href="http://github.com/jimweirich/presentation_connascence">read the slides</a>.  The particular connascence that occurs in this design is <em>connascence of name</em>, which is a weak form of connascence.  Objects have to interact with each other over an agreed upon protocol, but that is a protocol whose chattiness and interested parties you would like to limit.  Demeter &#8220;violations&#8221; are the product of unchecked connascence of name.  One object knows the name of another object&#8217;s method, and a method on that object, and so on.  When one object in the chain changes, it affects nearly every place in the system that uses that object.  Baaaad object modeler.  Wrapping these chains in delegator methods just pushes the connascence down, but admittedly encapsulates it just enough that a change in one object usually only results in a change in its immediate neighbors, who keep that change encapsulated from other potential collaborators.</p>
+<h3>So what do we do instead?</h3>
+<p>Well I&#8217;m not going to tell you just yet.  In my follow-up post I will share another possible approach to tackling this problem, an approach that I think is simpler and more flexible and manages to express the domain and requirements more vividly.</p>

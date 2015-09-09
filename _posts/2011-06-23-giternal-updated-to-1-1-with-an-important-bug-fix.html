@@ -1,0 +1,27 @@
+---
+layout: post
+title: Giternal Updated to 1.1 - With an Important Bug Fix
+date: 2011-06-23 18:27:41.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441347334'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"960";s:5:"score";s:18:"17.799031933669884";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"115";s:5:"score";s:18:"16.412737572549993";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"197";s:5:"score";s:18:"13.193861747681794";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"74";s:5:"score";s:17:"8.567173123721258";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1007";s:5:"score";s:17:"7.845564448828736";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:17:"7.845564448828736";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"144";s:5:"score";s:17:"7.845564448828736";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"103";s:5:"score";s:17:"7.845564448828736";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I just released an update to <a href="http://rubygems.org/gems/giternal">giternal</a> that includes an <a href="https://github.com/patmaddox/giternal/commit/ddba4a257ff4eb7b8fa655b3f579a32507291e2b">important fix</a> for all users.</p>
+<p>0.1.0 has a nasty bug that corrupts a checked out external&#8217;s .git repository. This happens because giternal sorts the files in .git before piping them to tar, in order to minimize repo bloat. Unfortunately, tar doesn&#8217;t seem to like that, and so when unfreezing the repository it loses many of the files in .git/objects. Instant repository corruption.</p>
+<h3>What you can do</h3>
+<p>The best thing to do is probably to wipe your external dir and do a giternal update <b>after upgrading to 1.1</b>. This will check out a fresh copy of the dependency, along with its uncorrupted git repo.</p>
+<p>I don&#8217;t actually think there&#8217;s anything else you can do. Sorry :(</p>

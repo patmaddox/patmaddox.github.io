@@ -1,0 +1,38 @@
+---
+layout: post
+title: One Test Class Per Production Class - the Real Testing Anti-Pattern
+date: 2006-11-30 01:40:45.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443761641'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"19.873491439688536";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"16.177171501209642";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"131";s:5:"score";s:18:"13.824228193619373";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:18:"13.734906652281772";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"88";s:5:"score";s:17:"12.24965217667652";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"42";s:5:"score";s:18:"12.202367761172923";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1041";s:5:"score";s:18:"12.027926990859799";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"123";s:5:"score";s:18:"11.881682460912218";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Over at Nutrun, <a href="http://no-new-ideas.blogspot.com/index.html">Stewart Caborn</a> and <a href="http://nutrun.com/">George Malamidis</a> have been working on a series of articles called the <a href="http://nutrun.com/weblog/category/tapd/">Testing Anti-Patterns Drafts</a>.  If you read those articles and others they&#8217;ve written, you&#8217;ll find they&#8217;re a couple of smart guys with lots of good ideas.  Their <a href="http://nutrun.com/weblog/the-testing-anti-patterns-drafts-overusing-mocks/">latest article about overusing mocks</a> is off base though, in my opinion.</p>
+<p>The example they use is a customer service, which interacts with a repository and logger.  I&#8217;m going to show it here in Ruby and <a http:></a>RSpec, since I love them both, and want to shamelessly promote RSpec in particular (see, evang.eli.st makes sense!)</p>
+<p><script src="http://gist.github.com/482310.js?file=gistfile1.rb"></script>
+<p>That is the functional equivalent of their test.  The problem is not in the code itself, but rather that the code that doesn&#8217;t match the specification.  If you analyze the code, you&#8217;ll see that the spec really is</p>
+<pre>When saving a Customer, the CustomerService
+  - should save Customer details with Repository
+  - should log the transaction</pre>
+<p>We have one of two things going on here.  Either the design is crappy, or the test case is.  When I look at the intended spec, it&#8217;s obvious that it&#8217;s probably from a business requirement - &#8220;Whenever you save a customer, be sure to log it.&#8221;  I&#8217;m also guessing that the design doesn&#8217;t suck, because the designer was smart enough to separate logging responsibilities from repository responsibilities.</p>
+<p>So let&#8217;s write some specs (tests) that actually match the requirement.  The first thing to realize is that we&#8217;re working in a much narrower context than that of CustomerService - we&#8217;re working in the context of saving a customer.  We rewrite our specs:</p>
+<p><script src="http://gist.github.com/482312.js?file=gistfile1.rb"></script>
+<p>Now our specs reflect the business requirement.  The Nutrun guys say &#8220;The Application Code is probably not modeled correctly. In the CustomerService case, logging is probably not happening in the right place.&#8221;  It looks to me like we have a very good design - we&#8217;ve got infrastructure classes for handling data access and logging, and then a domain class for encapsulating the business logic of saving a customer.</p>
+<p>If the log_customer_saved call is removed from CustomerService#save, then yes, the spec code will break.  As it well should - the business requirements have apparently changed.  Imagine that our requirements change so that some Customer saves will need to be logged, and some won&#8217;t.  That&#8217;s easy - we have our CustomerService class above (without the log call), and then write a LoggedCustomerServiceClass that uses composition to delegate save to the CustomerService.  This is beautiful use of OOP.</p>
+<p>There is a big assumption I&#8217;m making here, which may be entirely incongruent with the assumptions Stewart and George made.  My assumption, as you&#8217;ve probably guessed, is that saving a Customer and logging that save is a fundamental business rule.  When they talk about the Application Code not being modeled correctly, it makes me think they left out the domain layer.  The domain layer uses our infrastructure layer to encapsulate business rules.  The application code coordinates the domain logic so the user can interact with it.  We should be able to change the business rules without significantly affecting the application code, if at all.  Same goes for changes made in the infrastructure affecting the domain logic.</p>
+<p>With all this in mind, it&#8217;s easy to see that the test as originally presented is in fact cluttered.  Stewart and George came to the conclusion that the design was wrong because the test was ugly, when in fact the design was good and the test itself was wrong.  This probably has to do with mapping the CustomerService production class to a single CustomerServiceTest test class.  Your next instinct then is to map the save method to a single test method.</p>
+<p>When you focus on behavior in context, it&#8217;s easier to write small, expressive specs.  We see what we&#8217;re testing here is not the save method on the CustomerService class, but rather how a CustomerService object behaves when save is called.</p>
+<p>The real Testing Anti-Pattern here is an unfocused, course-grained unit test.</p>

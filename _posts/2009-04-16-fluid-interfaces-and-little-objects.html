@@ -1,0 +1,46 @@
+---
+layout: post
+title: Fluid Interfaces and Little Objects
+date: 2009-04-16 15:24:30.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441431604'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:18:"13.845361857764292";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:18:"11.910193805774213";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"184";s:5:"score";s:15:"9.2401916717762";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:16:"8.79390456914778";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:17:"8.526841783998735";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:17:"8.188689124444203";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"405";s:5:"score";s:17:"7.715911567782407";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"228";s:5:"score";s:17:"6.904981351566078";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"180";s:5:"score";s:17:"6.904981351566078";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:17:"6.904981351566078";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"256";s:5:"score";s:17:"5.991464547107982";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:17:"5.518686990446188";}}
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:18:"16.328336863320963";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:17:"14.18845329092859";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"184";s:5:"score";s:18:"11.170659924200695";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:16:"9.69546203803569";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"9.504841678302903";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"127";s:5:"score";s:17:"9.504841678302903";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"117";s:5:"score";s:17:"9.504841678302903";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"405";s:5:"score";s:17:"9.231858809948626";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><a href="http://github.com/raganwald/homoiconic/blob/master/2009-04-09/my_objection_to_sum.md">Raganwald doesn&#8217;t like Array#sum</a>.  He says that #sum should not be on Array because it&#8217;s not semantically valid for all Arrays.</p>
+<p>While #sum doesn&#8217;t apply to all Arrays, it applies to a lot of them, and it&#8217;s friggin useful.  Does it hurt the arrays that it doesn&#8217;t apply to?  Of course not.  Because you don&#8217;t call #sum where it doesn&#8217;t make sense.</p>
+<p><script src="http://gist.github.com/495724.js?file=gistfile1.rb"></script>
+<p>I don&#8217;t see a big difference between those two lines.  The first is obviously nonsensical because refrigerators don&#8217;t have tails to wag.  Ruby will still let you send a refrigerator that message though.  It may handle it or it may not.  That&#8217;s the essence of dynamic typing.  Same with the second line, only this time the object&#8217;s ability to handle it is a combination of the method signature and internal state.  That&#8217;s nothing to be scared of, we see it all the time.</p>
+<p><script src="http://gist.github.com/495726.js?file=gistfile1.rb"></script>
+<p>An object may respond to a message, and you can call it, and it can still blow up.  For a language that literally lets you <a href="http://github.com/raganwald/rewrite/tree/master">rewrite</a> it, sending messages that may not be semantically valid is hardly the weirdest thing you can do.</p>
+<p>You wouldn&#8217;t call refrigerator.wag_tail, so don&#8217;t call sum on an Array that can&#8217;t handle it.</p>
+<h1>What&#8217;s in an interface?</h1>
+<p>In Ruby, interfaces are fluid.  You can say that an object&#8217;s interface is the collection of messages it responds to, but it&#8217;s more correct to say that it&#8217;s the intersection of messages it handles and messages you send it.  For example, Array can behave many different ways:</p>
+<p><script src="http://gist.github.com/495728.js?file=gistfile1.rb"></script>
+<p>Array is a chameleon class, there&#8217;s no single concept of Array in Ruby.  I think that&#8217;s a good thing thing, because whenever you need to use a collection, the question is usually &#8220;do I use an Array or Hash?&#8221;  The alternative looks like <img src="assets/collection_hierarchy.gif" /></p>
+<h1>Encapsulation ftw</h1>
+<p>You really shouldn&#8217;t be passing around simple collection classes often anyway.  They&#8217;re data structures that should be used to implement your behavioral objects.  Quick example.</p>
+<p><script src="http://gist.github.com/495729.js?file=gistfile1.rb"></script>
+<p>You know it&#8217;s safe to call sum in this case because you&#8217;ve controlled access to its internal data.</p>
+<p>Want to provide access to the transaction list?  Write a little class that provides the functionality you need:</p>
+<p><script src="http://gist.github.com/495733.js?file=gistfile1.rb"></script>
+<p>This basic wrapper expresses that a transaction list is additive-only.  You don&#8217;t let clients subvert the contract by giving them a reference to the internal array.</p>
+<p>There are even simpler cases where you can/should do this.  As an example, everyone has written an Address class that used a string for the zip code.  But that leaves open the possibility of zip_code.upcase.  What the hell does that mean?  You can create value types very cheaply:</p>
+<p><script src="http://gist.github.com/495735.js?file=gistfile1.rb"></script>
+<p>It won&#8217;t work if you introduce subclasses, but it&#8217;s a great technique if you want to build meaningful domain types on the cheap.  Most of the time we don&#8217;t need it though - intention-revealing names suggest how to use an object, ignore the naming at your peril.  But if you do want added safety, create a new encapsulated type.</p>
+<h1>Specs</h1>
+<p>Specs help you write robust code and give other developers clear examples of how to use it.  Write specs.</p>

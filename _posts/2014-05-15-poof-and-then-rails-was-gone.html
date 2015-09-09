@@ -1,0 +1,55 @@
+---
+layout: post
+title: "*poof* … and then Rails was gone"
+date: 2014-05-15 00:14:00.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1443450060'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:18:"11.713163402495622";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:17:"10.76424744330539";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:16:"10.0913029700266";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:17:"9.437659008848499";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"224";s:5:"score";s:17:"9.437659008848499";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"7.743063288074091";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"423";s:5:"score";s:17:"7.144030227549251";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"254";s:5:"score";s:18:"6.6283720093450516";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:18:"5.9684568977086485";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1020";s:5:"score";s:18:"5.9684568977086485";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"431";s:5:"score";s:17:"5.242077648225161";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"242";s:5:"score";s:17:"5.242077648225161";}}
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"53";s:5:"score";s:18:"14.937121670092504";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:18:"13.734906652281772";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"63";s:5:"score";s:18:"12.713255404763583";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"115";s:5:"score";s:18:"12.695939279304941";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"57";s:5:"score";s:18:"12.695939279304941";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"10.975118732359336";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:18:"10.962317930000612";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:18:"10.672737455823844";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><a href="https://gist.github.com/dhh/4849a20d2ba89b34b201">DHH posted some code</a> extracted from <a href="https://www.youtube.com/watch?v=tg5RFeSfBM4">Jim Weirich&#8217;s talk on Hexagonal Architecture in Rails</a>, and invited people to present alternative solutions. Here&#8217;s one of mine.</p>
+<h2 id="ahexagonalapplication">A hexagonal application</h2>
+<p>DHH&#8217;s first example satisfies the intent and properties of the <a href="http://alistair.cockburn.us/Hexagonal+architecture">hexagonal architecture</a>. It allows the application to equally be driven by multiple clients and to be developed and tested in isolation from its eventual deployment environments. It defines ports for interacting with the application and requires adapters to use the ports.</p>
+<p>Look at his example controlller:</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=01_original.rb"></script></p>
+<p>I don&#8217;t see any dependencies on Rails, do you? I see a dozen lines of code that follow the conventions used in many Rails applications, but I do not see Railties, ActiveRecord, ActionController, ActionPack, ActiveSupport, or any of the libraries core to the Ruby on Rails framework. I see an application that saves employee records. It abstracts the details of how it saves those records, and how it gets its input.</p>
+<h2 id="spottingtheports">Spotting the Ports</h2>
+<p>Looking at this bit of code through the lens of ports and adapters, I see a couple ports. The first port saves the employee record. The second port accepts input from a user and communicates results back to the user.</p>
+<p>The ports are still a bit abstract at this point, so I&#8217;ll define protocols for the adapters to follow:</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=02_protocols.rb"></script></p>
+<p>These specs make it easy for me to write new adapters to work with this application. If I can implement objects that satisfy this protocol, I can extend the capabilities of the application without modifying its core logic, and I can change the core logic independent of the technologies that support the application.</p>
+<p>When I write the specs out like that, I&#8217;m amused by what seems to be a good bit of work to support 10 lines of code. At first I thought this might be too trivial of an example, but I&#8217;ve identified two protocols that together define six methods.</p>
+<h2 id="adaptersbringnewcapabilities">Adapters bring new capabilities</h2>
+<p>I&#8217;ll start off with a persistence adapter. The first one can work in memory to get me going.</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=03_persistence.rb"></script></p>
+<p>Next I&#8217;ll make a view adapter to accept input and provide feedback.</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=04_io.rb"></script></p>
+<p>Now I need to connect the adapters to the application. I can do this without changing any application code.</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=05_rewire.rb"></script></p>
+<p>By ordering everything right, I can paste it all into irb to run the app.</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=06_full_example.rb"></script></p>
+<h2 id="modulardesign">Modular design</h2>
+<p>In 30 lines of code I&#8217;ve built entirely new adapters to DHH&#8217;s application. I didn&#8217;t abstract Rails away – DHH&#8217;s design decisions meant that Rails was never there to begin with.</p>
+<p>It&#8217;s not just a lovely bit of Ruby trickery ;) This is what happens when you work towards a hexagonal architecture – you design applications that speak well-defined protocols and depend on abstractions. The architecture doesn&#8217;t make this happen automatically. You have to think about the architecture and make design decisions to support it.</p>
+<h2 id="keepinithexy">Keepin it Hexy</h2>
+<p>In terms of hexagonal architecture, the original Rails controller and action fulfill the properties of making application logic available via protocols, and keeping the application logic independent of persistence and UI implementation details.</p>
+<p>I hadn&#8217;t considered that the view might be the primary adapter and so it makes sense to inherit from it. I think refactoring to make the dependencies explicit will lead to a more natural design.</p>
+<p><script src="https://gist.github.com/patmaddox/b90f206696e0affc4403.js?file=07_hexy.rb"></script></p>
+<p>Inverting the dependencies let me move the application code right to the top. It now purely expresses the application code without any hidden dependencies. You can use the protocol specs to define new adapters easily.</p>
+<h2 id="wrapup">Wrap up</h2>
+<p>Ultimately, the hexagonal architecture style attempts to guide you toward a modular design style. A modular design style enables powerful software systems that are easy to reason about and change. DHH may have tried &#8220;to illustrate the design damage that&#8217;s being induced by following this pattern&#8221;, but I&#8217;d say his example shows how easy it is to apply the hexagonal architecture in Ruby. Hexagonal architecture doesn&#8217;t replace your design sensibilities, it augments them by providing a set of factors to consider when designing software.</p>

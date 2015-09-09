@@ -1,0 +1,85 @@
+---
+layout: post
+title: Make Your Dependencies Translucent With Default Parameters
+date: 2008-01-27 02:37:03.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441241709'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"117";s:5:"score";s:18:"17.691623575546853";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"42";s:5:"score";s:18:"16.276131615708795";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"59";s:5:"score";s:18:"13.677565647337929";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"38";s:5:"score";s:18:"11.881682460912218";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"129";s:5:"score";s:15:"11.528043501784";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:18:"11.209914112359108";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"195";s:5:"score";s:18:"11.019293752626321";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:18:"10.815655383650203";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Hidden dependencies can give you major headaches when coding.  Generally they make your code</p>
+<ul>
+<li>tough to test</li>
+<li>brittle</li>
+<li>fragile</li>
+</ul>
+<p>Let&#8217;s take a look at an innocuous example:</p>
+<p><script src="http://gist.github.com/495183.js?file=gistfile1.rb"></script>
+<p>This method has a hidden dependency on the <strong>UserNotifier</strong> class.  Anyone looking at the rdoc for <em>place_order</em> would have no idea that it uses UserNotifier under the hood.</p>
+<p>How would we write a test for that method?  <strong>UserNotifier</strong> sends an email, so perhaps we could verify that the email was received.  Well, that sucks.  It would make our test run slowly, and it might fail even though our logic is correct.</p>
+<p>What we&#8217;d like to do is use a fake implementation to sense the call.  Fortunately, Ruby&#8217;s power makes this trivial:</p>
+<p><script src="http://gist.github.com/495184.js?file=gistfile1.rb"></script>
+<p>We can dig into the method and write expectations on classes that it uses.  In languages like Java, you can&#8217;t do that without some funky bytecode manipulation.</p>
+<p>Just because we can do that doesn&#8217;t mean we should though.  I used &#8220;dig into the method&#8221; for a reason - it should feel somewhat dirty.  That simple test trick hides an opportunity to improve our design.</p>
+<p>What if we&#8217;d like to change this method to send a message to the site admin as well?  We could do something like this:</p>
+<p><script src="http://gist.github.com/495185.js?file=gistfile1.rb"></script>
+<p>Our code is clearly brittle.  In order to change its behavior, we have to change the implementation.</p>
+<p>Remember though, an object&#8217;s behavior is a combination of its own logic and its interaction with other objects.  The easiest way to change an object&#8217;s behavior is to have it interact with different objects.</p>
+<p>What if we were to pass a notifier into the method?</p>
+<p><script src="http://gist.github.com/495190.js?file=gistfile1.rb"></script>
+<p>Now we&#8217;ve made the dependency explicit, which gives us several benefits.  It certainly makes it easy to test:</p>
+<p><script src="http://gist.github.com/495192.js?file=gistfile1.rb"></script>
+<p>The test is less brittle because it doesn&#8217;t rely on <em>place_order</em> making calls to <strong>UserNotifier</strong> anymore.  The method itself is a lot more flexible because in order to change its behavior, all you have to do is pass in an object that responds to <em>order_completed</em>.  It would be trivial to build up a notifier that delivers emails to the consumer and the admin, writes to the log file, and contacts the shipping department telling them to reserve some space on the next truck out.</p>
+<p>There&#8217;s a downside to this approach though.  The dependency still exists, we&#8217;ve just moved it to the client code.  Instead of</p>
+<p><script src="http://gist.github.com/495194.js?file=gistfile1.rb"></script>
+<p>we now have to do</p>
+<p><script src="http://gist.github.com/495195.js?file=gistfile1.rb"></script>
+<p>(assume that I renamed <em>deliver_receipt</em> to <em>order_completed</em>).</p>
+<p>What if most of the time we want to use <strong>UserNotifier</strong>, and only occasionally want some other behavior?  Making the dependency explicit made <em>place_order</em> more flexible, but its clients now shoulder the burden of selecting a notifier to use.</p>
+<p>Ruby has very powerful default parameters that allow you to achieve exactly this behavior.  We can rewrite <em>place_order</em> as</p>
+<p><script src="http://gist.github.com/495196.js?file=gistfile1.rb"></script>
+<p>Clients are back to simply</p>
+<p><script src="http://gist.github.com/495194.js?file=gistfile1.rb"></script>
+<p>if they want, which will use the <strong>UserNotifier</strong> by default.  We&#8217;ve added a great deal of flexibility, while maintaining simplicity for basic use cases.</p>
+<p>Note that <em>place_order</em> doesn&#8217;t depend on <strong>UserNotifier</strong> anymore.  The <strong>UserNotifier</strong> object doesn&#8217;t even have to exist to be able to use this method.  Here&#8217;s an example that you can copy and paste into irb:</p>
+<p><script src="http://gist.github.com/495201.js?file=gistfile1.rb"></script>
+<p>It&#8217;s reasonable to think that running it might result in <em>NameError: uninitialized constant Bar</em>, but it turns out that Ruby never references <strong>Bar</strong> if you pass <em>foo</em> an argument.</p>
+<p>That example also illustrates that default parameter values are nothing but simple objects.  These are all valid default parameter lists:</p>
+<p><script src="http://gist.github.com/495202.js?file=gistfile1.rb"></script><br />
+<h2>Pitfalls</h2>
+<p>Default parameters are a very nice feature, but I think there are some pitfalls when using them.  It makes it possible to do stuff like</p>
+<p><script src="http://gist.github.com/495206.js?file=gistfile1.rb"></script>
+<p>Sometimes it can be tough to disambiguate between good and bad design, but I&#8217;m confident that recognizing evil is something that comes from within our hearts.  Stuff like that is evil.  Don&#8217;t do it.</p>
+<p>Making dependencies explicit is almost always a good thing.  Making them translucent, though, might muddle our intent a bit.  When you look at a method definition and see</p>
+<p><script src="http://gist.github.com/495208.js?file=gistfile1.rb"></script>
+<p>Are you supposed to pass in a notifier of your own?  Are you supposed to use the default?  With explicit dependencies you know you have to pass one in, and with hidden dependencies you know there&#8217;s nothing you can do.  But what are you supposed to do in this case?</p>
+<p>That is a valid concern.  I think that the power and flexibility we gain by using this technique outweighs those times that the intent isn&#8217;t 100% clear.  Personally, I look at it as writing well-designed code with some added conveniece.  If we had method overloading, I would probably have written</p>
+<p><script src="http://gist.github.com/495213.js?file=gistfile1.rb"></script><br />
+<hr />
+<h2>Design Principles at Work</h2>
+<p>There are a couple of well-known design principles at work here.  I decided to defer discussion until the end so that it didn&#8217;t look too formal.  However it&#8217;s important to be aware of them when designing objects.</p>
+<h3>Single Responsibility Principle</h3>
+<p><a href="http://www.objectmentor.com/resources/articles/srp.pdf">The SRP</a> states that an object should only have one reason to change.  Examining the original <em>place_order</em> method, we find that it has two responsibilities - the logic of placing an order, and the details of how to send a notification.</p>
+<p>That distinction can sometimes be subtle.  For example, changing the method to handle credit card authorization would be okay:</p>
+<p><script src="http://gist.github.com/495215.js?file=gistfile1.rb"></script>
+<p>This is because we&#8217;re changing the basic logic of what it means to process an order.  The change we made at the beginning - adding the <strong>AdminNotifier</strong> - was a change in how notification took place.</p>
+<h3>Open-Closed Principle</h3>
+<p><a href="http://www.objectmentor.com/resources/articles/ocp.pdf">The OCP</a> states that modules should be open for extension, but closed for modification.</p>
+<p>In our case, it is desirable to change the method&#8217;s behavior without changing its implementation.  The original design was not only brittle, but fragile as well.  If we wanted to change it, there&#8217;s no telling how it might affect client code.  By passing in the dependency, it is possible to extend the method&#8217;s behavior without modifying it directly.</p>
+<h3>Dependency Inversion Principle</h3>
+<p><a href="http://www.objectmentor.com/resources/articles/dip.pdf">The DIP</a> states that  components should not depend on other concrete components, but on abstractions.</p>
+<p>The concept of &#8220;abstractions&#8221; is sometimes lost in Ruby because it&#8217;s not explicit.  In Java, a rough way to follow this principle is to extract interfaces from classes and code to those interfaces rather than concrete implementations.  Duck-typing is a powerful way to code to abstractions, but sometimes we forget the underlying principle.</p>
+<p>The DIP is more or less a consequence of following the other principles.  Instead of objects managing their own dependencies, you end up passing dependencies in.  In that sense, the dependency structure gets inverted.  This leads to more flexible code, as we&#8217;ve discussed.</p>

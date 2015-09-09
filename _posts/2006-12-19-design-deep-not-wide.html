@@ -1,0 +1,35 @@
+---
+layout: post
+title: Design Deep, Not Wide
+date: 2006-12-19 14:36:35.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443669309'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:17:"19.80056506046595";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:17:"17.83890655447886";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1007";s:5:"score";s:18:"17.014946976620145";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:18:"11.713163402495622";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"256";s:5:"score";s:18:"10.037868193821902";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:17:"9.880581938747312";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:17:"8.553993503526783";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1020";s:5:"score";s:17:"8.165681474281232";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"423";s:5:"score";s:17:"7.144030227549251";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:18:"6.8390930398243395";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:18:"6.7793871131613415";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:18:"6.7793871131613415";}}
+  _wp_rp_image: '1069'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:17:"23.08624637198845";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"19.194383633385087";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"46";s:5:"score";s:17:"18.03753118889308";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"82";s:5:"score";s:18:"16.966624111676943";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:18:"16.768932442389886";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1007";s:5:"score";s:18:"15.812528387497593";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"218";s:5:"score";s:18:"14.363137311197507";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:16:"13.5466778305573";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>A friend of mine had a cool idea for a project, and I told him I&#8217;d write the Rails code for it.  I&#8217;d been dragging my feet for a couple weeks, but finally decided I&#8217;d just bang it out one weekend.  The application is pretty simple - a couple CRUD resources, authentication, and email notification.  Pretty standard Rails fare.</p>
+<p><img src="assets/app_structure.png" alt="Application structure" /></p>
+<p>This diagram shows how I envision the three main parts of the application - a diagram I came up with in hindsight.  As you can see, the middle section, the resources we care about in this app, make up the bulk of the application.</p>
+<p>Where do we start when developing an app like this?  It&#8217;s really simple, and I was interested in getting the main functionality done quickly.  I wanted to complete a spike from the user&#8217;s perspective, showing all the resources they can modify, allow them to CRUD those resources, etc.  I&#8217;d tack on the authentication and email notification when I was done.</p>
+<p>Since this was so simple, I didn&#8217;t really put a lot of thought into it.  What I failed to realize at the time was that my &#8220;spike&#8221; wasn&#8217;t a useful spike at all!  It was just a spike from the user&#8217;s perspective, allowing them to manage their resources from beginning to end.  All those resources have essentially the same design, so I hadn&#8217;t learned anything about my app&#8217;s design.  I simply copied the same piece of design a few times.</p>
+<p><img src="assets/app_structure_with_slices.png" alt="Application structure with functionality slices" /></p>
+<p>When I was ready to add in authentication, it was a real pain in the ass.  It&#8217;s not that it was difficult in itself, but that it was a bit tough to integrate into my current design.  Considering that my current design was repeated several times in the app, it was quite annoying to have to fix my basic design in several places.</p>
+<p>Basically, I wrote all the code for resource #1, then #2 and #3.  After those were done I wrote the authentication code and email notification.  The mistake I made was writing the three resources together - they exercise the same part of the design, so I didn&#8217;t learn anything useful by writing resources #2 and #3.  What I should have done is write resource #1, add auth and email, and then write resources #2 and #3.  This would have let me figure out how the various parts go together, and I would have refactored into good design early on.</p>
+<p>Rails lets you build functionality very quickly, and it can be tempting just to go ahead and do that.  In a lot of web applications, a large part of the functionality is contained in a relatively small part of the design.  You must keep yourself from building up too much of that functionality while ignoring the rest of the design.</p>
+<p>I&#8217;m not advocating doing big design up front.  If you do user stories, you&#8217;ll have at least a few that should exercise a deep vertical slice of your system.  Even if you&#8217;re just writing an app on a whim, you can still mentally partition various parts of the app.  Use BDD to build that vertical slice, writing one piece of functionality in each partition.  Refactor throughout, and you&#8217;re likely to arrive at a good overall design.  If you focus on broad functionality and get even a small part wrong, you&#8217;re going to end up frustrated.</p>
+<p>Mindfulness when coding helps a lot too :)</p>

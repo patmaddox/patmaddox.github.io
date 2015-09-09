@@ -1,0 +1,36 @@
+---
+layout: post
+title: Some Resources for People Who Want to Learn Smalltalk
+date: 2011-12-19 18:48:30.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1443709226'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"246";s:5:"score";s:18:"12.442207999465182";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:18:"11.797053102897426";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1028";s:5:"score";s:18:"10.009417350816197";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:17:"9.389107494245554";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:17:"9.260030451970412";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"895";s:5:"score";s:17:"9.198487134599866";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:17:"8.987766103284216";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"423";s:5:"score";s:17:"8.213534164441315";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1066";s:5:"score";s:17:"7.191882916909334";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:17:"7.062805874634192";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"202";s:5:"score";s:17:"7.062805874634192";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"991";s:5:"score";s:17:"6.827239803321425";}}
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"99";s:5:"score";s:18:"18.601513906262337";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"246";s:5:"score";s:18:"15.125403325915464";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:18:"12.953174034769816";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1028";s:5:"score";s:18:"12.829218634080092";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"80";s:5:"score";s:18:"11.923264000208988";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"160";s:5:"score";s:18:"11.420635143660967";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"11.209914112359108";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"123";s:5:"score";s:18:"11.209914112359108";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>If you want to learn Smalltalk, you can get started easily. First head over to <a href="http://amber-lang.net/learn.html">Learn Smalltalk with ProfStef</a> where you can learn Smalltalk syntax in about five minutes using <a href="http://amber-lang.net/">Amber Smalltalk</a>, a Smalltalk that runs in your browser via Javascript.</p>
+<p>I&#8217;ve had a lot of fun using Amber and find that it makes me super productive when writing Javascript applications. It&#8217;s young though, and has quirks, and the environment lacks some flexibility that more mature implementations have. If you want the full Smalltalk experience, you&#8217;ll want to check out <a href="http://www.pharo-project.org/home">Pharo Open Source Smalltalk</a>. Click on the big &#8220;Download Pharo&#8221; button to get a one-click package that includes a Pharo image and a VM for your platform. The image contains everything you need to write and explore Smalltalk applications – code browsers, refactoring tools, a test runner, object inspectors, workspaces for running snippets of code, version control, and more.</p>
+<p>When you start exploring the image you&#8217;ll find lots and lots and lots of Smalltalk. Unlike other programming languages and environments you might be used to, Pharo doesn&#8217;t make a strong distinction between your code and platform code. Everything lives and runs under the same image, and you have access to all of the source code. If you want to understand how the automated extract method refactoring tool works, you can pull up the RBExtractMethodRefactoring class to see the exact steps it takes to perform the refactoring. If you didn&#8217;t know that extract method functionality lives in the RBExtractMethodRefactoring class (as I didn&#8217;t), you can simply inspect the menu item and find out which smalltalk method gets triggered when you select that menu item. Pretty neat.</p>
+<p>You can learn a ton from simply digging into Pharo&#8217;s guts. It has a lot of guts though, and you probably have never used a system like Pharo before. The following links should help you make sense of it:</p>
+<ul>
+<li><a href="http://pharobyexample.org/">Pharo by Example</a> - free book that you can read online or download as PDF. This was my primary resource for learning Pharo</li>
+<li><a href="http://book.pharo-project.org/">Pharo - the collaborActive book: Home</a> - another great book, entirely online (I think), and probably more up to date than PBE</li>
+<li><a href="http://book.seaside.st/book">Dynamic Web Development with Seaside</a> - an introductory book to Seaside, the continuations-based web framework in Pharo. Also probably a bit out of date, but great for learning Seaside</li>
+<li><a href="http://www.pharocasts.com/">Pharocasts</a> - a set of screencasts that goes into some of Pharo&#8217;s interesting nooks and crannies</li>
+<li><a href="http://stephane.ducasse.free.fr/FreeBooks.html">Stéphane Ducasse :: Free Online Books</a> - a list of free Smalltalk books for download. Many of them are old. I&#8217;ve only read a few of them. Definitely worth looking into.</li>
+</ul>
+<p>You can find all of these links via the Pharo home page, but I figured people would find it useful to have everything on one page. I&#8217;ll update this post as I think about and discover new resources for learning Smalltalk.</p>

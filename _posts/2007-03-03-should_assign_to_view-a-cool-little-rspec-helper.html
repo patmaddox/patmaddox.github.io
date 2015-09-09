@@ -1,0 +1,30 @@
+---
+layout: post
+title: Should_assign_to_view - a Cool Little RSpec Helper
+date: 2007-03-03 00:10:17.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441927491'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1043";s:5:"score";s:17:"10.15392615738584";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:17:"9.908129885215722";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"156";s:5:"score";s:17:"6.899975091663174";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"427";s:5:"score";s:17:"6.472826890590866";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"405";s:5:"score";s:17:"6.472826890590866";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1038";s:5:"score";s:17:"4.640245426842556";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"970";s:5:"score";s:17:"4.640245426842556";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"940";s:5:"score";s:17:"4.640245426842556";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"900";s:5:"score";s:17:"4.640245426842556";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:17:"4.640245426842556";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"862";s:5:"score";s:17:"4.640245426842556";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"800";s:5:"score";s:17:"4.640245426842556";}}
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"127";s:5:"score";s:17:"19.25550893438473";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"80";s:5:"score";s:18:"14.810900410683761";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"144";s:5:"score";s:18:"14.215512995199981";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"139";s:5:"score";s:18:"14.215512995199981";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"190";s:5:"score";s:18:"13.460924532903253";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"13.193861747681794";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"222";s:5:"score";s:18:"11.467919559164567";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1043";s:5:"score";s:18:"11.099223758968952";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Throughout my specs I&#8217;ve got tons of stuff like:</p>
+<p><script src="http://gist.github.com/482382.js?file=gistfile1.rb"></script>
+<p>I don&#8217;t want to type that all the time or copy and paste, so here&#8217;s a little helper I came up with.  Stick it in specs/spec_helper.rb inside the Spec module (where you&#8217;ll also find Rails::Runner::EvalContext).  Or you can put the method in some other module and mix it in to your contexts.</p>
+<p><script src="http://gist.github.com/482384.js?file=gistfile1.rb"></script>
+<p>Now in your specs instead of writing out the full spec, you just do</p>
+<p><script src="http://gist.github.com/482385.js?file=gistfile1.rb"></script>
+<p>You&#8217;ll have to refactor your mock objects into methods for it to work. Of course you could use instance_variable_get instead, but you should probably just make it a method.</p>

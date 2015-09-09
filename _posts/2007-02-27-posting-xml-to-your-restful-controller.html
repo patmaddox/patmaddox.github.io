@@ -1,0 +1,29 @@
+---
+layout: post
+title: POSTing XML to Your RESTful Controller
+date: 2007-02-27 00:08:33.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441533141'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"86";s:5:"score";s:18:"14.215512995158603";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"12.382931531410293";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"12.382931531410293";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"101";s:5:"score";s:18:"12.074630171783362";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"148";s:5:"score";s:18:"11.463866872612034";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"59";s:5:"score";s:18:"11.463866872612034";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"96";s:5:"score";s:18:"11.099223758968952";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"862";s:5:"score";s:18:"10.790922399342021";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Say you&#8217;ve got a standard create action:</p>
+<p><script src="http://gist.github.com/482381.js?file=gistfile1.rb"></script>
+<p>You can POST to it using the curl command </p>
+<pre><code>curl http://localhost:3000/videos -d "video[title]=Mission: Impossible"</code></pre>
+<p>Rails also lets you post an XML document.  In order to do that, you need to set the Content-Type header, otherwise the POST data will just be url_encoded.</p>
+<pre><code>curl -H "Content-Type: application/xml" -d "&lt;video&gt;&lt;title&gt;Mission: Impossible&lt;/title&gt;&lt;/video&gt;" http://localhost:3000/videos</code></pre>
+<p>Thanks to <a href="http://www.topfunky.com/">topfunky</a> for the hint.  I highly recommend checking out his screencasts.  Thanks also to Ed Hickey for pointing out that Content-Type will work, X_POST_DATA_FORMAT isn&#8217;t needed.  That&#8217;s a lot cleaner because I&#8217;m sure all XML libs would automatically set Content-Type when POSTing</p>

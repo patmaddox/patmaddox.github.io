@@ -1,0 +1,30 @@
+---
+layout: post
+title: Could This Be Why People Don't Get REST?
+date: 2007-01-01 23:51:27.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1442031385'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:2:"55";s:5:"score";s:18:"31.835320611642217";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"86";s:5:"score";s:18:"25.179170378127555";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"78";s:5:"score";s:16:"19.8308730792745";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:17:"19.11752319142462";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"463";s:5:"score";s:18:"14.937121670092504";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"96";s:5:"score";s:18:"12.074630171783362";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"48";s:5:"score";s:18:"12.074630171783362";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"82";s:5:"score";s:17:"9.974985922813593";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I have a quick confession.  I came up with this idea before I wrote the previous blog about why people don&#8217;t value REST.  The &#8220;revelation&#8221; that I discuss here sort of muddled/nullified the point I was trying to make in my previous post, but I&#8217;m hoping the sequence strengthens the point I make here.  Follow?  Didn&#8217;t think so :)</p>
+<h2>Scalability Concerns Are Dumb</h2>
+<p>One of the concerns when building a web application is scalability.  Here&#8217;s a little hint: REST scales to the size of the freakin internet.  You can&#8217;t beat that from a business standpoint or a technical one.  So don&#8217;t bother.  Any other web architecture is just holding you back.</p>
+<h2>Don&#8217;t Use The Web, Be The Web</h2>
+<p>I consider myself to get REST, but tonight I had a major moment of RESTful enlightenment.  The web, as we know, is just a bunch of resources that you can locate and manipulate.  So let&#8217;s say I build an application using the architecture of the web, exposing resources for public consumption.  Internally it is of course an application, but externally it&#8217;s just resources that people can locate and play with.  If my application is just resources, and the web is just resources, then my application doesn&#8217;t use the web, it&#8217;s not part of the web, it doesn&#8217;t sit on top of underneath or in between the web - it is the web.</p>
+<p>To the web, there is no application.  Your app is just some pseudo-random crap that makes resources available to the world.</p>
+<p>The web is freakin huge.  The web is so huge that people can&#8217;t fathom scaling to that size, so they look other places for &#8220;scalable&#8221; architectures.  Even tougher though is idea that adopting the web&#8217;s architecture makes you the web itself.</p>
+<p>Say it with me.  My application is the web.</p>

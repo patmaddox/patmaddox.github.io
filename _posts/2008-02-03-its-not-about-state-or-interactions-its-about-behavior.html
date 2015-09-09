@@ -1,0 +1,65 @@
+---
+layout: post
+title: It's Not About State or Interactions, It's About Behavior
+date: 2008-02-03 02:38:59.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1443718659'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"928";s:5:"score";s:17:"13.10152713300337";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:18:"11.251924290292123";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:16:"9.34090140003386";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"180";s:5:"score";s:16:"9.34090140003386";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"216";s:5:"score";s:17:"8.529971183749735";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1041";s:5:"score";s:17:"7.961375235628214";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:17:"7.719040967431711";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1038";s:5:"score";s:17:"7.702019588468776";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1007";s:5:"score";s:17:"7.702019588468776";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"919";s:5:"score";s:16:"6.89108937218465";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"991";s:5:"score";s:17:"6.315725227348885";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"226";s:5:"score";s:17:"5.957850310407423";}}
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"135";s:5:"score";s:17:"18.19425243209487";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"17.879487214966986";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"115";s:5:"score";s:18:"15.245803564745135";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"13.783066778136572";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"928";s:5:"score";s:18:"13.322019460885322";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"199";s:5:"score";s:18:"10.889228812098404";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"172";s:5:"score";s:17:"9.821063840403404";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"133";s:5:"score";s:17:"9.821063840403404";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I read some <a href="http://igorstoyanov.blogspot.com/2005/10/stubs-or-mocks-state-or-behavior.html">interesting posts</a> today that attempt to shed some more light on the state-based vs interaction-based testing debate.</p>
+<p>In a tiny nutshell, the sides presented are</p>
+<ul>
+<li>interaction-based testing couples tests to implementation</li>
+<li>state-based testing leads you down a path of broken OOP</li>
+</ul>
+<p>The example they use is a lamp, with one method in which we&#8217;re interested: <em>#switch_on</em>.  The implementation looks something like this:</p>
+<p><script src="http://gist.github.com/495242.js?file=gistfile1.rb"></script>
+<p>So the state- vs behavior-based stuff comes down to how should you test <em>#switch_on</em>?</p>
+<p>Trick question! You shouldn&#8217;t.</p>
+<p>Okay, so that&#8217;s kind of cheating.  They&#8217;re just giving a simplistic example, nobody would write a test for that.</p>
+<p>But there&#8217;s an important concept that they circle around but never actually get to.  Tests are about specifying behavior.  They say it a couple times, but I don&#8217;t think they actually get it.</p>
+<p>The missing piece is that behavior doesn&#8217;t live in a vacuum.  Behavior is highly dependent upon context, and that context is defined at a low level by its relationships, and at a high level by the application&#8217;s purpose.</p>
+<p>It&#8217;s difficult to have a useful discussion from the example they provided without first recognizing the importance of context.  I would write tests for the <strong>Lamp</strong> class differently if it</p>
+<ul>
+<li>represents a target device of a hardware remote</li>
+<li>is used to control and report household devices over the web</li>
+<li>is a part of an office maintenance robot</li>
+</ul>
+<p>Because I&#8217;m a nice guy, and there&#8217;s another hour before the Super Bowl, I&#8217;m going to actually show you all of those tests.  I&#8217;m hoping that that will give us enough context to jump back up to a more abstract level and understand the importance of specifying behavior.</p>
+<h3>Interaction-based verification - Interfacing with a hardware device</h3>
+<p><script src="http://gist.github.com/495243.js?file=gistfile1.rb"></script>
+<p>If that example looks lame to you, it&#8217;s because it is.  The glaring problem is that it creates a Lamp abstraction where there isn&#8217;t one.  Play along and imagine that there are 100 different kinds of lamps with different APIs for turning them on and off.  What do they have in common?  In this case, only that they can turn on and off.  There&#8217;s no concept of a Lamp, just of a SwitchableDevice.  All the variations are concrete implementations of the SwitchableDevice abstraction.  So I would rename <strong>Lamp</strong> to <strong>ClapperLamp</strong>, and then the test would be perfectly fine for the context in which it is used.</p>
+<p><em>(Note: That thought process is a subset of what Uncle Bob discusses in his <a href="http://www.objectmentor.com/resources/articles/CoffeeMaker.pdf">coffee maker example</a>.  I encourage you to read the whole thing)</em></p>
+<h3>State-based verification - Online reporting system</h3>
+<p>This one is pretty typical:</p>
+<p><script src="http://gist.github.com/495244.js?file=gistfile1.rb"></script>
+<p>The basic use case is that I should be able to visit a web page and see what lights are on in my house.  Having an <em>on?</em> method is very useful, I can just iterate through all the devices and ask if they&#8217;re on.</p>
+<p><em>(You could actually <a href="http://www.javaworld.com/javaworld/jw-09-2003/jw-0905-toolbox.html">not use getters at all</a>.  I think such an approach would be interesting and far more viable in Ruby than in Java, due to Ruby&#8217;s meta magic.  For our purposes though, exposing this state is fine.)</em></p>
+<h3>???-based verification - Office maintenance robot</h3>
+<p><script src="http://gist.github.com/495253.js?file=gistfile1.rb"></script>
+<p>In this case, I&#8217;d like to prevent anyone from changing out the lightbulb if the lamp is on.  I don&#8217;t need to expose any of the lamp&#8217;s state to do that.</p>
+<h2>Dude where&#8217;s your point?</h2>
+<p>The point is that all of those examples are behavior specifications, and all are valid in a particular context.</p>
+<p>One thing to remember is that we should be thinking about facets of behavior, rather than what an individual method does.  If an object is highly cohesive, often method invocations will affect how its other methods behave.  This was the subject of a discussion I had with fowlduck on IRC a couple months ago.  He argued that the second two specs don&#8217;t count as BDD because they test more than one thing at a time (<em>switch_on</em> and <em>on?</em>/<em>set_bulb</em>).  But that really misses the over all point, which is that an object&#8217;s behavior is an amalgamation of its state, actions, collaborations, and context.</p>
+<h2>State-based vs Interaction-based: settled&#8230;FOREVER</h2>
+<p>As you might be able to guess by now, the real answer to state- vs interaction-based verification is &#8220;it depends,&#8221; and in reality neither one is an end-goal in its own right.  They&#8217;re both simply tools to help you specify behavior and drive the design of your code.</p>
+<p>Sometimes it&#8217;s a really easy decision.  In the remote control example, there&#8217;s really nothing we can do other than verify that the API got called.  In the web report, we want to be able to determine whether a device is on or off, so it makes sense to use that in the test as well.</p>
+<p>Often though we have to make a tradeoff when designing our code to be testable.  Either we have to break encapsulation and expose some of the object&#8217;s state, or we have to <a href="http://www.patmaddox.com/blog/2008/1/27/make-your-dependencies-translucent-with-default-parameters">make our objects more flexible</a> so that we can sense behavior in other ways, with that flexibility adding a bit of conceptual overhead.</p>
+<p>My unit tests tend to use a lot of interaction-based verification because I&#8217;ve found that it&#8217;s generally better to <a href="http://pragmaticprogrammer.com/articles/tell-dont-ask">prefer commands over queries</a>.  Not only is interaction-based testing more effective in promoting that style than state-based testing, but often it&#8217;s the only way you can write tests for that style of coding.  Experience has taught me that I&#8217;d rather suffer the occasional short-term pain when refactoring than expose an object&#8217;s internals so that I can test it.  That choice leads to a better over all design, meaning less pain in the long run.</p>
+<p>Remember, neither state- nor interaction-based verification stands alone on its own merits.  They play a supporting role in the useful end goal of specifying behavior.</p>

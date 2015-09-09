@@ -1,0 +1,47 @@
+---
+layout: post
+title: The Aggregate Pattern & Encapsulation
+date: 2009-04-11 15:18:27.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441208001'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:18:"19.041453207952593";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"256";s:5:"score";s:18:"10.757489231321301";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"260";s:5:"score";s:16:"9.24764014994618";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1020";s:5:"score";s:17:"8.672276005042619";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"246";s:5:"score";s:17:"8.672276005042619";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1041";s:5:"score";s:18:"7.6765991489564165";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"423";s:5:"score";s:18:"7.6765991489564165";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"928";s:5:"score";s:17:"7.473033760414963";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:17:"7.473033760414963";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"226";s:5:"score";s:17:"6.477356904328761";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1043";s:5:"score";s:18:"3.5812134618337486";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"252";s:5:"score";s:18:"3.5812134618337486";}}
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"166";s:5:"score";s:18:"22.140898656674878";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"101";s:5:"score";s:18:"20.932937167514286";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"258";s:5:"score";s:18:"19.328244222616135";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:2:"44";s:5:"score";s:18:"19.194383633385087";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"146";s:5:"score";s:18:"17.732608616313296";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"84";s:5:"score";s:18:"17.465545831091834";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"180";s:5:"score";s:18:"15.936333542145587";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"208";s:5:"score";s:18:"12.382931531410293";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>There&#8217;s a pattern in <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1239481629&amp;sr=1-1">Domain-Driven Design</a> called the <a href="http://domaindrivendesign.org/discussion/messageboardarchive/Aggregates.html">Aggregate</a>, a cluster of objects with tightly-interrelated behavior.  At the head of this cluster is the Aggregate Root which controls access to the objects within the Aggregate.  Aggregates are useful for several different things such as designing transactional boundaries or data partitioning schemes, but most importantly they serve as consistency boundaries.  One property of Aggregates is that they can hand out references to internal objects, but clients should not hold those references - they may use them only within the scope of a single operation.</p>
+<p>You should be careful not to expose internal objects too frequently.  Clients will make assumptions and that leads to restrictive coupling.  <a href="http://www.lostechies.com/blogs/chrismissal/archive/2009/03/19/obvious-testing-or-how-i-learned-to-stop-using-the-new-keyword.aspx">Here&#8217;s an example</a> of someone who found that his tests exposed a design flaw in his code.  As it turns out, there is a design flaw, but he came to the wrong conclusion as to what it is.</p>
+<p>I&#8217;ve rewritten the example in Ruby:</p>
+<p><script src="http://gist.github.com/495697.js?file=gistfile1.rb"></script>
+<p>So far so good.</p>
+<p>He later runs into a problem where calling order.items doesn&#8217;t return the same object once the order items have been removed.  The problem shows up when we restructure the test:</p>
+<p><script src="http://gist.github.com/495699.js?file=gistfile1.rb"></script>
+<p>Chris concludes that he should call @items.clear in Order#remove<em>all</em>items as opposed to assigning a new Array object to @items.  That way clients holding references to it won&#8217;t run into nasty surprises like the above.</p>
+<p>The problem here is that clients are making assumptions about how Order is implemented, and that creates a tight coupling.  You could allow that and make it a part of Order&#8217;s contract, but it places a higher burden on both Order and its clients.  You&#8217;ll also need to document it, ideally in the form of tests as done above.  This is the short-term maintenance overhead of tight coupling.  Not surprisingly, people tend to skip that work, leading to bigger problems down the road as you try to maneuver within a rigid design.</p>
+<p>Basic encapsulation fixes this problem.  Instead of handing out the order items array, you place a query on the order itself.  The tests and code become:</p>
+<p><script src="http://gist.github.com/495701.js?file=gistfile1.rb"></script>
+<p>As you can see, we&#8217;re able to use the original implementation with no issues [1].  By thinking of the Aggregates in your system, you can design your objects to eliminate needless coupling and avoid bugs.  That opens up a whole world of exciting possibilities, but you have to get to this basic point first.</p>
+<p>I&#8217;ve only met a few Rails programmers that are familiar with Domain-Driven Design, and don&#8217;t know of any that apply the Aggregate pattern in their projects.  ActiveRecord just isn&#8217;t designed for it.  Let&#8217;s take a look at a problem that results from not drawing Aggregate boundaries.</p>
+<p>Here&#8217;s an action which takes an item and adds it to the user&#8217;s cart.</p>
+<p><script src="http://gist.github.com/495704.js?file=gistfile1.rb"></script>
+<p>A problem occurs when we want to render the contents of the cart in a widget on each page.  If we execute this action and the save fails, current_cart.items still contains a reference to this invalid item, and will be rendered along with the other items.  Simply put, the cart and its items are in an inconsistent state.  The solution is to reload the items before rendering them:</p>
+<p><script src="http://gist.github.com/495706.js?file=gistfile1.rb"></script>
+<p>An alternative is to use &lt;&lt; instead of build, which will attempt to save the associated object and will raise an error if it fails.  This solves the immediate problem, but (a) doesn&#8217;t solve the larger one and (b) often doesn&#8217;t work with libraries such as resource_controller which typically follow a build/save pattern that&#8217;s usable with an ActiveRecord class or association proxy.</p>
+<p>We can solve this problem by making the cart and its items an aggregate, with the cart as the root.  Now we place operations on the cart and let it manage its internal objects:</p>
+<p><script src="http://gist.github.com/495709.js?file=gistfile1.rb"></script>
+<p>I don&#8217;t actually do this much of the time :)  I&#8217;ve learned to just kind of suck it up and make effective use of ActiveRecord and the various Rails-related libraries, at least when dealing with relatively simple stuff.  Once the constraints get complex and interrelated, it becomes awkward to manage through Rails associations alone, and that&#8217;s when you can make your life easier by defining aggregates in your domain model.</p>
+<hr />
+<p>[1] Note that there were even bigger potential problems by handing out direct references to the internal order list.  A client could do @order.items.clear and bypass any business rules on removing items from an Order</p>

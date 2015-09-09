@@ -1,0 +1,56 @@
+---
+layout: post
+title: context.should Be_important
+date: 2008-09-10 14:36:25.000000000 -06:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441723883'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"103";s:5:"score";s:18:"14.262026719376792";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"244";s:5:"score";s:16:"12.8757323582569";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"919";s:5:"score";s:18:"11.807567386561903";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"889";s:5:"score";s:18:"11.807567386561903";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"800";s:5:"score";s:18:"11.807567386561903";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"70";s:5:"score";s:18:"11.463866872612034";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"80";s:5:"score";s:18:"10.746310884272045";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"72";s:5:"score";s:18:"10.746310884272045";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I remember in the early days of RSpec, there was some debate over the best terminology for setting expectations.  Some people preferred &#8216;should,&#8217; others preferred &#8216;must,&#8217; some liked &#8216;will,&#8217; and then there was the fringe group that wanted &#8216;shall&#8217; (I do admit that writing &#8220;2.shant == 3&#8221; would have been pretty cool).  In the end, &#8216;should&#8217; won out, at least as far as the framework is concerned.  There are still plenty of people that don&#8217;t like writing &#8220;should&#8221; in their example descriptions, and I&#8217;m sure there are a couple people left over who don&#8217;t like it as the basis for expectations.</p>
+<p>Now a couple years removed from that debate and decision, I&#8217;d like to discuss how it affects our thinking.  I&#8217;m not going to reopen this debate, mind you, but rather I&#8217;m going to compare it with the proposed alternatives, as well as its not-too-bright-but-kind-of-charming cousin, assert.</p>
+<p>&#8216;must&#8217; and assert are effectively the same thing.  You evaluate a condition, it&#8217;s either true or false, and that&#8217;s the end of that.  It&#8217;s simple to understand and impossible to refute.  No wonder so many programmers find comfort in the standard assert_* naming or its natural language analog &#8216;must&#8217;.</p>
+<p>The problem with that mode of thought is that verifying the condition is <em>not</em> the end of the line.  In fact, it&#8217;s just the beginning.  Contrary to what <a href="http://pivots.pivotallabs.com/users/chad/blog/articles/484-how-you-can-learn-to-stop-worrying-and-love-continous-integration">some people</a> might believe (and in Chad&#8217;s case, badger you about :), a failing test is not a problem in and of itself.  Rather, it&#8217;s simply an indicator for a potential problem.  The most basic proof for this is recognizing that one possible valid response to a failing test is simply deleting it.</p>
+<p>So what&#8217;s the benefit of using &#8216;should&#8217; in our language?  &#8216;should&#8217; is the word that allows us to shift our focus from the minute detail of a failing example, to considering it in the larger context of business value.  It forces you to evaluate consequences.</p>
+<p>The different between &#8216;must&#8217; (or assert) and &#8216;should&#8217; is the difference between absolute outcomes and relative ones.  I &#8220;must&#8221; drink water, otherwise I will die.  That&#8217;s an absolute outcome, one that I can&#8217;t prioritize relative to other outcomes in my life.  On the other hand, I &#8220;should&#8221; eat healthy and exercise, or I will get fat (and die, of course, but much more slowly than if I were to stop drinking water).  I&#8217;m able to examine the action - exercise &amp; nutrition - and the outcome, and consider where to prioritize them among the other things I might do.</p></p>
+<p>Going back to programming, there are a number of possible responses to</p>
+<p>a failing test, each one with multiple potential outcomes</p>
+<ul>
+<li>Fix broken code
+<ul>
+<li>caught a regression</li>
+</ul>
+</li>
+<li>Delete the test
+<ul>
+<li>less code to maintain! OR</li>
+<li>reduced confidence in the quality of your code</li>
+</ul>
+</li>
+<li>Talk to the customer to understand requirements
+<ul>
+<li>add, enhance or remove a feature</li>
+<li>warm fuzzies of close collaboration</li>
+</ul>
+</li>
+</ul>
+<p>The point is that when you see that red bar, it&#8217;s a sign that you&#8217;ve</p>
+<p>made assumptions about your code that no longer hold true.  Now&#8217;s the</p>
+<p>time to analyze those assumptions and modify them if necessary, and</p>
+<p>then sync the code up with them.  One of the profound takeaways of</p>
+<p>BDD, in my opinion, is having the ability to focus your development</p>
+<p>efforts in fine detail, and the responsibility to examine them in the</p>
+<p>context of delivering value to the customer.</p>

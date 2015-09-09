@@ -1,0 +1,35 @@
+---
+layout: post
+title: Four Lessons From the Rails Rumble
+date: 2010-11-15 18:08:30.000000000 -07:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+  _wp_rp_related_posts_query_result_cache_expiration: '1441526272'
+  _wp_rp_related_posts_query_result_cache_4: a:8:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1028";s:5:"score";s:17:"19.22010978010317";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"119";s:5:"score";s:18:"18.401502011465613";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"199";s:5:"score";s:18:"17.788027779030884";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"210";s:5:"score";s:18:"16.147478485237723";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"46";s:5:"score";s:18:"15.812528387497593";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"101";s:5:"score";s:18:"15.744725284104852";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:18:"14.300632224023781";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"146";s:5:"score";s:18:"13.439366264186702";}}
+author:
+  login: pat
+  email: patmaddox@me.com
+  display_name: pat
+  first_name: Pat
+  last_name: Maddox
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Here are some quick thoughts after participating in this year&#8217;s Rails Rumble:</p>
+<h3>Avoid technical risk late in the game</h3>
+<p>You don&#8217;t want to bork your application minutes before the deadline.  The first time I participated in the Rails Rumble, I broke the signup functionality at the last minute.  Nobody was able to test out our app.  That was a bummer.</p>
+<p>That doesn&#8217;t mean you shouldn&#8217;t use unfamiliar technologies.  By all means, take advantage of the weekend to learn something new.  Just do your experimentation early on.  I played with Neo4j&#8217;s Ruby integration for a couple hours leading up to the rumble, and then tried to make it work for a few more hours after starting.  I wish it had gone smoothly, but it didn&#8217;t, so I scrapped it.  Your technology stack should be settled by the end of day 1.</p>
+<h3>Create a stupid simple deploy setup</h3>
+<p>You shouldn&#8217;t be wasting time on deployment.  Your deployment process should be one step, start to finish.  We set up continuous deployment and it worked great.  There was no need for anything heavy like capistrano to do the deploy.  I just set up CI Joe and a github post-receive hook, so whenever we pushed to github CI Joe would run the tests, then cd into the production directory, pull the latest code, install gems, migrate and restart nginx.  None of the other guys even knew what the deploy setup was - they just pushed their code, and a minute later it was live.</p>
+<h3>Keep your code clean</h3>
+<p>This is an interesting one because it sort of flies in the face of some conventional programmer wisdom, namely that code cleanliness doesn&#8217;t matter on short-term projects.  The argument (I think) is that the code base is small and easily understood, there won&#8217;t be extended maintenance, and quite frankly there just isn&#8217;t enough time to refactor and keep the code clean.</p>
+<p>That argument is, in my opinion, bullshit.</p>
+<p>We did a good job of keeping the code clean, and paid special attention to the more complex areas of our code.  We broke stuff up into extremely small objects (four of the core classes in the system were plain Ruby objects with less than 25 lines of code each), that at first I suspected might be decoupling overkill.  Then we made three or four revisions to the core behavior and structure of our app, and I was sold.  We were able to quickly make important changes that we probably wouldn&#8217;t have otherwise.  This also plays into the point on avoiding technical risk.</p>
+<p>Oh, write automated tests, duh.</p>
+<h3>Sleep</h3>
+<p>There&#8217;s definitely some machismo surrounding the Rails Rumble.  People stock up on red bull and stay up all night in order to maximize their time spent coding.  That&#8217;s cool if you want to, but don&#8217;t feel like you have to.  I admit that the first night I was up until 7am hacking.  I think I woke up the next day at around 11:30am.  The fact is, if you&#8217;re really excited to work on something, your brain will force you to work on it and won&#8217;t let your body sleep.  But at a certain point you&#8217;ll hit a wall and there&#8217;s really no sense in pushing past it.  For creativity-intensive tasks like the Rails rumble, <a href="http://lifehacker.com/5585217/what-caffeine-actually-does-to-your-brain">using caffeine to keep you up</a> for an extra hour or two <a href="http://arvindn.livejournal.com/57651.html">isn&#8217;t going to be very effective</a>.</p>
