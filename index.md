@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h1>21st century collaborative software development and education</h1>
+<h1>21st century collaborative software development and education - <a href="mailto:pat@patmaddox.com">Email me</a></h1>
 
 <p>Software is supposed to help businesses work smarter, faster, and cheaper right? So why do software budgets get blown even faster than deadlines?</p>
 
@@ -53,7 +53,7 @@ layout: default
 
   <a name="articles"></a>
 
-  <h1 class="page-heading">Posts</h1>
+  <h2>Articles</h2>
 
   <ul class="post-list">
     {% for post in site.posts %}
