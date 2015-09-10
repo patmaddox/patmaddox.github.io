@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h1><b>Software is supposed to help businesses work smarter, faster, and cheaper... so why do software budgets get blown even faster than deadlines?</b></h1>
+<h1><b>Software is supposed to help businesses work smarter, faster, and cheaper... so why do software development budgets get blown even faster than deadlines?</b></h1>
 
 <p>What if your software organization could deliver <b>information, asset protection, and revenue</b> - <i>quickly</i>?</p>
 
