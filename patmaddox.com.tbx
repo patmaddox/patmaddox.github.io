@@ -738,6 +738,8 @@
 </attrib>
 <attrib Name="ShowReadTime" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
 </attrib>
+<attrib Name="ShowUpdatedTime" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
+</attrib>
 </attrib>
 </attrib>
 <colors >
@@ -789,8 +791,8 @@
 <item ID="1479810621" Creator="padillac" >
 <attribute name="Associates" ></attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="MapScrollX" >-0.26171875</attribute>
-<attribute name="MapScrollY" >-0.0078125</attribute>
+<attribute name="MapScrollX" >0</attribute>
+<attribute name="MapScrollY" >0</attribute>
 <attribute name="Name" >patmaddox.com</attribute>
 <item ID="1479810648" Creator="padillac" >
 <attribute name="Associates" ></attribute>
@@ -837,7 +839,7 @@
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T02:35:01-06:00</attribute>
 <attribute name="Name" >hates blogging, but will do it anyway.</attribute>
-<attribute name="SelectionCount" >30</attribute>
+<attribute name="SelectionCount" >32</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >I love to write. I write basically every day. I don’t have a word count goal or anything like that… I’m just in the habit of writing.
@@ -888,7 +890,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T02:31:28-06:00</attribute>
 <attribute name="Name" >HTML page</attribute>
-<attribute name="SelectionCount" >24</attribute>
+<attribute name="SelectionCount" >28</attribute>
 <attribute name="Xpos" >3.5</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;!DOCTYPE html&gt;
@@ -910,9 +912,9 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T02:34:38-06:00</attribute>
+<attribute name="Modified" >2017-04-21T03:03:52-06:00</attribute>
 <attribute name="Name" >HTML page content</attribute>
-<attribute name="SelectionCount" >44</attribute>
+<attribute name="SelectionCount" >48</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >^include(this, /Templates/breadcrumb links)^
@@ -923,10 +925,14 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 &lt;p&gt;&lt;b&gt;^value(round($WordCount / 250))^ minute read&lt;/b&gt;&lt;/p&gt;
 ^endif^
 
+^if($ShowUpdatedTime)^
+&lt;p&gt;&lt;i&gt;Updated on ^value(date($Modified).format(&quot;L&quot;))^&lt;/i&gt;&lt;/p&gt;
+^endif^
+
 ^text^
 
 ^include(this, /Templates/breadcrumb links)^</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC78AQAAKwAAAAEAAAD0AQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcyleXApcCjxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApeaWYoJFNob3dSZWFkVGltZSleXAo8cD48Yj5edmFsdWUocm91bmQoJFdvcmRDb3VudCAvIDI1MCkpXiBtaW51dGUgcmVhZDwvYj48L3A+XApeZW5kaWZeXApcCl50ZXh0XlwKXApeaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL2JyZWFkY3J1bWIgbGlua3MpXn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAAAexPlYtgEAAAAAAAAAAAAA</rtfd>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5eAgAAKwAAAAEAAABWAgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcyleXApcCjxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApeaWYoJFNob3dSZWFkVGltZSleXAo8cD48Yj5edmFsdWUocm91bmQoJFdvcmRDb3VudCAvIDI1MCkpXiBtaW51dGUgcmVhZDwvYj48L3A+XApeZW5kaWZeXApcCl5pZigkU2hvd1VwZGF0ZWRUaW1lKV5cCjxwPjxpPlVwZGF0ZWQgb24gXnZhbHVlKGRhdGUoJE1vZGlmaWVkKS5mb3JtYXQoIkwiKSlePC9pPjwvcD5cCl5lbmRpZl5cClwKXnRleHReXApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcylefQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAPjK+Vi2AQAAAAAAAAAAAAA=</rtfd>
 <item ID="1479810818" Creator="padillac" proto="HTML Template" >
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="Modified" >2016-11-22T02:33:33-06:00</attribute>
@@ -971,7 +977,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T02:09:56-06:00</attribute>
 <attribute name="Name" >Child Links Item</attribute>
-<attribute name="SelectionCount" >9</attribute>
+<attribute name="SelectionCount" >11</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;li&gt;^linkTo(this, ^include(this, /Templates/title)^)^&lt;/li&gt;</text>
@@ -1054,8 +1060,9 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsPrototype" >true</attribute>
 <attribute name="Modified" >2017-04-21T02:26:46-06:00</attribute>
 <attribute name="Name" >content</attribute>
-<attribute name="SelectionCount" >4</attribute>
+<attribute name="SelectionCount" >5</attribute>
 <attribute name="ShowReadTime" >true</attribute>
+<attribute name="ShowUpdatedTime" >true</attribute>
 <attribute name="Xpos" >6</attribute>
 <attribute name="Ypos" >0</attribute>
 </item>
@@ -1068,7 +1075,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T00:36:37-06:00</attribute>
 <attribute name="Name" >README</attribute>
-<attribute name="SelectionCount" >5</attribute>
+<attribute name="SelectionCount" >6</attribute>
 <attribute name="Xpos" >20.925</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >More stuff will go here later…</text>
@@ -1084,15 +1091,15 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756227" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756987" destcreator="padillac" color="normal"  />
 <link name="*untitled" sourceid="1479810648" sourcecreator="padillac" sstart="2" slen="6" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756927" destcreator="padillac" color="normal"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="153" slen="58" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20051105050918/flpr.org"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="544" slen="55" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20070114021507/http://evang.eli.st:80/blog/"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="771" slen="22" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://twitter.com/robotdeathsquad"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="827" slen="18" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20070206012120/http://evang.eli.st:80/blog/2006/11/29/smart-people-need-smart-servants"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1064" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20090214035120/patmaddox.com"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1709" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.youtube.com/watch?v=28GLa9T2CtI"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3671" slen="13" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.martinfowler.com"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3699" slen="5" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.martinfowler.com/bliki/WhatIsaBliki.html"  />
-<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="4020" slen="11" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://martinfowler.com/books/refactoring.html"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="153" slen="58" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://web-beta.archive.org/web/20051105050918/flpr.org"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="544" slen="55" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://web-beta.archive.org/web/20070114021507/http://evang.eli.st:80/blog/"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="771" slen="22" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://twitter.com/robotdeathsquad"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="827" slen="18" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://web-beta.archive.org/web/20070206012120/http://evang.eli.st:80/blog/2006/11/29/smart-people-need-smart-servants"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1064" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://web-beta.archive.org/web/20090214035120/patmaddox.com"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1709" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://www.youtube.com/watch?v=28GLa9T2CtI"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3671" slen="13" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://www.martinfowler.com"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3699" slen="5" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://www.martinfowler.com/bliki/WhatIsaBliki.html"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="4020" slen="11" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1479810621" destcreator="padillac" color="normal" URL="https://martinfowler.com/books/refactoring.html"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492761967" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492762059" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1492763207" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492757797" destcreator="padillac" color="normal"  />
@@ -1209,14 +1216,14 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <RenameWindowX > -1</RenameWindowX>
 <RenameWindowY > -1</RenameWindowY>
 <InspectorX > 784</InspectorX>
-<InspectorY > 556</InspectorY>
+<InspectorY > 560</InspectorY>
 <EnterKeyAction > 0</EnterKeyAction>
 <UpdateViewShown > </UpdateViewShown>
 <TimelineScale > 1000</TimelineScale>
 <TimelineLabelSize > 0</TimelineLabelSize>
 <GetInfoPane > attributes</GetInfoPane>
-<GetInfoCategory > User</GetInfoCategory>
-<GetInfoSelection > ShowReadTime</GetInfoSelection>
+<GetInfoCategory > General</GetInfoCategory>
+<GetInfoSelection > Modified</GetInfoSelection>
 <LastLinkName > *untitled</LastLinkName>
 <UsingGuides > 1</UsingGuides>
 <SystemAttributesCategory > HTML</SystemAttributesCategory>
@@ -1251,10 +1258,10 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <ExplodeDelimiter > </ExplodeDelimiter>
 </preferences>
 <windows >
-<window bounds="Rect[ -0 -0 1440 877]" ruler="0" >
+<window bounds="Rect[ 4 0 1440 877]" ruler="0" >
 <tabs >
 <tab selected="0" viewType="0" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="173" scrollY="380.5" selection="1479810648 " expanded="" textTab="1" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.502431" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
-<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1492762059 " expanded="1492756927 1479810814 1479810815 1492761967 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
+<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1492755978 " expanded="1492756927 1479810814 1479810815 1492761967 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
 <tab selected="0" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1492756927" scrollX="0" scrollY="0" selection="1492757797 " expanded="1492756927 1479810814 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.5" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
 </tabs>
 </window>
