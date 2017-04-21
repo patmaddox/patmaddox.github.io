@@ -10,3 +10,9 @@
 
 
 <p>More stuff will go here later…</p>
+
+
+<p>
+<a href="index.html">(home)</a>
+
+</p>
