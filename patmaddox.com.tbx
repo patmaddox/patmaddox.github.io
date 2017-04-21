@@ -663,7 +663,7 @@
 </attrib>
 <attrib Name="KeyAttributeFont" parent="TextFormat" editable="1" visibleInEditor="1" type="11" default="HelveticaNeue" >
 </attrib>
-<attrib Name="KeyAttributes" parent="TextFormat" editable="1" visibleInEditor="1" type="8" default="HTMLExportFileName;HTMLExportExtension;HTMLExportPath" >
+<attrib Name="KeyAttributes" parent="TextFormat" editable="1" visibleInEditor="1" type="8" default="WordCount;HTMLExportFileName;HTMLExportExtension;HTMLExportPath" >
 </attrib>
 <attrib Name="LeftMargin" parent="TextFormat" editable="1" visibleInEditor="1" type="2" default="2" >
 </attrib>
@@ -734,6 +734,10 @@
 </attrib>
 </attrib>
 <attrib Name="User" parent="anything" editable="0" visibleInEditor="1" default="" >
+<attrib Name="HomePage" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
+</attrib>
+<attrib Name="ShowReadTime" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
+</attrib>
 </attrib>
 </attrib>
 <colors >
@@ -785,17 +789,18 @@
 <item ID="1479810621" Creator="padillac" >
 <attribute name="Associates" ></attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="MapScrollX" >0</attribute>
-<attribute name="MapScrollY" >0</attribute>
+<attribute name="MapScrollX" >-0.26171875</attribute>
+<attribute name="MapScrollY" >-0.0078125</attribute>
 <attribute name="Name" >patmaddox.com</attribute>
 <item ID="1479810648" Creator="padillac" >
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2016-11-22T02:30:47-06:00</attribute>
 <attribute name="HTMLExportFileName" >index</attribute>
+<attribute name="HomePage" >true</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T00:53:52-06:00</attribute>
 <attribute name="Name" >Pat Maddox...</attribute>
-<attribute name="SelectionCount" >28</attribute>
+<attribute name="SelectionCount" >31</attribute>
 <attribute name="Xpos" >-5.6875</attribute>
 <attribute name="Ypos" >-10.65625</attribute>
 <text >* writes
@@ -817,13 +822,50 @@
 <attribute name="Created" >2017-04-21T00:42:06-06:00</attribute>
 <attribute name="HTMLExportFileName" >writes</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T00:42:52-06:00</attribute>
+<attribute name="Modified" >2017-04-21T02:06:03-06:00</attribute>
 <attribute name="Name" >writes!</attribute>
-<attribute name="SelectionCount" >3</attribute>
+<attribute name="SelectionCount" >21</attribute>
 <attribute name="Xpos" >24.5</attribute>
 <attribute name="Ypos" >0</attribute>
-<text >I love to write. Here’s some of the stuff I’ve written…</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC4cAQAAKwAAAAEAAAAUAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBIb2VmbGVyVGV4dC1SZWd1bGFyO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDM2MFx0eDcyMFx0eDEwODBcdHgxNDQwXHNiODBcc2E4MFxwYXJkaXJuYXR1cmFsCgpcZjBcZnMzMiBcY2YwIEkgbG92ZSB0byB3cml0ZS4gSGVyZVwnOTJzIHNvbWUgb2YgdGhlIHN0dWZmIElcJzkydmUgd3JpdHRlblwnODV9AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAA7Kn5WLYBAAAAAAAAAAAAAA==</rtfd>
+<text >I love to write. Here’s some of the stuff I’ve written…
+^include(this, /Templates/Child Links List)^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5QAQAAKwAAAAEAAABIAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBIb2VmbGVyVGV4dC1SZWd1bGFyO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDM2MFx0eDcyMFx0eDEwODBcdHgxNDQwXHJpNDAwXHNiODBcc2E4MFxwYXJkaXJuYXR1cmFsCgpcZjBcZnMzMiBcY2YwIEkgbG92ZSB0byB3cml0ZS4gSGVyZVwnOTJzIHNvbWUgb2YgdGhlIHN0dWZmIElcJzkydmUgd3JpdHRlblwnODVcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvQ2hpbGQgTGlua3MgTGlzdClefQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAGu9+Vi2AQAAAAAAAAAAAAA=</rtfd>
+<item ID="1492757797" Creator="padillac" proto="content" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2017-04-21T00:56:36-06:00</attribute>
+<attribute name="HTMLExportFileName" >hates-blogging-but-will-do-it-anyway</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="Modified" >2017-04-21T02:25:41-06:00</attribute>
+<attribute name="Name" >hates blogging, but will do it anyway.</attribute>
+<attribute name="SelectionCount" >29</attribute>
+<attribute name="Xpos" >0</attribute>
+<attribute name="Ypos" >0</attribute>
+<text >I love to write. I write basically every day. I don’t have word count goal or anything like that… I’m just in the habit of writing.
+Back in 2005 (!!), I started a blog to share my exploration of the FLPR stack – FreeBSD, lighttpd, PostgreSQL, and Ruby on Rails. I don’t know if anyone ever read it, or if anyone even used the stack besides me. I wrote mostly for myself though – because I enjoy writing, and because documenting my progress helps me learn.
+Two years later, I decided FLPR was too niche and started a more general blog called “evang.eli.st – utterly unqualified opinions on software.” At the time, I had only had one programming job, which involved me converting a ColdFusion application to PHP. I didn’t enjoy the project itself much, but I worked with one of my best friends and got paid to program. I wrote my first blog post in the hopes that it would get me a job. It didn’t, but it did get me started on the path of writing and publishing regularly.
+Eventually I got tired of awkwardly vocalizing my domain name, and decided I’d better just use my own name. I kept doing my thing, writing and publishing. I did that for over 10 years (!!) and now here I am… starting fresh.
+I hate blogging, seriously.
+Thanks for the history lesson, Pat… but why do you hate blogging?
+Well, I’ll tell you.
+I think it boils down to how my brain works, and how the internet works, which I think are basically the same thing. I get an idea (from someone else). I get another idea (from another someone else). I get more ideas. The ideas grow, and smash into one another, and change shape. They tug at each other, break, merge, multiply, and mutate. I don’t know how it happens, but it does, and I like it. I like it a lot.
+Blogging doesn’t work that way, or at least has never worked that way for me. Blogging happens chronologically… I write a post on November 1st, and then another post on November 2nd. That’s how I wrote it, and that’s how you see it. But it’s not how I think, and that bothers me.
+What happens when I think of something to add to the November 1st post, but now it’s November 3rd? Do I write a new blog post, and link back to the first one. Do I update the original post? If so, do I point out the update? What if you first read the post on November 5th, and never knew that I had updated it in the first place?
+That’s a lot of questions for something that might be a trivial update. Whether I make a small change or a big change doesn’t even matter. The bigger problem I have is asking those questions in the first place. They create enough mental friction for me that I don’t want to deal with it.
+I’m probably overthinking that stuff. I’ve been doing this long enough to know that I’m not going to stop. I need to address the problems I’ve identified. They get in the way of me writing and publishing, and that’s not cool.
+My knowledge grows. My writing should grow with it.
+The chronological paradigm of blogging poses an even bigger problem for me though. What if I don’t just want to add some details to a blog post… what if I want to represent what I actually know about a subject?
+Content management systems have always had pages, which do the trick. In fact I’m pretty sure those existed long before blogs entered the Internet consciousness. That’s where I’m headed – getting back to basics, creating simple HTML pages.
+A web page’s value can increase over time… by adding and removing content, restructuring the page, adding links. Maybe a single paragraph becomes a page, becomes a whole collection of pages. My thinking grows that way. I want my writing to grow that way too.
+I have a way forward.
+Fortunately, I have inspiration from Martin Fowler, who keeps a “bliki.” It’s a cross between a wiki and a blog, as the name suggests. I think he has the same sort of problems with blogs that I do:
+&lt;blockquote&gt;“I find writing too hard to want to spend it on things that disappear” -Martin Fowler&lt;/blockquote&gt;
+To build my website again, I’ll use another thing I learned from Mr. Fowler: Refactoring. Put simply, my process from here on out is:
+# write
+# publish
+# refactor
+We’ll see how it works out. I suspect it will be pretty good.</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC51IgAAKwAAAAEAAAAAAACAnRIAAMgPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHtccnRmMVxhbnNpXGFuc2ljcGcxMjUyXGNvY29hcnRmMTM0OFxjb2NvYXN1YnJ0ZjE3MAp7XGZvbnR0YmxcZjBcZm5pbFxmY2hhcnNldDAgSG9lZmxlclRleHQtUmVndWxhcjt9CntcY29sb3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30KXHBhcmRcdHgzNjBcdHg3MjBcdHgxMDgwXHR4MTQ0MFxyaTQwMFxzYjgwXHNhODBccGFyZGlybmF0dXJhbAoKXGYwXGZzMzIgXGNmMCBJIGxvdmUgdG8gd3JpdGUuIEkgd3JpdGUgYmFzaWNhbGx5IGV2ZXJ5IGRheS4gSSBkb25cJzkydCBoYXZlIHdvcmQgY291bnQgZ29hbCBvciBhbnl0aGluZyBsaWtlIHRoYXRcJzg1IElcJzkybSBqdXN0IGluIHRoZSBoYWJpdCBvZiB3cml0aW5nLlwKQmFjayBpbiAyMDA1ICghISksIEkgc3RhcnRlZCBhIGJsb2cgdG8gc2hhcmUgbXkgZXhwbG9yYXRpb24gb2YgdGhlIEZMUFIgc3RhY2sgXCc5NiBGcmVlQlNELCBsaWdodHRwZCwgUG9zdGdyZVNRTCwgYW5kIFJ1Ynkgb24gUmFpbHMuIEkgZG9uXCc5MnQga25vdyBpZiBhbnlvbmUgZXZlciByZWFkIGl0LCBvciBpZiBhbnlvbmUgZXZlbiB1c2VkIHRoZSBzdGFjayBiZXNpZGVzIG1lLiBJIHdyb3RlIG1vc3RseSBmb3IgbXlzZWxmIHRob3VnaCBcJzk2IGJlY2F1c2UgSSBlbmpveSB3cml0aW5nLCBhbmQgYmVjYXVzZSBkb2N1bWVudGluZyBteSBwcm9ncmVzcyBoZWxwcyBtZSBsZWFybi5cClR3byB5ZWFycyBsYXRlciwgSSBkZWNpZGVkIEZMUFIgd2FzIHRvbyBuaWNoZSBhbmQgc3RhcnRlZCBhIG1vcmUgZ2VuZXJhbCBibG9nIGNhbGxlZCBcJzkzZXZhbmcuZWxpLnN0IFwnOTYgdXR0ZXJseSB1bnF1YWxpZmllZCBvcGluaW9ucyBvbiBzb2Z0d2FyZS5cJzk0IEF0IHRoZSB0aW1lLCBJIGhhZCBvbmx5IGhhZCBvbmUgcHJvZ3JhbW1pbmcgam9iLCB3aGljaCBpbnZvbHZlZCBtZSBjb252ZXJ0aW5nIGEgQ29sZEZ1c2lvbiBhcHBsaWNhdGlvbiB0byBQSFAuIEkgZGlkblwnOTJ0IGVuam95IHRoZSBwcm9qZWN0IGl0c2VsZiBtdWNoLCBidXQgSSB3b3JrZWQgd2l0aCBvbmUgb2YgbXkgYmVzdCBmcmllbmRzIGFuZCBnb3QgcGFpZCB0byBwcm9ncmFtLiBJIHdyb3RlIG15IGZpcnN0IGJsb2cgcG9zdCBpbiB0aGUgaG9wZXMgdGhhdCBpdCB3b3VsZCBnZXQgbWUgYSBqb2IuIEl0IGRpZG5cJzkydCwgYnV0IGl0IGRpZCBnZXQgbWUgc3RhcnRlZCBvbiB0aGUgcGF0aCBvZiB3cml0aW5nIGFuZCBwdWJsaXNoaW5nIHJlZ3VsYXJseS5cCkV2ZW50dWFsbHkgSSBnb3QgdGlyZWQgb2YgYXdrd2FyZGx5IHZvY2FsaXppbmcgbXkgZG9tYWluIG5hbWUsIGFuZCBkZWNpZGVkIElcJzkyZCBiZXR0ZXIganVzdCB1c2UgbXkgb3duIG5hbWUuIEkga2VwdCBkb2luZyBteSB0aGluZywgd3JpdGluZyBhbmQgcHVibGlzaGluZy4gSSBkaWQgdGhhdCBmb3Igb3ZlciAxMCB5ZWFycyAoISEpIGFuZCBub3cgaGVyZSBJIGFtXCc4NSBzdGFydGluZyBmcmVzaC5cCgpcZnM0MFxmc21pbGxpMjAyNTAgSSBoYXRlIGJsb2dnaW5nLCBzZXJpb3VzbHkuClxmczMyIFwKXHBhcmRcdHgzNjBcdHg3MjBcdHgxMDgwXHR4MTQ0MFxyaTQwMFxzYjgwXHNhODBccGFyZGlybmF0dXJhbAoKXGkgXGNmMCBUaGFua3MgZm9yIHRoZSBoaXN0b3J5IGxlc3NvbiwgUGF0XCc4NSBidXQgd2h5IGRvIHlvdSBoYXRlIGJsb2dnaW5nPwpcaTAgXApXZWxsLCBJXCc5MmxsIHRlbGwgeW91LlwKSSB0aGluayBpdCBib2lscyBkb3duIHRvIGhvdyBteSBicmFpbiB3b3JrcywgYW5kIGhvdyB0aGUgaW50ZXJuZXQgd29ya3MsIHdoaWNoIEkgdGhpbmsgYXJlIGJhc2ljYWxseSB0aGUgc2FtZSB0aGluZy4gSSBnZXQgYW4gaWRlYSAoZnJvbSBzb21lb25lIGVsc2UpLiBJIGdldCBhbm90aGVyIGlkZWEgKGZyb20gYW5vdGhlciBzb21lb25lIGVsc2UpLiBJIGdldCBtb3JlIGlkZWFzLiBUaGUgaWRlYXMgZ3JvdywgYW5kIHNtYXNoIGludG8gb25lIGFub3RoZXIsIGFuZCBjaGFuZ2Ugc2hhcGUuIFRoZXkgdHVnIGF0IGVhY2ggb3RoZXIsIGJyZWFrLCBtZXJnZSwgbXVsdGlwbHksIGFuZCBtdXRhdGUuIEkgZG9uXCc5MnQga25vdyBob3cgaXQgaGFwcGVucywgYnV0IGl0IGRvZXMsIGFuZCBJIGxpa2UgaXQuIEkgbGlrZSBpdCBhIGxvdC5cCkJsb2dnaW5nIGRvZXNuXCc5MnQgd29yayB0aGF0IHdheSwgb3IgYXQgbGVhc3QgaGFzIG5ldmVyIHdvcmtlZCB0aGF0IHdheSBmb3IgbWUuIEJsb2dnaW5nIGhhcHBlbnMgY2hyb25vbG9naWNhbGx5XCc4NSBJIHdyaXRlIGEgcG9zdCBvbiBOb3ZlbWJlciAxc3QsIGFuZCB0aGVuIGFub3RoZXIgcG9zdCBvbiBOb3ZlbWJlciAybmQuIFRoYXRcJzkycyBob3cgSSB3cm90ZSBpdCwgYW5kIHRoYXRcJzkycyBob3cgeW91IHNlZSBpdC4gQnV0IGl0XCc5MnMgbm90IGhvdyBJIHRoaW5rLCBhbmQgdGhhdCBib3RoZXJzIG1lLlwKV2hhdCBoYXBwZW5zIHdoZW4gSSB0aGluayBvZiBzb21ldGhpbmcgdG8gYWRkIHRvIHRoZSBOb3ZlbWJlciAxc3QgcG9zdCwgYnV0IG5vdyBpdFwnOTJzIE5vdmVtYmVyIDNyZD8gRG8gSSB3cml0ZSBhIG5ldyBibG9nIHBvc3QsIGFuZCBsaW5rIGJhY2sgdG8gdGhlIGZpcnN0IG9uZS4gRG8gSSB1cGRhdGUgdGhlIG9yaWdpbmFsIHBvc3Q/IElmIHNvLCBkbyBJIHBvaW50IG91dCB0aGUgdXBkYXRlPyBXaGF0IGlmIHlvdSBmaXJzdCByZWFkIHRoZSBwb3N0IG9uIE5vdmVtYmVyIDV0aCwgYW5kIG5ldmVyIGtuZXcgdGhhdCBJIGhhZCB1cGRhdGVkIGl0IGluIHRoZSBmaXJzdCBwbGFjZT9cClRoYXRcJzkycyBhIGxvdCBvZiBxdWVzdGlvbnMgZm9yIHNvbWV0aGluZyB0aGF0IG1pZ2h0IGJlIGEgdHJpdmlhbCB1cGRhdGUuIFdoZXRoZXIgSSBtYWtlIGEgc21hbGwgY2hhbmdlIG9yIGEgYmlnIGNoYW5nZSBkb2VzblwnOTJ0IGV2ZW4gbWF0dGVyLiBUaGUgYmlnZ2VyIHByb2JsZW0gSSBoYXZlIGlzIGFza2luZyB0aG9zZSBxdWVzdGlvbnMgaW4gdGhlIGZpcnN0IHBsYWNlLiBUaGV5IGNyZWF0ZSBlbm91Z2ggbWVudGFsIGZyaWN0aW9uIGZvciBtZSB0aGF0IEkgZG9uXCc5MnQgd2FudCB0byBkZWFsIHdpdGggaXQuXApJXCc5Mm0gcHJvYmFibHkgb3ZlcnRoaW5raW5nIHRoYXQgc3R1ZmYuIElcJzkydmUgYmVlbiBkb2luZyB0aGlzIGxvbmcgZW5vdWdoIHRvIGtub3cgdGhhdCBJXCc5Mm0gbm90IGdvaW5nIHRvIHN0b3AuIEkgbmVlZCB0byBhZGRyZXNzIHRoZSBwcm9ibGVtcyBJXCc5MnZlIGlkZW50aWZpZWQuIFRoZXkgZ2V0IGluIHRoZSB3YXkgb2YgbWUgd3JpdGluZyBhbmQgcHVibGlzaGluZywgYW5kIHRoYXRcJzkycyBub3QgY29vbC5cClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWwKClxmczQwXGZzbWlsbGkyMDI1MCBcY2YwIE15IGtub3dsZWRnZSBncm93cy4gTXkgd3JpdGluZyBzaG91bGQgZ3JvdyB3aXRoIGl0LgpcZnMzMiBcClRoZSBjaHJvbm9sb2dpY2FsIHBhcmFkaWdtIG9mIGJsb2dnaW5nIHBvc2VzIGFuIGV2ZW4gYmlnZ2VyIHByb2JsZW0gZm9yIG1lIHRob3VnaC4gV2hhdCBpZiBJIGRvblwnOTJ0IGp1c3Qgd2FudCB0byBhZGQgc29tZSBkZXRhaWxzIHRvIGEgYmxvZyBwb3N0XCc4NSB3aGF0IGlmIEkgd2FudCB0byByZXByZXNlbnQgd2hhdCBJIGFjdHVhbGx5IGtub3cgYWJvdXQgYSBzdWJqZWN0P1wKQ29udGVudCBtYW5hZ2VtZW50IHN5c3RlbXMgaGF2ZSBhbHdheXMgaGFkIHBhZ2VzLCB3aGljaCBkbyB0aGUgdHJpY2suIEluIGZhY3QgSVwnOTJtIHByZXR0eSBzdXJlIHRob3NlIGV4aXN0ZWQgbG9uZyBiZWZvcmUgYmxvZ3MgZW50ZXJlZCB0aGUgSW50ZXJuZXQgY29uc2Npb3VzbmVzcy4gVGhhdFwnOTJzIHdoZXJlIElcJzkybSBoZWFkZWQgXCc5NiBnZXR0aW5nIGJhY2sgdG8gYmFzaWNzLCBjcmVhdGluZyBzaW1wbGUgSFRNTCBwYWdlcy5cCkEgd2ViIHBhZ2VcJzkycyB2YWx1ZSBjYW4gaW5jcmVhc2Ugb3ZlciB0aW1lXCc4NSBieSBhZGRpbmcgYW5kIHJlbW92aW5nIGNvbnRlbnQsIHJlc3RydWN0dXJpbmcgdGhlIHBhZ2UsIGFkZGluZyBsaW5rcy4gTWF5YmUgYSBzaW5nbGUgcGFyYWdyYXBoIGJlY29tZXMgYSBwYWdlLCBiZWNvbWVzIGEgd2hvbGUgY29sbGVjdGlvbiBvZiBwYWdlcy4gTXkgdGhpbmtpbmcgZ3Jvd3MgdGhhdCB3YXkuIEkgd2FudCBteSB3cml0aW5nIHRvIGdyb3cgdGhhdCB3YXkgdG9vLlwKClxmczQwXGZzbWlsbGkyMDI1MCBJIGhhdmUgYSB3YXkgZm9yd2FyZC4KXGZzMzIgXApGb3J0dW5hdGVseSwgSSBoYXZlIGluc3BpcmF0aW9uIGZyb20gTWFydGluIEZvd2xlciwgd2hvIGtlZXBzIGEgXCc5M2JsaWtpLlwnOTQgSXRcJzkycyBhIGNyb3NzIGJldHdlZW4gYSB3aWtpIGFuZCBhIGJsb2csIGFzIHRoZSBuYW1lIHN1Z2dlc3RzLiBJIHRoaW5rIGhlIGhhcyB0aGUgc2FtZSBzb3J0IG9mIHByb2JsZW1zIHdpdGggYmxvZ3MgdGhhdCBJIGRvOlwKPGJsb2NrcXVvdGU+XCc5M0kgZmluZCB3cml0aW5nIHRvbyBoYXJkIHRvIHdhbnQgdG8gc3BlbmQgaXQgb24gdGhpbmdzIHRoYXQgZGlzYXBwZWFyXCc5NCAtTWFydGluIEZvd2xlcjwvYmxvY2txdW90ZT5cClRvIGJ1aWxkIG15IHdlYnNpdGUgYWdhaW4sIElcJzkybGwgdXNlIGFub3RoZXIgdGhpbmcgSSBsZWFybmVkIGZyb20gTXIuIEZvd2xlcjogUmVmYWN0b3JpbmcuIFB1dCBzaW1wbHksIG15IHByb2Nlc3MgZnJvbSBoZXJlIG9uIG91dCBpczpcCiMgd3JpdGVcCiMgcHVibGlzaFwKIyByZWZhY3RvclwKV2VcJzkybGwgc2VlIGhvdyBpdCB3b3JrcyBvdXQuIEkgc3VzcGVjdCBpdCB3aWxsIGJlIHByZXR0eSBnb29kLn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAAAFwvlYtgEAAAAAAAAAAAAA</rtfd>
+</item>
 </item>
 <item ID="1479810814" Creator="padillac" >
 <attribute name="Associates" ></attribute>
@@ -846,7 +888,7 @@
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T00:45:51-06:00</attribute>
 <attribute name="Name" >HTML page</attribute>
-<attribute name="SelectionCount" >17</attribute>
+<attribute name="SelectionCount" >22</attribute>
 <attribute name="Xpos" >3.5</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;!DOCTYPE html&gt;
@@ -867,21 +909,33 @@
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T00:52:58-06:00</attribute>
+<attribute name="Modified" >2017-04-21T02:25:53-06:00</attribute>
 <attribute name="Name" >HTML page content</attribute>
-<attribute name="SelectionCount" >15</attribute>
+<attribute name="SelectionCount" >40</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
-<text >&lt;h1&gt;^include(this, /Templates/title)^&lt;/h1&gt;
+<text >^if(!$HomePage)^
+&lt;p&gt;
+^linkTo(/Pat Maddox..., &quot;(home)&quot;)^
+^if(parent)^
+^linkTo(parent, ^value(&quot;(&quot; + $Name(parent) + &quot;)&quot;)^)^
+^endif^
+&lt;/p&gt;
+^endif^
 
-^text^
-^children(/Templates/HTML page/HTML item)</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5rAQAAKwAAAAEAAABjAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIDxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApedGV4dF5cCl5jaGlsZHJlbigvVGVtcGxhdGVzL0hUTUwgcGFnZS9IVE1MIGl0ZW0pfQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAEqs+Vi2AQAAAAAAAAAAAAA=</rtfd>
+&lt;h1&gt;^include(this, /Templates/title)^&lt;/h1&gt;
+
+^if($ShowReadTime)^
+&lt;p&gt;&lt;b&gt;^value(round($WordCount / 250))^ minute read&lt;/b&gt;&lt;/p&gt;
+^endif^
+
+^text^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC41AgAAKwAAAAEAAAAtAgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZighJEhvbWVQYWdlKV5cCjxwPlwKXmxpbmtUbygvUGF0IE1hZGRveC4uLiwgIihob21lKSIpXlwKXmlmKHBhcmVudCleXApebGlua1RvKHBhcmVudCwgXnZhbHVlKCIoIiArICROYW1lKHBhcmVudCkgKyAiKSIpXileXApeZW5kaWZeXAo8L3A+XApeZW5kaWZeXApcCjxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApeaWYoJFNob3dSZWFkVGltZSleXAo8cD48Yj5edmFsdWUocm91bmQoJFdvcmRDb3VudCAvIDI1MCkpXiBtaW51dGUgcmVhZDwvYj48L3A+XApeZW5kaWZeXApcCl50ZXh0Xn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAAARwvlYtgEAAAAAAAAAAAAA</rtfd>
 <item ID="1479810818" Creator="padillac" proto="HTML Template" >
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="Modified" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="Name" >HTML item</attribute>
-<attribute name="SelectionCount" >5</attribute>
+<attribute name="SelectionCount" >6</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;h2&gt;^title^&lt;/h2&gt;
@@ -894,13 +948,39 @@
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2017-04-21T00:43:06-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T00:47:53-06:00</attribute>
+<attribute name="Modified" >2017-04-21T00:59:09-06:00</attribute>
 <attribute name="Name" >title</attribute>
-<attribute name="SelectionCount" >8</attribute>
+<attribute name="SelectionCount" >10</attribute>
 <attribute name="Xpos" >7</attribute>
 <attribute name="Ypos" >0</attribute>
-<text >^if($Name != &quot;Pat Maddox...&quot;)^Pat Maddox... ^endif^^title^</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5GAQAAKwAAAAEAAAA+AQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZigkTmFtZSAhPSAiUGF0IE1hZGRveC4uLiIpXlBhdCBNYWRkb3guLi4gXmVuZGlmXl50aXRsZV59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAGav5WLYBAAAAAAAAAAAAAA==</rtfd>
+<text >^if(!$HomePage)^Pat Maddox ^endif^^title^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC41AQAAKwAAAAEAAAAtAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZighJEhvbWVQYWdlKV5QYXQgTWFkZG94IF5lbmRpZl5edGl0bGVefQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAL2t+Vi2AQAAAAAAAAAAAAA=</rtfd>
+</item>
+<item ID="1492761967" Creator="padillac" proto="HTML Template" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2017-04-21T02:06:06-06:00</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="Modified" >2017-04-21T02:08:41-06:00</attribute>
+<attribute name="Name" >Child Links List</attribute>
+<attribute name="SelectionCount" >4</attribute>
+<attribute name="Xpos" >10.5</attribute>
+<attribute name="Ypos" >0</attribute>
+<text >^if(^childLinks^)^&lt;ul&gt;
+^children(/Templates/Child Links List/Child Links Item)^
+&lt;/ul&gt;^endif^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5qAQAAKwAAAAEAAABiAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZiheY2hpbGRMaW5rc14pXjx1bD5cCl5jaGlsZHJlbigvVGVtcGxhdGVzL0NoaWxkIExpbmtzIExpc3QvQ2hpbGQgTGlua3MgSXRlbSleXAo8L3VsPl5lbmRpZl59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAACb75WLYBAAAAAAAAAAAAAA==</rtfd>
+<item ID="1492762059" Creator="padillac" proto="HTML Template" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2017-04-21T02:07:38-06:00</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="Modified" >2017-04-21T02:09:56-06:00</attribute>
+<attribute name="Name" >Child Links Item</attribute>
+<attribute name="SelectionCount" >6</attribute>
+<attribute name="Xpos" >0</attribute>
+<attribute name="Ypos" >0</attribute>
+<text >&lt;li&gt;^linkTo(this, ^include(this, /Templates/title)^)^&lt;/li&gt;</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5GAQAAKwAAAAEAAAA+AQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIDxsaT5ebGlua1RvKHRoaXMsIF5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvdGl0bGUpXilePC9saT59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAVL75WLYBAAAAAAAAAAAAAA==</rtfd>
+</item>
 </item>
 </item>
 <item ID="1479810816" Creator="padillac" >
@@ -919,6 +999,7 @@
 <attribute name="Xpos" >10.075</attribute>
 <attribute name="Ypos" >0</attribute>
 <item ID="1479810817" Creator="padillac" >
+<attribute name="Associates" ></attribute>
 <attribute name="Badge" >tools</attribute>
 <attribute name="Color" >lighter black</attribute>
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
@@ -930,6 +1011,7 @@
 <attribute name="HTMLParagraphEnd" ></attribute>
 <attribute name="HTMLParagraphStart" ></attribute>
 <attribute name="Height" >3</attribute>
+<attribute name="IsComposite" >false</attribute>
 <attribute name="IsPrototype" >true</attribute>
 <attribute name="IsTemplate" >true</attribute>
 <attribute name="Modified" >2016-11-22T02:33:33-06:00</attribute>
@@ -937,7 +1019,7 @@
 <attribute name="NoSpelling" >true</attribute>
 <attribute name="OnAdd" >$Prototype=&quot;HTML Template&quot;;$IsTemplate=true;</attribute>
 <attribute name="ParagraphSpacing" >0</attribute>
-<attribute name="SelectionCount" >1</attribute>
+<attribute name="SelectionCount" >2</attribute>
 <attribute name="SmartQuotes" >false</attribute>
 <attribute name="TextFont" >Andale Mono</attribute>
 <attribute name="Width" >5</attribute>
@@ -946,6 +1028,20 @@
 <text >&lt;!--  Tinderbox: ^title --&gt;
 
 </text>
+</item>
+<item ID="1492763207" Creator="padillac" >
+<attribute name="Associates" ></attribute>
+<attribute name="Badge" >pen</attribute>
+<attribute name="BadgeMonochrome" >true</attribute>
+<attribute name="Created" >2017-04-21T02:26:46-06:00</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="IsPrototype" >true</attribute>
+<attribute name="Modified" >2017-04-21T02:26:46-06:00</attribute>
+<attribute name="Name" >content</attribute>
+<attribute name="SelectionCount" >4</attribute>
+<attribute name="ShowReadTime" >true</attribute>
+<attribute name="Xpos" >6</attribute>
+<attribute name="Ypos" >0</attribute>
 </item>
 </item>
 <item ID="1492755978" Creator="padillac" >
@@ -972,6 +1068,18 @@
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756227" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756987" destcreator="padillac" color="normal"  />
 <link name="*untitled" sourceid="1479810648" sourcecreator="padillac" sstart="2" slen="6" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756927" destcreator="padillac" color="normal"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="151" slen="58" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20051105050918/flpr.org"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="542" slen="55" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20070114021507/http://evang.eli.st:80/blog/"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="769" slen="22" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://twitter.com/robotdeathsquad"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="825" slen="18" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20070206012120/http://evang.eli.st:80/blog/2006/11/29/smart-people-need-smart-servants"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1062" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://web-beta.archive.org/web/20090214035120/patmaddox.com"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="1707" slen="15" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.youtube.com/watch?v=28GLa9T2CtI"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3669" slen="13" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.martinfowler.com"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="3697" slen="5" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://www.martinfowler.com/bliki/WhatIsaBliki.html"  />
+<link name="*untitled" sourceid="1492757797" sourcecreator="padillac" sstart="4018" slen="11" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://martinfowler.com/books/refactoring.html"  />
+<link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492761967" destcreator="padillac" color="normal"  />
+<link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492762059" destcreator="padillac" color="normal"  />
+<link name="prototype" sourceid="1492763207" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492757797" destcreator="padillac" color="normal"  />
 </links>
 <macros >
 </macros>
@@ -1047,7 +1155,7 @@
 <RunScriptsAutomatically > 1</RunScriptsAutomatically>
 <Version > version 7.0.3</Version>
 <PreferencePane > 0</PreferencePane>
-<LastBadgeFamily > 1</LastBadgeFamily>
+<LastBadgeFamily > 3</LastBadgeFamily>
 <TipWindowX > 300</TipWindowX>
 <TipWindowY > 50</TipWindowY>
 <RegUserName > </RegUserName>
@@ -1083,15 +1191,15 @@
 <FindWindowY > 100</FindWindowY>
 <RenameWindowX > -1</RenameWindowX>
 <RenameWindowY > -1</RenameWindowY>
-<InspectorX > 1120</InspectorX>
-<InspectorY > 381</InspectorY>
+<InspectorX > 784</InspectorX>
+<InspectorY > 556</InspectorY>
 <EnterKeyAction > 0</EnterKeyAction>
 <UpdateViewShown > </UpdateViewShown>
 <TimelineScale > 1000</TimelineScale>
 <TimelineLabelSize > 0</TimelineLabelSize>
-<GetInfoPane > </GetInfoPane>
-<GetInfoCategory > </GetInfoCategory>
-<GetInfoSelection > </GetInfoSelection>
+<GetInfoPane > attributes</GetInfoPane>
+<GetInfoCategory > User</GetInfoCategory>
+<GetInfoSelection > ShowReadTime</GetInfoSelection>
 <LastLinkName > *untitled</LastLinkName>
 <UsingGuides > 1</UsingGuides>
 <SystemAttributesCategory > HTML</SystemAttributesCategory>
@@ -1126,10 +1234,11 @@
 <ExplodeDelimiter > </ExplodeDelimiter>
 </preferences>
 <windows >
-<window bounds="Rect[ 4 0 1440 877]" ruler="0" >
+<window bounds="Rect[ -0 -0 1440 877]" ruler="0" >
 <tabs >
-<tab selected="0" viewType="0" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="336.75" scrollY="525" selection="1479810648 " expanded="" textTab="1" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.498751" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
-<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1479810648 " expanded="1479810814 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
+<tab selected="0" viewType="0" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="173" scrollY="380.5" selection="1479810648 " expanded="" textTab="1" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.502431" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
+<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1492763207 " expanded="1492756927 1479810814 1479810815 1492761967 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
+<tab selected="0" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1492756927" scrollX="0" scrollY="0" selection="1492757797 " expanded="1492756927 1479810814 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.5" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
 </tabs>
 </window>
 </windows>
