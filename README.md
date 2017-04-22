@@ -5,7 +5,7 @@
 </p>
 
 
-<h1>Pat Maddox README</h1>
+<h1>README</h1>
 
 
 
@@ -18,3 +18,6 @@
 <a href="index.html">(home)</a>
 
 </p>
+
+
+<i>Copyright © 2017 Pat Maddox</i>
