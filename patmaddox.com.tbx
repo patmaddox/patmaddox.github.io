@@ -740,7 +740,7 @@
 </attrib>
 <attrib Name="ShowReadTime" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
 </attrib>
-<attrib Name="ShowUpdatedTime" parent="User" editable="1" visibleInEditor="1" type="4" default="never" >
+<attrib Name="ShowUpdatedTime" parent="User" editable="1" visibleInEditor="1" type="4" default="false" >
 </attrib>
 <attrib Name="UpdatedTime" parent="User" editable="1" visibleInEditor="1" type="5" default="never" >
 </attrib>
@@ -778,8 +778,7 @@
 <color name="yellow" color="#cccc00" hidden="0"  />
 </colors>
 <menu name="Value" kind="stamps" >
-<stamp name="(re-) Publish" >$PublishedTime |= &quot;now&quot;;
-$UpdatedTime = &quot;now&quot;;</stamp>
+<stamp name="(re-) Publish" >$PublishedTime |= &quot;now&quot;;$UpdatedTime = &quot;now&quot;;</stamp>
 </menu>
 <linkTypes >
 <linkType name="*untitled" label="" visible="1" showLabel="0" required="1" color="#000000" colorString="#000000" style="0" arrowType="0"  />
@@ -808,7 +807,7 @@ $UpdatedTime = &quot;now&quot;;</stamp>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T00:53:52-06:00</attribute>
 <attribute name="Name" >Pat Maddox...</attribute>
-<attribute name="SelectionCount" >31</attribute>
+<attribute name="SelectionCount" >34</attribute>
 <attribute name="Xpos" >-5.6875</attribute>
 <attribute name="Ypos" >-10.65625</attribute>
 <text >* writes
@@ -825,14 +824,14 @@ $UpdatedTime = &quot;now&quot;;</stamp>
 </text>
 <rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC7wAQAAKwAAAAEAAADoAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBIb2VmbGVyVGV4dC1SZWd1bGFyO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDIyMFx0eDcyMFx0eDEwODBcdHgxNDQwXHJpNDAwXHNiODBcc2E4MFxwYXJkaXJuYXR1cmFsCgpcZjBcZnMzMiBcY2YwICogd3JpdGVzXAoqIG1ha2VzIHJlY29yZHNcCiogY29va3NcCiogbG92ZXMgZG9nc1wKKiB0ZWFjaGVzXAoqKiBSdWJ5U3RlcHNcCiogY29kZXNcClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWwKXGNmMCAqKiBHaXRIdWJcClxwYXJkXHR4MjIwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWwKXGNmMCAqIHRyYXZlbHNcCiogc3RheXMgaW4gdG91Y2hcCioqIFR3aXR0ZXJcCn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAACArPlYtgEAAAAAAAAAAAAA</rtfd>
 </item>
-<item ID="1492756927" Creator="padillac" >
+<item ID="1492756927" Creator="padillac" proto="section" >
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2017-04-21T00:42:06-06:00</attribute>
 <attribute name="HTMLExportFileName" >writes</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T03:31:11-06:00</attribute>
 <attribute name="Name" >writes!</attribute>
-<attribute name="SelectionCount" >26</attribute>
+<attribute name="SelectionCount" >29</attribute>
 <attribute name="Sort" >PublishedTime</attribute>
 <attribute name="SortBackward" >true</attribute>
 <attribute name="SortTransform" >original note</attribute>
@@ -846,9 +845,9 @@ $UpdatedTime = &quot;now&quot;;</stamp>
 <attribute name="HTMLExportFileName" >hates-blogging-but-will-do-it-anyway</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T03:46:42-06:00</attribute>
-<attribute name="Name" >hates blogging, but will do it anyway.</attribute>
+<attribute name="Name" >I hate blogging, but I&apos;ll do it anyway.</attribute>
 <attribute name="PublishedTime" >2017-04-21T02:35:00-06:00</attribute>
-<attribute name="SelectionCount" >42</attribute>
+<attribute name="SelectionCount" >44</attribute>
 <attribute name="UpdatedTime" >2017-04-21T02:35:00-06:00</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
@@ -898,16 +897,16 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2017-04-21T00:30:26-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T02:31:28-06:00</attribute>
+<attribute name="Modified" >2017-04-22T02:51:09-06:00</attribute>
 <attribute name="Name" >HTML page</attribute>
-<attribute name="SelectionCount" >28</attribute>
+<attribute name="SelectionCount" >32</attribute>
 <attribute name="Xpos" >3.5</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 	&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
-	&lt;title&gt;^include(this, /Templates/title)^&lt;/title&gt;
+	&lt;title&gt;^include(this, /Templates/page title)^&lt;/title&gt;
 	&lt;style&gt;body { width: 720px; margin: auto; }&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -916,15 +915,15 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 &lt;/body&gt;
 &lt;/html&gt;
 </text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC4yAgAAKwAAAAEAAAAqAgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIDwhRE9DVFlQRSBodG1sPlwKPGh0bWw+XAo8aGVhZD5cCgk8bWV0YSBodHRwLWVxdWl2PSJjb250ZW50LXR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+XAoJPHRpdGxlPl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvdGl0bGUpXjwvdGl0bGU+XAoJPHN0eWxlPmJvZHkgXHsgd2lkdGg6IDcyMHB4OyBtYXJnaW46IGF1dG87IFx9PC9zdHlsZT5cCjwvaGVhZD5cCjxib2R5PlwKXApeaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL0hUTUwgcGFnZSBjb250ZW50KV5cCjwvYm9keT5cCjwvaHRtbD5cCn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAABgw/lYtgEAAAAAAAAAAAAA</rtfd>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC43AgAAKwAAAAEAAAAvAgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIDwhRE9DVFlQRSBodG1sPlwKPGh0bWw+XAo8aGVhZD5cCgk8bWV0YSBodHRwLWVxdWl2PSJjb250ZW50LXR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+XAoJPHRpdGxlPl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvcGFnZSB0aXRsZSlePC90aXRsZT5cCgk8c3R5bGU+Ym9keSBceyB3aWR0aDogNzIwcHg7IG1hcmdpbjogYXV0bzsgXH08L3N0eWxlPlwKPC9oZWFkPlwKPGJvZHk+XApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvSFRNTCBwYWdlIGNvbnRlbnQpXlwKPC9ib2R5PlwKPC9odG1sPlwKfQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAH0Z+1i2AQAAAAAAAAAAAAA=</rtfd>
 </item>
 <item ID="1479810815" Creator="padillac" proto="HTML Template" >
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T03:29:38-06:00</attribute>
+<attribute name="Modified" >2017-04-22T02:56:08-06:00</attribute>
 <attribute name="Name" >HTML page content</attribute>
-<attribute name="SelectionCount" >55</attribute>
+<attribute name="SelectionCount" >58</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >^include(this, /Templates/breadcrumb links)^
@@ -937,8 +936,10 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 
 ^text^
 
-^include(this, /Templates/breadcrumb links)^</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC71AQAAKwAAAAEAAADtAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcyleXApcCjxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApeaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3JlYWQgdGltZSleXApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvdXBkYXRlZCB0aW1lKV5cClwKXnRleHReXApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcylefQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAALR+Vi2AQAAAAAAAAAAAAA=</rtfd>
+^include(this, /Templates/breadcrumb links)^
+
+&lt;i&gt;Copyright © ^value(date(&quot;today&quot;).format(&quot;y&quot;))^ Pat Maddox&lt;/i&gt;</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC48AgAAKwAAAAEAAAA0AgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcyleXApcCjxoMT5eaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3RpdGxlKV48L2gxPlwKXApeaW5jbHVkZSh0aGlzLCAvVGVtcGxhdGVzL3JlYWQgdGltZSleXApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvdXBkYXRlZCB0aW1lKV5cClwKXnRleHReXApcCl5pbmNsdWRlKHRoaXMsIC9UZW1wbGF0ZXMvYnJlYWRjcnVtYiBsaW5rcyleXApcCjxpPkNvcHlyaWdodCBcJ2E5IF52YWx1ZShkYXRlKCJ0b2RheSIpLmZvcm1hdCgieSIpKV4gUGF0IE1hZGRveDwvaT59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAqBr7WLYBAAAAAAAAAAAAAA==</rtfd>
 <item ID="1479810818" Creator="padillac" proto="HTML Template" >
 <attribute name="Created" >2016-11-22T02:33:33-06:00</attribute>
 <attribute name="Modified" >2016-11-22T02:33:33-06:00</attribute>
@@ -956,13 +957,33 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="Associates" ></attribute>
 <attribute name="Created" >2017-04-21T00:43:06-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
-<attribute name="Modified" >2017-04-21T00:59:09-06:00</attribute>
+<attribute name="Modified" >2017-04-22T02:47:54-06:00</attribute>
 <attribute name="Name" >title</attribute>
-<attribute name="SelectionCount" >10</attribute>
+<attribute name="SelectionCount" >17</attribute>
 <attribute name="Xpos" >7</attribute>
 <attribute name="Ypos" >0</attribute>
-<text >^if(!$HomePage)^Pat Maddox ^endif^^title^</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC41AQAAKwAAAAEAAAAtAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZighJEhvbWVQYWdlKV5QYXQgTWFkZG94IF5lbmRpZl5edGl0bGVefQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAL2t+Vi2AQAAAAAAAAAAAAA=</rtfd>
+<text >^if($Prototype == &quot;section&quot;)^Pat Maddox ^endif^^title^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5CAQAAKwAAAAEAAAA6AQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZigkUHJvdG90eXBlID09ICJzZWN0aW9uIileUGF0IE1hZGRveCBeZW5kaWZeXnRpdGxlXn0BAAAAIwAAAAEAAAAHAAAAVFhULnJ0ZhAAAAC6GPtYtgEAAAAAAAAAAAAA</rtfd>
+</item>
+<item ID="1492972562" Creator="padillac" proto="HTML Template" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2017-04-22T02:49:46-06:00</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="Modified" >2017-04-22T02:51:01-06:00</attribute>
+<attribute name="Name" >page title</attribute>
+<attribute name="SelectionCount" >18</attribute>
+<attribute name="Xpos" >28</attribute>
+<attribute name="Ypos" >0</attribute>
+<text >^if($HomePage)^
+^title^
+^else^
+  ^if($Prototype == &quot;section&quot;)^
+    Pat Maddox ^title^
+  ^else^
+    ^title^ – Pat Maddox
+  ^endif^
+^endif^</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC6gAQAAKwAAAAEAAACYAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxMzQ4XGNvY29hc3VicnRmMTcwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQpccGFyZFx0eDU2MFx0eDExMjBcdHgxNjgwXHR4MjI0MFx0eDI4MDBcdHgzMzYwXHR4MzkyMFx0eDQ0ODBcdHg1MDQwXHR4NTYwMFx0eDYxNjBcdHg2NzIwXHJpNDAwXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMzMiBcY2YwIF5pZigkSG9tZVBhZ2UpXlwKXnRpdGxlXlwKXmVsc2VeXAogIF5pZigkUHJvdG90eXBlID09ICJzZWN0aW9uIileXAogICAgUGF0IE1hZGRveCBedGl0bGVeXAogIF5lbHNlXlwKICAgIF50aXRsZV4gXCc5NiBQYXQgTWFkZG94XAogIF5lbmRpZl5cCl5lbmRpZl59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAdRn7WLYBAAAAAAAAAAAAAA==</rtfd>
 </item>
 <item ID="1492761967" Creator="padillac" proto="HTML Template" >
 <attribute name="Associates" ></attribute>
@@ -996,7 +1017,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T03:20:51-06:00</attribute>
 <attribute name="Name" >Child Preview List</attribute>
-<attribute name="SelectionCount" >11</attribute>
+<attribute name="SelectionCount" >12</attribute>
 <attribute name="Xpos" >17.5</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >^if(^childLinks^)^
@@ -1009,7 +1030,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T03:30:38-06:00</attribute>
 <attribute name="Name" >Child Preview Item</attribute>
-<attribute name="SelectionCount" >18</attribute>
+<attribute name="SelectionCount" >19</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;h2&gt;^linkTo(this, ^include(this, /Templates/title)^)^&lt;/h2&gt;
@@ -1049,7 +1070,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="Modified" >2017-04-21T03:28:20-06:00</attribute>
 <attribute name="Name" >read time</attribute>
-<attribute name="SelectionCount" >2</attribute>
+<attribute name="SelectionCount" >3</attribute>
 <attribute name="Xpos" >21</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >^if($ShowReadTime)^
@@ -1125,14 +1146,25 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <attribute name="Created" >2017-04-21T02:26:46-06:00</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="IsPrototype" >true</attribute>
-<attribute name="KeyAttributes" >WordCount;HTMLExportFileName;HTMLExportExtension;HTMLExportPath;PublishedTime;UpdatedTime</attribute>
+<attribute name="KeyAttributes" >WordCount;HTMLExportFileName;HTMLExportExtension;HTMLExportPath;PublishedTime;UpdatedTime;ShowReadTime;ShowUpdatedTime</attribute>
 <attribute name="Modified" >2017-04-21T02:26:46-06:00</attribute>
 <attribute name="Name" >content</attribute>
-<attribute name="SelectionCount" >8</attribute>
+<attribute name="SelectionCount" >10</attribute>
 <attribute name="ShowReadTime" >true</attribute>
 <attribute name="ShowUpdatedTime" >true</attribute>
 <attribute name="Xpos" >6</attribute>
 <attribute name="Ypos" >0</attribute>
+</item>
+<item ID="1492972559" Creator="padillac" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2017-04-22T02:47:23-06:00</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="IsPrototype" >true</attribute>
+<attribute name="Modified" >2017-04-22T02:47:23-06:00</attribute>
+<attribute name="Name" >section</attribute>
+<attribute name="SelectionCount" >1</attribute>
+<attribute name="Xpos" >9.5</attribute>
+<attribute name="Ypos" >2</attribute>
 </item>
 </item>
 <item ID="1492755978" Creator="padillac" >
@@ -1176,6 +1208,8 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492766398" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492766898" destcreator="padillac" color="normal"  />
 <link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492766963" destcreator="padillac" color="normal"  />
+<link name="prototype" sourceid="1492972559" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492756927" destcreator="padillac" color="normal"  />
+<link name="prototype" sourceid="1479810817" sourcecreator="padillac" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1492972562" destcreator="padillac" color="normal"  />
 </links>
 <macros >
 </macros>
@@ -1287,8 +1321,8 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <FindWindowY > 100</FindWindowY>
 <RenameWindowX > -1</RenameWindowX>
 <RenameWindowY > -1</RenameWindowY>
-<InspectorX > 784</InspectorX>
-<InspectorY > 418</InspectorY>
+<InspectorX > 1120</InspectorX>
+<InspectorY > 239</InspectorY>
 <EnterKeyAction > 0</EnterKeyAction>
 <UpdateViewShown > </UpdateViewShown>
 <TimelineScale > 1000</TimelineScale>
@@ -1333,7 +1367,7 @@ We’ll see how it works out. I suspect it will be pretty good.</text>
 <window bounds="Rect[ 4 0 1440 877]" ruler="0" >
 <tabs >
 <tab selected="0" viewType="0" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="173" scrollY="380.5" selection="1479810648 " expanded="" textTab="1" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.502431" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
-<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1492757797 " expanded="1492756927 1479810814 1479810815 1492761967 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
+<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1479810621" scrollX="0.5" scrollY="0" selection="1479810815 " expanded="1492756927 1479810814 1479810815 1492761967 1492766390 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.503482" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
 <tab selected="0" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1492756927" scrollX="0" scrollY="0" selection="1492757797 " expanded="1492756927 1479810814 1479810816 " textTab="0" attribute="" sortAttribute="" container="" query="" queryLabel="" action="" actionLabel="" bins="0" summaryAttribute="" summaryMethod="" splitRatio="0.5" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100"  />
 </tabs>
 </window>
