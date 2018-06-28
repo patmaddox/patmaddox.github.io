@@ -844,13 +844,21 @@
 <attribute name="HTMLExportFileName" >index</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="KeyAttributes" >HTMLExportFileName</attribute>
-<attribute name="Modified" >2018-06-28T01:45:03-06:00</attribute>
+<attribute name="Modified" >2018-06-28T01:54:09-06:00</attribute>
 <attribute name="Name" >Pat Maddox</attribute>
 <attribute name="SelectionCount" >3</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
-<text >Getting started with Tinderbox again, to create my website.</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5nAQAAKwAAAAEAAABfAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgR2V0dGluZyBzdGFydGVkIHdpdGggVGluZGVyYm94IGFnYWluLCB0byBjcmVhdGUgbXkgd2Vic2l0ZS59AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAN5M0W7YBAAAAAAAAAAAAAA==</rtfd>
+<text >I’m re-building my site from scratch, using Tinderbox.
+
+Get in touch
+
+- email: pat@patmaddox.com
+- twitter: patmaddox
+- github: patmaddox
+
+&amp;lt;3 Pat</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC7mAQAAKwAAAAEAAADeAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHJlLWJ1aWxkaW5nIG15IHNpdGUgZnJvbSBzY3JhdGNoLCB1c2luZyBUaW5kZXJib3guXApcCgpcZnM0MFxmc21pbGxpMjAyNTAgR2V0IGluIHRvdWNoClxmczMyIFwKXAotIGVtYWlsOiBwYXRAcGF0bWFkZG94LmNvbVwKLSB0d2l0dGVyOiBwYXRtYWRkb3hcCi0gZ2l0aHViOiBwYXRtYWRkb3hcClwKJmx0OzMgUGF0fQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAD2UNFu2AQAAAAAAAAAAAAA=</rtfd>
 </item>
 <item ID="1530171939" Creator="Pat Maddox" >
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
@@ -945,6 +953,10 @@
 <links >
 <link name="prototype" sourceid="1530171942" sourcecreator="Pat Maddox" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1530171940" destcreator="Pat Maddox" color="normal"  />
 <link name="prototype" sourceid="1530171942" sourcecreator="Pat Maddox" sstart="-1" slen="0" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1530171943" destcreator="Pat Maddox" color="normal"  />
+<link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="108" slen="9" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://twitter.com/patmaddox"  />
+<link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="128" slen="9" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://github.com/patmaddox"  />
+<link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="44" slen="9" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="http://www.eastgate.com/Tinderbox/"  />
+<link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="79" slen="17" style="0" arrowtype="0" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="mailto:pat@patmaddox.com"  />
 </links>
 <macros >
 </macros>
@@ -993,7 +1005,7 @@
 <UnderlineAliases > 0</UnderlineAliases>
 <AutomaticLinkDetection > 1</AutomaticLinkDetection>
 <HiddenTabBar > 0</HiddenTabBar>
-<TextPaneSelectorHidden > 1</TextPaneSelectorHidden>
+<TextPaneSelectorHidden > 0</TextPaneSelectorHidden>
 <OutlineLeading > 2</OutlineLeading>
 <InteriorScale > 1</InteriorScale>
 <InteriorScaleNew > 1.5</InteriorScaleNew>
