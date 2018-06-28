@@ -844,9 +844,9 @@
 <attribute name="HTMLExportFileName" >index</attribute>
 <attribute name="IsComposite" >false</attribute>
 <attribute name="KeyAttributes" >HTMLExportFileName</attribute>
-<attribute name="Modified" >2018-06-28T01:54:09-06:00</attribute>
+<attribute name="Modified" >2018-06-28T02:01:38-06:00</attribute>
 <attribute name="Name" >Pat Maddox</attribute>
-<attribute name="SelectionCount" >4</attribute>
+<attribute name="SelectionCount" >5</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >I’m re-building my site from scratch, using Tinderbox.
@@ -857,14 +857,48 @@ Get in touch
 - twitter: patmaddox
 - github: patmaddox
 
-&amp;lt;3 Pat</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5AAgAAKwAAAAEAAAA4AgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHJlLWJ1aWxkaW5nIG15IHNpdGUgZnJvbSBzY3JhdGNoLCB1c2luZyBUaW5kZXJib3guXApcClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmczQwXGZzbWlsbGkyMDI1MCBcY2YyIEdldCBpbiB0b3VjaApcZnMzMiBcY2YyIFwKXAotIGVtYWlsOiBwYXRAcGF0bWFkZG94LmNvbVwKLSB0d2l0dGVyOiBwYXRtYWRkb3hcCi0gZ2l0aHViOiBwYXRtYWRkb3hcClwKJmx0OzMgUGF0fQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAF+UNFu2AQAAAAAAAAAAAAA=</rtfd>
+&amp;lt;3 Pat
+
+Notes
+
+- Why Tinderbox?</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC6CAgAAKwAAAAEAAAB6AgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHJlLWJ1aWxkaW5nIG15IHNpdGUgZnJvbSBzY3JhdGNoLCB1c2luZyBUaW5kZXJib3guXApcClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmczQwXGZzbWlsbGkyMDI1MCBcY2YyIEdldCBpbiB0b3VjaApcZnMzMiBcY2YyIFwKXAotIGVtYWlsOiBwYXRAcGF0bWFkZG94LmNvbVwKLSB0d2l0dGVyOiBwYXRtYWRkb3hcCi0gZ2l0aHViOiBwYXRtYWRkb3hcClwKJmx0OzMgUGF0XApcCgpcZnM0MFxmc21pbGxpMjAyNTAgXGNmMiBOb3RlcwpcZnMzMiBcY2YyIFwKXAotIFdoeSBUaW5kZXJib3g/fQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAAqWNFu2AQAAAAAAAAAAAAA=</rtfd>
+</item>
+<item ID="1530172587" Creator="Pat Maddox" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2018-06-28T01:56:26-06:00</attribute>
+<attribute name="HTMLDontExport" >true</attribute>
+<attribute name="HTMLExportFileName" >n</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="KeyAttributes" >HTMLExportFileName;HTMLDontExport</attribute>
+<attribute name="Modified" >2018-06-28T01:56:26-06:00</attribute>
+<attribute name="Name" >Notes</attribute>
+<attribute name="SelectionCount" >4</attribute>
+<attribute name="Xpos" >24.5</attribute>
+<attribute name="Ypos" >0</attribute>
+<item ID="1530172609" Creator="Pat Maddox" >
+<attribute name="Associates" ></attribute>
+<attribute name="Created" >2018-06-28T01:56:48-06:00</attribute>
+<attribute name="HTMLExportFileName" >why-tinderbox</attribute>
+<attribute name="IsComposite" >false</attribute>
+<attribute name="KeyAttributes" >HTMLExportFileName</attribute>
+<attribute name="Modified" >2018-06-28T01:58:21-06:00</attribute>
+<attribute name="Name" >Why Tinderbox?</attribute>
+<attribute name="SelectionCount" >2</attribute>
+<attribute name="Xpos" >0</attribute>
+<attribute name="Ypos" >0</attribute>
+<text >I’m using Tinderbox for this site because I like the idea of incremental formalization. I’m a fairly messy thinker. I have all kinds of hobbies. I don’t have a clear direction for where I’m going with something. Usually, I just live life, try some stuff, and figure out what it means later.
+Tinderbox seems uniquely suited for working in this way.</text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC6OAgAAKwAAAAEAAACGAgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHVzaW5nIFRpbmRlcmJveCBmb3IgdGhpcyBzaXRlIGJlY2F1c2UgSSBsaWtlIHRoZSBpZGVhIG9mIGluY3JlbWVudGFsIGZvcm1hbGl6YXRpb24uIElcJzkybSBhIGZhaXJseSBtZXNzeSB0aGlua2VyLiBJIGhhdmUgYWxsIGtpbmRzIG9mIGhvYmJpZXMuIEkgZG9uXCc5MnQgaGF2ZSBhIGNsZWFyIGRpcmVjdGlvbiBmb3Igd2hlcmUgSVwnOTJtIGdvaW5nIHdpdGggc29tZXRoaW5nLiBVc3VhbGx5LCBJIGp1c3QgbGl2ZSBsaWZlLCB0cnkgc29tZSBzdHVmZiwgYW5kIGZpZ3VyZSBvdXQgd2hhdCBpdCBtZWFucyBsYXRlci5cClRpbmRlcmJveCBzZWVtcyB1bmlxdWVseSBzdWl0ZWQgZm9yIHdvcmtpbmcgaW4gdGhpcyB3YXkufQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAB2VNFu2AQAAAAAAAAAAAAA=</rtfd>
+</item>
 </item>
 <item ID="1530171939" Creator="Pat Maddox" >
+<attribute name="Associates" ></attribute>
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="HTMLDontExport" >true</attribute>
 <attribute name="HTMLExportChildren" >false</attribute>
 <attribute name="Height" >4</attribute>
+<attribute name="IsComposite" >false</attribute>
 <attribute name="MapScrollX" >6</attribute>
 <attribute name="Modified" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="Name" >Templates</attribute>
@@ -877,7 +911,7 @@ Get in touch
 <attribute name="Modified" >2018-06-28T01:54:50-06:00</attribute>
 <attribute name="Name" >HTML page</attribute>
 <attribute name="NeverComposite" >true</attribute>
-<attribute name="SelectionCount" >1</attribute>
+<attribute name="SelectionCount" >2</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;!DOCTYPE html&gt;
@@ -894,7 +928,7 @@ Get in touch
 &lt;/body&gt;
 &lt;/html&gt;
 </text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC76AQAAKwAAAAEAAADyAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7fQpccGFyZFx0eDU0MFx0eDEwODBcdHgxNjIwXHR4MjE2MFx0eDI3MDBcdHgzMjQwXHR4Mzc4MFx0eDQzMjBccGFyZGlybmF0dXJhbFxwYXJ0aWdodGVuZmFjdG9yMAoKXGYwXGZzMzIgXGNmMCA8IURPQ1RZUEUgaHRtbD5cCjxodG1sPlwKPGhlYWQ+XAoJPG1ldGEgaHR0cC1lcXVpdj0iY29udGVudC10eXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPlwKCTx0aXRsZT5edGl0bGVePC90aXRsZT5cCjwvaGVhZD5cCjxib2R5PlwKXAo8aDE+XnRpdGxlXjwvaDE+XApedGV4dF5cCl5jaGlsZHJlbigvVGVtcGxhdGVzL0hUTUwgcGFnZS9IVE1MIGl0ZW0pXAo8L2JvZHk+XAo8L2h0bWw+XAp9AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAASpQ0W7YBAAAAAAAAAAAAAA==</rtfd>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC4AAgAAKwAAAAEAAAD4AQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7fQpccGFyZFx0eDU0MFx0eDEwODBcdHgxNjIwXHR4MjE2MFx0eDI3MDBcdHgzMjQwXHR4Mzc4MFx0eDQzMjBccmk0MDBccGFyZGlybmF0dXJhbFxwYXJ0aWdodGVuZmFjdG9yMAoKXGYwXGZzMzIgXGNmMCA8IURPQ1RZUEUgaHRtbD5cCjxodG1sPlwKPGhlYWQ+XAoJPG1ldGEgaHR0cC1lcXVpdj0iY29udGVudC10eXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPlwKCTx0aXRsZT5edGl0bGVePC90aXRsZT5cCjwvaGVhZD5cCjxib2R5PlwKXAo8aDE+XnRpdGxlXjwvaDE+XApedGV4dF5cCl5jaGlsZHJlbigvVGVtcGxhdGVzL0hUTUwgcGFnZS9IVE1MIGl0ZW0pXAo8L2JvZHk+XAo8L2h0bWw+XAp9AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAAM5U0W7YBAAAAAAAAAAAAAA==</rtfd>
 <item ID="1530171943" Creator="Pat Maddox" proto="HTML Template" >
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="Modified" >2018-06-28T01:45:38-06:00</attribute>
@@ -910,10 +944,12 @@ Get in touch
 </item>
 </item>
 <item ID="1530171941" Creator="Pat Maddox" >
+<attribute name="Associates" ></attribute>
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="HTMLDontExport" >true</attribute>
 <attribute name="HTMLExportChildren" >false</attribute>
 <attribute name="Height" >4</attribute>
+<attribute name="IsComposite" >false</attribute>
 <attribute name="MapScrollX" >6</attribute>
 <attribute name="Modified" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="Name" >Prototypes</attribute>
@@ -959,6 +995,7 @@ Get in touch
 <link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="128" slen="9" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="https://github.com/patmaddox"  />
 <link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="44" slen="9" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="http://www.eastgate.com/Tinderbox/"  />
 <link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="79" slen="17" style="0" arrowtype="0" labelx="0" labely="0" linkWidth="1" destid="0" destcreator="" color="normal" URL="mailto:pat@patmaddox.com"  />
+<link name="*untitled" sourceid="1530171892" sourcecreator="Pat Maddox" sstart="159" slen="14" style="0" arrowtype="-1" labelx="0" labely="0" linkWidth="1" destid="1530172609" destcreator="Pat Maddox" color="normal"  />
 </links>
 <macros >
 </macros>
@@ -1114,7 +1151,7 @@ Get in touch
 <windows >
 <window bounds="Rect[ 260 148 1160 748]" ruler="0" >
 <tabs >
-<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1530171885" scrollX="0" scrollY="0" selection="1530171892 " expanded="1530171939 1530171940 " textTab="0" splitRatio="0.5" hasBorder="0" isVertical="0" isCentered="1" lineType="0" itemWidth="220" xspace="10" yspace="10" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100" treemapDepth="0" attribute="" container="" bins="10" sortAttribute="" sortDirections="0" summaryAttribute="" summaryMethod="" query="" queryLabel="" action="" actionLabel=""  />
+<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1530171885" scrollX="0" scrollY="0" selection="1530171892 " expanded="1530172587 1530171939 " textTab="0" splitRatio="0.5" hasBorder="0" isVertical="0" isCentered="1" lineType="0" itemWidth="220" xspace="10" yspace="10" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100" treemapDepth="0" attribute="" container="" bins="10" sortAttribute="" sortDirections="0" summaryAttribute="" summaryMethod="" query="" queryLabel="" action="" actionLabel=""  />
 </tabs>
 </window>
 </windows>
