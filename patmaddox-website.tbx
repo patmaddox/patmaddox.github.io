@@ -846,7 +846,7 @@
 <attribute name="KeyAttributes" >HTMLExportFileName</attribute>
 <attribute name="Modified" >2018-06-28T01:54:09-06:00</attribute>
 <attribute name="Name" >Pat Maddox</attribute>
-<attribute name="SelectionCount" >3</attribute>
+<attribute name="SelectionCount" >4</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >I’m re-building my site from scratch, using Tinderbox.
@@ -858,7 +858,7 @@ Get in touch
 - github: patmaddox
 
 &amp;lt;3 Pat</text>
-<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC7mAQAAKwAAAAEAAADeAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHJlLWJ1aWxkaW5nIG15IHNpdGUgZnJvbSBzY3JhdGNoLCB1c2luZyBUaW5kZXJib3guXApcCgpcZnM0MFxmc21pbGxpMjAyNTAgR2V0IGluIHRvdWNoClxmczMyIFwKXAotIGVtYWlsOiBwYXRAcGF0bWFkZG94LmNvbVwKLSB0d2l0dGVyOiBwYXRtYWRkb3hcCi0gZ2l0aHViOiBwYXRtYWRkb3hcClwKJmx0OzMgUGF0fQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAD2UNFu2AQAAAAAAAAAAAAA=</rtfd>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC5AAgAAKwAAAAEAAAA4AgAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBNZXJjdXJ5U1NtLUJvb2s7fQp7XGNvbG9ydGJsO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTtccmVkMFxncmVlbjBcYmx1ZTA7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7XGNzc3JnYlxjMFxjMFxjMDt9ClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmMFxmczMyIFxjZjIgSVwnOTJtIHJlLWJ1aWxkaW5nIG15IHNpdGUgZnJvbSBzY3JhdGNoLCB1c2luZyBUaW5kZXJib3guXApcClxwYXJkXHR4MzYwXHR4NzIwXHR4MTA4MFx0eDE0NDBccmk0MDBcc2I4MFxzYTgwXHBhcmRpcm5hdHVyYWxccGFydGlnaHRlbmZhY3RvcjAKClxmczQwXGZzbWlsbGkyMDI1MCBcY2YyIEdldCBpbiB0b3VjaApcZnMzMiBcY2YyIFwKXAotIGVtYWlsOiBwYXRAcGF0bWFkZG94LmNvbVwKLSB0d2l0dGVyOiBwYXRtYWRkb3hcCi0gZ2l0aHViOiBwYXRtYWRkb3hcClwKJmx0OzMgUGF0fQEAAAAjAAAAAQAAAAcAAABUWFQucnRmEAAAAF+UNFu2AQAAAAAAAAAAAAA=</rtfd>
 </item>
 <item ID="1530171939" Creator="Pat Maddox" >
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
@@ -874,9 +874,10 @@ Get in touch
 <attribute name="Ypos" >0</attribute>
 <item ID="1530171940" Creator="Pat Maddox" proto="HTML Template" >
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
-<attribute name="Modified" >2018-06-28T01:45:38-06:00</attribute>
+<attribute name="Modified" >2018-06-28T01:54:50-06:00</attribute>
 <attribute name="Name" >HTML page</attribute>
 <attribute name="NeverComposite" >true</attribute>
+<attribute name="SelectionCount" >1</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;!DOCTYPE html&gt;
@@ -886,7 +887,6 @@ Get in touch
 	&lt;title&gt;^title^&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;!--   ** Standard Tinderbox Template [section page] **  --&gt;
 
 &lt;h1&gt;^title^&lt;/h1&gt;
 ^text^
@@ -894,10 +894,12 @@ Get in touch
 &lt;/body&gt;
 &lt;/html&gt;
 </text>
+<rtfd >cnRmZAAAAAADAAAAAgAAAAcAAABUWFQucnRmAQAAAC76AQAAKwAAAAEAAADyAQAAe1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYxNTYxXGNvY29hc3VicnRmNDAwCntcZm9udHRibFxmMFxmbmlsXGZjaGFyc2V0MCBBbmRhbGVNb25vO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7fQp7XCpcZXhwYW5kZWRjb2xvcnRibDs7fQpccGFyZFx0eDU0MFx0eDEwODBcdHgxNjIwXHR4MjE2MFx0eDI3MDBcdHgzMjQwXHR4Mzc4MFx0eDQzMjBccGFyZGlybmF0dXJhbFxwYXJ0aWdodGVuZmFjdG9yMAoKXGYwXGZzMzIgXGNmMCA8IURPQ1RZUEUgaHRtbD5cCjxodG1sPlwKPGhlYWQ+XAoJPG1ldGEgaHR0cC1lcXVpdj0iY29udGVudC10eXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPlwKCTx0aXRsZT5edGl0bGVePC90aXRsZT5cCjwvaGVhZD5cCjxib2R5PlwKXAo8aDE+XnRpdGxlXjwvaDE+XApedGV4dF5cCl5jaGlsZHJlbigvVGVtcGxhdGVzL0hUTUwgcGFnZS9IVE1MIGl0ZW0pXAo8L2JvZHk+XAo8L2h0bWw+XAp9AQAAACMAAAABAAAABwAAAFRYVC5ydGYQAAAASpQ0W7YBAAAAAAAAAAAAAA==</rtfd>
 <item ID="1530171943" Creator="Pat Maddox" proto="HTML Template" >
 <attribute name="Created" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="Modified" >2018-06-28T01:45:38-06:00</attribute>
 <attribute name="Name" >HTML item</attribute>
+<attribute name="SelectionCount" >1</attribute>
 <attribute name="Xpos" >0</attribute>
 <attribute name="Ypos" >0</attribute>
 <text >&lt;h2&gt;^title^&lt;/h2&gt;
@@ -1112,7 +1114,7 @@ Get in touch
 <windows >
 <window bounds="Rect[ 260 148 1160 748]" ruler="0" >
 <tabs >
-<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1530171885" scrollX="0" scrollY="0" selection="1530171892 " expanded="" textTab="0" splitRatio="0.5" hasBorder="0" isVertical="0" isCentered="1" lineType="0" itemWidth="220" xspace="10" yspace="10" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100" treemapDepth="0" attribute="" container="" bins="10" sortAttribute="" sortDirections="0" summaryAttribute="" summaryMethod="" query="" queryLabel="" action="" actionLabel=""  />
+<tab selected="1" viewType="1" usingCheckboxes="0" showColumns="0" columnString="" scale="32" ID="1530171885" scrollX="0" scrollY="0" selection="1530171892 " expanded="1530171939 1530171940 " textTab="0" splitRatio="0.5" hasBorder="0" isVertical="0" isCentered="1" lineType="0" itemWidth="220" xspace="10" yspace="10" treemapExpression="" treemapColorExpression="" treemapBorderColorExpression="$Color" treemapColorStart="#fffef9100" treemapColorEnd="#ccd5bf100" treemapDepth="0" attribute="" container="" bins="10" sortAttribute="" sortDirections="0" summaryAttribute="" summaryMethod="" query="" queryLabel="" action="" actionLabel=""  />
 </tabs>
 </window>
 </windows>
